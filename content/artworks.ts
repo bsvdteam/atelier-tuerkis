@@ -1,0 +1,157 @@
+import type { Artwork } from "@/types";
+
+/** Werke, Produkte & Material im Verkauf. Quelle: prototype-v2. */
+export const ARTWORKS: Artwork[] = [
+  {
+    slug: "stille-ufer",
+    title: { de: "Stille Ufer", en: "Quiet Shores" },
+    category: { de: "Aquarell · Original", en: "Watercolour · Original" },
+    group: "werke",
+    price: "CHF 480",
+    teaser: {
+      de: "Ruhe in Blau und Grün — ein Morgen am See, in Aquarell festgehalten.",
+      en: "Calm in blue and green — a morning by the lake in watercolour.",
+    },
+    description: {
+      de: "Ein stilles Werk in gedeckten Blau- und Grüntönen. Die weichen Verläufe des Aquarells fangen die Ruhe eines frühen Morgens am Wasser ein.",
+    },
+    story: {
+      de: "Entstanden an einem nebligen Morgen am Zürichsee, als das Wasser noch ganz glatt lag. Die Farben sind direkt vor Ort gemischt worden.",
+    },
+    specs: [
+      { label: { de: "Technik" }, value: { de: "Aquarell auf Büttenpapier" } },
+      { label: { de: "Masse" }, value: { de: "40 × 30 cm" } },
+      { label: { de: "Jahr" }, value: { de: "2025" } },
+      { label: { de: "Rahmung" }, value: { de: "ungerahmt" } },
+      { label: { de: "Art" }, value: { de: "Unikat, signiert" } },
+    ],
+    availability: { de: "Unikat · verfügbar" },
+    instructor: "lena-baumann",
+    color: "teal",
+  },
+  {
+    slug: "farbfeld-iii",
+    title: { de: "Farbfeld III", en: "Colour Field III" },
+    category: { de: "Acryl · Original", en: "Acrylic · Original" },
+    group: "werke",
+    price: "CHF 620",
+    teaser: {
+      de: "Kräftige Farbflächen, die miteinander in Bewegung geraten.",
+      en: "Bold colour fields set in motion against each other.",
+    },
+    specs: [
+      { label: { de: "Technik" }, value: { de: "Acryl auf Leinwand" } },
+      { label: { de: "Masse" }, value: { de: "50 × 50 cm" } },
+      { label: { de: "Jahr" }, value: { de: "2024" } },
+      { label: { de: "Art" }, value: { de: "Unikat, signiert" } },
+    ],
+    availability: { de: "Unikat · verfügbar" },
+    instructor: "lena-baumann",
+    color: "coral",
+  },
+  {
+    slug: "morgentau",
+    title: { de: "Morgentau", en: "Morning Dew" },
+    category: { de: "Aquarell · Original", en: "Watercolour · Original" },
+    group: "werke",
+    price: "CHF 390",
+    teaser: {
+      de: "Zarte Tropfen und weiches Licht — ein kleines, feines Aquarell.",
+      en: "Delicate drops and soft light — a small, fine watercolour.",
+    },
+    specs: [
+      { label: { de: "Technik" }, value: { de: "Aquarell auf Büttenpapier" } },
+      { label: { de: "Masse" }, value: { de: "30 × 30 cm" } },
+      { label: { de: "Jahr" }, value: { de: "2025" } },
+      { label: { de: "Art" }, value: { de: "Unikat, signiert" } },
+    ],
+    availability: { de: "Unikat · verfügbar" },
+    instructor: "lena-baumann",
+    color: "sky",
+  },
+  {
+    slug: "blaue-farne",
+    title: { de: "Blaue Farne", en: "Blue Ferns" },
+    category: { de: "Cyanotypie", en: "Cyanotype" },
+    group: "werke",
+    price: "CHF 180",
+    teaser: {
+      de: "Farnwedel in tiefem Preussischblau, mit Sonnenlicht gebannt.",
+      en: "Fern fronds in deep Prussian blue, captured with sunlight.",
+    },
+    specs: [
+      { label: { de: "Technik" }, value: { de: "Cyanotypie auf Aquarellpapier" } },
+      { label: { de: "Masse" }, value: { de: "24 × 32 cm" } },
+      { label: { de: "Jahr" }, value: { de: "2025" } },
+      { label: { de: "Art" }, value: { de: "Unikat, signiert" } },
+    ],
+    availability: { de: "Unikat · verfügbar" },
+    instructor: "mara-kunz",
+    color: "teal",
+  },
+  {
+    slug: "notizbuch-handgebunden",
+    title: { de: "Notizbuch, handgebunden", en: "Hand-bound Notebook" },
+    category: { de: "Handgemacht", en: "Handmade" },
+    group: "produkte",
+    price: "CHF 38",
+    teaser: {
+      de: "Fadengeheftet, mit Büttenpapier-Umschlag — zum Schreiben und Skizzieren.",
+      en: "Thread-sewn, with a handmade paper cover — to write and sketch.",
+    },
+    specs: [
+      { label: { de: "Bindung" }, value: { de: "fadengeheftet" } },
+      { label: { de: "Umschlag" }, value: { de: "Büttenpapier" } },
+    ],
+    availability: { de: "handgefertigt · verfügbar" },
+    instructor: "mara-kunz",
+    color: "yellow",
+  },
+  {
+    slug: "karten-set-blau",
+    title: { de: "Karten-Set «Blau»", en: "Card Set “Blue”" },
+    category: { de: "Handgemacht", en: "Handmade" },
+    group: "produkte",
+    price: "CHF 24",
+    teaser: {
+      de: "5 Cyanotypie-Karten mit Couverts — zum Verschenken oder Behalten.",
+      en: "5 cyanotype cards with envelopes — to gift or keep.",
+    },
+    specs: [
+      { label: { de: "Inhalt" }, value: { de: "5 Karten + Couverts" } },
+      { label: { de: "Technik" }, value: { de: "Cyanotypie" } },
+    ],
+    availability: { de: "handgefertigt · verfügbar" },
+    instructor: "mara-kunz",
+    color: "sky",
+  },
+  {
+    slug: "aquarell-starterset",
+    title: { de: "Aquarell-Starterset", en: "Watercolour Starter Set" },
+    category: { de: "Kreativmaterial", en: "Art Supplies" },
+    group: "material",
+    price: "CHF 55",
+    teaser: {
+      de: "Farben, Pinsel & Papier — alles, um zu Hause weiterzumachen.",
+      en: "Paints, brushes & paper — everything to continue at home.",
+    },
+    specs: [
+      { label: { de: "Inhalt" }, value: { de: "Farben, Pinsel & Papier" } },
+    ],
+    availability: { de: "verfügbar" },
+    color: "green",
+  },
+  {
+    slug: "bastel-grundpaket",
+    title: { de: "Bastel-Grundpaket", en: "Basic Craft Kit" },
+    category: { de: "Kindergartenbedarf", en: "Kindergarten Supplies" },
+    group: "material",
+    price: "auf Anfrage",
+    teaser: {
+      de: "Material & Eigenproduktionen für Gruppen, Schulen und Kindergärten.",
+      en: "Materials & in-house products for groups, schools and kindergartens.",
+    },
+    availability: { de: "auf Anfrage" },
+    color: "orange",
+  },
+];

@@ -1,26 +1,279 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   Atelier Türkis — Design-Tokens (aus prototype-v2/styles.css)
+   ============================================================ */
+@theme {
+  /* Text / Ink */
+  --color-ink: #133b54;
+  --color-ink-soft: #3a5f74;
+  --color-ink-mute: #6a8494;
+
+  /* Marke — Türkis */
+  --color-teal: #12b3a6;
+  --color-teal-deep: #0e7c82;
+  --color-teal-ink: #0a5a5e;
+
+  /* Akzente */
+  --color-coral: #ff6f91;
+  --color-pink: #ff9ab6;
+  --color-yellow: #ffc94d;
+  --color-orange: #ff9e5e;
+  --color-violet: #9b8cff;
+  --color-green: #5fd39b;
+  --color-sky: #57c9ec;
+
+  /* Flächen */
+  --color-cream: #fbf7ef;
+  --color-line: rgba(19, 59, 84, 0.12);
+
+  /* Fonts (via next/font als CSS-Variablen gesetzt) */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-nunito), system-ui, sans-serif;
+  --font-kids: var(--font-fredoka), var(--font-nunito), sans-serif;
+
+  /* Radien */
+  --radius-card: 26px;
+  --radius-xl2: 40px;
+
+  /* Schatten */
+  --shadow-soft: 0 18px 50px -22px rgba(14, 90, 94, 0.45);
+  --shadow-sm2: 0 10px 28px -16px rgba(14, 90, 94, 0.4);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ============================================================
+   Basis
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    background-color: #7beedf;
+    background-image:
+      radial-gradient(1200px 800px at 15% -5%, #9df3df 0%, transparent 55%),
+      radial-gradient(900px 700px at 100% 0%, #57d8e6 0%, transparent 50%),
+      radial-gradient(1000px 900px at 50% 120%, #5fe6de 0%, transparent 55%),
+      linear-gradient(180deg, #9df3df 0%, #7beedf 45%, #5fe6de 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    line-height: 1.1;
+    font-weight: 500;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-teal-deep);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-teal);
+    color: #fff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   Komponenten-Klassen (Prototyp-Look)
+   ============================================================ */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  .section {
+    padding-block: 72px;
+  }
+  @media (min-width: 768px) {
+    .section {
+      padding-block: 100px;
+    }
+  }
+  .section--tight {
+    padding-block: 48px;
+  }
+
+  /* Typo-Skala (fluide) */
+  .display {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 1.02;
+    font-weight: 500;
+  }
+  .h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+  }
+  .h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  }
+  .h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  }
+  .lead {
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+    color: var(--color-ink-soft);
+    line-height: 1.55;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-teal-deep);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: var(--color-coral);
+    border-radius: 2px;
+  }
+
+  /* Glasmorphismus */
+  .frost {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: var(--shadow-soft);
+  }
+  .panel {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-sm2);
+  }
+
+  /* Cards */
+  .card {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm2);
+    padding: 26px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card--hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    min-height: 48px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+    text-decoration: none;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn--primary {
+    background: var(--color-teal-deep);
+    color: #fff;
+    box-shadow: var(--shadow-sm2);
+  }
+  .btn--primary:hover {
+    background: var(--color-teal-ink);
+  }
+  .btn--coral {
+    background: var(--color-coral);
+    color: #fff;
+    box-shadow: var(--shadow-sm2);
+  }
+  .btn--ghost {
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--color-ink);
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+  .btn--outline {
+    background: transparent;
+    color: var(--color-teal-ink);
+    border-color: var(--color-teal-deep);
+  }
+  .btn--sm {
+    min-height: 40px;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+  .btn--lg {
+    padding: 17px 34px;
+    font-size: 1.06rem;
+  }
+
+  /* Tags / Pills */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink-soft);
+  }
+
+  /* Bild-Platzhalter (bis echte Bilder da sind) */
+  .ph {
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem;
+  }
+  .ph--teal { background: linear-gradient(135deg, #12b3a6, #0e7c82); }
+  .ph--coral { background: linear-gradient(135deg, #ff9ab6, #ff6f91); }
+  .ph--yellow { background: linear-gradient(135deg, #ffe08a, #ffc94d); color: #7a5a12; }
+  .ph--violet { background: linear-gradient(135deg, #b9aeff, #9b8cff); }
+  .ph--green { background: linear-gradient(135deg, #8fe6bd, #5fd39b); }
+  .ph--sky { background: linear-gradient(135deg, #8fe0f5, #57c9ec); }
+  .ph--orange { background: linear-gradient(135deg, #ffc39a, #ff9e5e); }
+  .ph--pink { background: linear-gradient(135deg, #ffc0d4, #ff9ab6); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

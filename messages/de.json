@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "atelier": "Atelier",
+    "angebot": "Angebot",
+    "erwachsene": "Erwachsene",
+    "kinder": "Kinder",
+    "gruppen": "Gruppen",
+    "raeume": "Räume mieten",
+    "kunst": "Kunst",
+    "galerie": "Galerie",
+    "verkauf": "Verkauf",
+    "gutscheine": "Gutscheine",
+    "kontakt": "Kontakt",
+    "faq": "FAQ",
+    "contactCta": "Kontakt",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schliessen"
+  },
+  "footer": {
+    "discover": "Entdecken",
+    "contact": "Kontakt",
+    "rights": "Alle Rechte vorbehalten.",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz",
+    "agb": "AGB"
+  },
+  "common": {
+    "anmelden": "Anmelden",
+    "mehrErfahren": "Mehr erfahren",
+    "alleAnzeigen": "Alle anzeigen",
+    "anfragen": "Anfragen",
+    "perWhatsapp": "Per WhatsApp anfragen",
+    "perEmail": "Per E-Mail anfragen",
+    "zurueck": "Zurück"
+  },
+  "home": {
+    "heroEyebrow": "Kunst- & Kreativ-Atelier · Zürich",
+    "heroTitle": "Ein Ort zum Aufatmen und Ausprobieren",
+    "heroLead": "Kurse, Workshops und Kunst für Kinder und Erwachsene — in einer hellen, ruhigen Werkstatt mitten in Zürich.",
+    "heroCtaCourses": "Kurse entdecken",
+    "heroCtaAtelier": "Das Atelier kennenlernen",
+    "statsTitle": "Worauf du zählen kannst",
+    "techniqueEyebrow": "Techniken",
+    "techniqueTitle": "Von Aquarell bis Cyanotypie",
+    "techniqueLead": "Bei uns findest du deine Technik — oder probierst gleich mehrere aus.",
+    "coursesEyebrow": "Aktuell",
+    "coursesTitle": "Kommende Kurse",
+    "coursesLead": "Diese Kurse starten bald. Sichere dir deinen Platz.",
+    "coursesAll": "Alle Kurse ansehen",
+    "testimonialsEyebrow": "Stimmen",
+    "testimonialsTitle": "Was Teilnehmende sagen",
+    "ctaTitle": "Verschenke Kreativität",
+    "ctaLead": "Ein Gutschein vom Atelier Türkis ist ein Geschenk, das bleibt.",
+    "ctaGutschein": "Gutscheine ansehen",
+    "ctaKontakt": "Kontakt aufnehmen"
+  },
+  "technique": {
+    "malen": "Malen",
+    "zeichnen": "Zeichnen",
+    "papier": "Papier & Lettering",
+    "textil": "Textil & Nähen",
+    "experimentell": "Experimentell",
+    "kinder": "Für Kinder"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "atelier": "Atelier",
+    "angebot": "Courses",
+    "erwachsene": "Adults",
+    "kinder": "Kids",
+    "gruppen": "Groups",
+    "raeume": "Rent a Room",
+    "kunst": "Art",
+    "galerie": "Gallery",
+    "verkauf": "Shop",
+    "gutscheine": "Gift Cards",
+    "kontakt": "Contact",
+    "faq": "FAQ",
+    "contactCta": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "discover": "Discover",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "impressum": "Imprint",
+    "datenschutz": "Privacy",
+    "agb": "Terms"
+  },
+  "common": {
+    "anmelden": "Sign up",
+    "mehrErfahren": "Learn more",
+    "alleAnzeigen": "View all",
+    "anfragen": "Enquire",
+    "perWhatsapp": "Ask via WhatsApp",
+    "perEmail": "Ask via email",
+    "zurueck": "Back"
+  },
+  "home": {
+    "heroEyebrow": "Art & Creative Atelier · Zurich",
+    "heroTitle": "A place to breathe and to try things out",
+    "heroLead": "Courses, workshops and art for children and adults — in a bright, calm studio in the heart of Zurich.",
+    "heroCtaCourses": "Explore courses",
+    "heroCtaAtelier": "Meet the atelier",
+    "statsTitle": "What you can count on",
+    "techniqueEyebrow": "Techniques",
+    "techniqueTitle": "From watercolour to cyanotype",
+    "techniqueLead": "Find your technique with us — or try several at once.",
+    "coursesEyebrow": "Now",
+    "coursesTitle": "Upcoming courses",
+    "coursesLead": "These courses start soon. Reserve your spot.",
+    "coursesAll": "See all courses",
+    "testimonialsEyebrow": "Voices",
+    "testimonialsTitle": "What participants say",
+    "ctaTitle": "Give the gift of creativity",
+    "ctaLead": "An Atelier Türkis gift card is a present that lasts.",
+    "ctaGutschein": "View gift cards",
+    "ctaKontakt": "Get in touch"
+  },
+  "technique": {
+    "malen": "Painting",
+    "zeichnen": "Drawing",
+    "papier": "Paper & Lettering",
+    "textil": "Textile & Sewing",
+    "experimentell": "Experimental",
+    "kinder": "For Kids"
+  }
+}

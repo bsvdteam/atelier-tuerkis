@@ -1,290 +1,168 @@
-# TECH_STACK.md — Technology Stack
-# Atelier Website
+# TECH_STACK.md — Technology Stack · Atelier Türkis
 
-**Version:** 1.0  
-**Status:** Approved — Source of Truth  
-**Last Updated:** 2025  
-**References:** PRD.md
+**Status:** Source of Truth (Ist-Stand aus installierter `package.json`)
+**Last Updated:** 2026-08-14
+**Hinweis:** Diese Datei wurde am 2026-08-14 vom ursprünglichen Plan (Next 14 +
+Sanity + Framer Motion) auf den TATSÄCHLICH installierten Stack umgestellt. Bei
+Konflikt mit älteren project-docs gilt diese Datei + die Root-`CLAUDE.md`.
 
-> **RULE FOR ALL AGENTS:** Never introduce a dependency not listed here. If you believe a new package is needed, stop and flag it explicitly. Do not install it autonomously.
+> **REGEL:** Keine Dependency einführen, die hier nicht steht. Wird eine gebraucht →
+> stoppen und explizit flaggen, nicht eigenmächtig installieren.
 
 ---
 
 ## 1. Core Framework
 
-| Technology | Version | Purpose |
+| Technologie | Version | Zweck |
 |---|---|---|
-| Next.js | 14.2.x (App Router) | Framework — routing, SSR, ISR, image optimisation |
-| React | 18.3.x | UI library |
-| TypeScript | 5.4.x | Type safety — mandatory on all files |
-| Node.js | 20.x LTS | Runtime |
+| Next.js | 16.3.x (App Router) | Framework — Routing, SSR/ISR, Image-Optimierung |
+| React / React-DOM | 19.2.x | UI-Library |
+| TypeScript | 5.x (strict) | Typsicherheit — auf allen Dateien Pflicht |
+| Node.js | 20+ · npm | Runtime / Paketmanager |
 
-**App Router only.** No Pages Router. No mixing.  
-**TypeScript strict mode enabled.** No `any` types without explicit comment explaining why.
+App Router only. Kein Pages Router. Server Components sind Default.
 
 ---
 
 ## 2. Styling
 
-| Technology | Version | Purpose |
+| Technologie | Version | Zweck |
 |---|---|---|
-| Tailwind CSS | 3.4.x | Utility-first styling — all styling goes here |
-| tailwind-merge | 2.x | Merge Tailwind classes without conflicts |
-| clsx | 2.x | Conditional class composition |
-| @tailwindcss/typography | 0.5.x | Prose styling for CMS rich-text content |
+| Tailwind CSS | v4 | Utility-first — Theme via `@theme` in `app/globals.css` |
+| @tailwindcss/postcss | v4 | PostCSS-Plugin |
+| tailwind-merge | 3.x | Klassen konfliktfrei mergen (`cn`) |
+| clsx | 2.x | Bedingte Klassen (`cn`) |
+| class-variance-authority | 0.7.x | Varianten-Styling (shadcn) |
+| tw-animate-css | 1.x | Animations-Utilities (shadcn) |
 
-**No inline styles.** No CSS modules. No styled-components. No emotion.  
-All visual decisions are in Tailwind classes or `tailwind.config.ts` (custom tokens).
+Keine Inline-Styles, keine CSS-Module, kein CSS-in-JS. Alles über Tailwind + Tokens.
 
 ---
 
-## 3. Animation
+## 3. UI-Primitives (shadcn/ui auf Base UI)
 
-| Technology | Version | Purpose |
+| Technologie | Version | Zweck |
 |---|---|---|
-| Framer Motion | 11.x | Page transitions, scroll animations, intro animation |
-
-**No GSAP. No anime.js. No CSS-only keyframe hacks for complex sequences.**  
-Framer Motion is the single animation library. Use it consistently.  
-All animations must check `useReducedMotion()` hook and disable if true.
+| shadcn (CLI, dev) | 4.x | Generiert Komponenten nach `components/ui/` |
+| @base-ui/react | 1.x | Basis-Primitives (statt Radix) |
+| @radix-ui/react-slot | 1.x | `Slot` für `asChild`-Pattern |
+| lucide-react | 1.x | Icon-Set (einziges) |
 
 ---
 
-## 4. CMS — Content Management
+## 4. Animation
 
-| Technology | Version | Purpose |
+| Technologie | Version | Zweck |
 |---|---|---|
-| Sanity | 3.x | Headless CMS — courses, artworks, atelier content |
-| @sanity/client | 6.x | Data fetching from Sanity |
-| @sanity/image-url | 1.x | Image URL builder with transformations |
-| next-sanity | 8.x | Next.js + Sanity integration, GROQ query helpers |
+| gsap | 3.x | Scroll-/Intro-Animationen |
+| @gsap/react | 2.x | `useGSAP`-Hook |
 
-**Sanity Studio** runs at `/studio` route (embedded in Next.js app).  
-All CMS content types defined in `/sanity/schemas/`.  
-GROQ queries defined in `/sanity/queries/` — never inline in components.
+Sparsam einsetzen. Jede Animation respektiert `prefers-reduced-motion`.
+(Kein Framer Motion — bewusst durch GSAP ersetzt.)
 
 ---
 
-## 5. Database & Backend
+## 5. Daten & Backend — Supabase
 
-| Technology | Version | Purpose |
+| Technologie | Version | Zweck |
 |---|---|---|
-| Supabase | 2.x (JS client) | Community Canvas submissions, storage |
-| @supabase/supabase-js | 2.x | Supabase JS client |
-| @supabase/ssr | 0.x | Server-side Supabase helpers for Next.js App Router |
+| @supabase/supabase-js | 2.x | Supabase JS-Client |
+| @supabase/ssr | 0.12.x | Server-Helper für Next App Router (Cookies) |
+| supabase (CLI, dev) | 2.x | Migrationen, Typen-Generierung |
+| @tanstack/react-query | 5.x | Client-seitiges Data-Fetching/Caching |
 
-**Supabase usage is limited to:**
-1. Community Canvas image uploads (Supabase Storage)
-2. Canvas submission records (Supabase Database)
-3. Real-time gallery updates (Supabase Realtime)
-
-**Supabase is NOT used for authentication.** There are no user accounts.  
-**Supabase is NOT used for CMS content.** That is Sanity's responsibility.
+Kein Sanity — Inhalte kommen aus `content/` bzw. Supabase. Keine User-Accounts/Auth
+in Phase 1.
 
 ---
 
-## 6. Internationalisation
+## 6. Internationalisierung
 
-| Technology | Version | Purpose |
+| Technologie | Version | Zweck |
 |---|---|---|
-| next-intl | 3.x | i18n routing, translations, locale detection |
+| next-intl | 4.x | i18n-Routing, Übersetzungen |
 
-**Locale files:** `/messages/de.json` and `/messages/en.json`  
-**Route strategy:** Prefix on non-default locale — `/kurse` (DE default), `/en/courses` (EN)  
-**No automatic locale detection.** User selects language manually. Preference saved to localStorage.
+DE = Default (`/…`), EN = `/en/…`. Strings in `messages/de.json` + `messages/en.json`.
+Kein hartkodierter UI-Text in Komponenten.
 
 ---
 
-## 7. Icons & Assets
+## 7. Formulare & Feedback
 
-| Technology | Version | Purpose |
+| Technologie | Version | Zweck |
 |---|---|---|
-| Lucide React | 0.380.x | UI icons (nav, buttons, UI elements) |
-
-**No FontAwesome. No Heroicons. No custom SVG icon systems.**  
-Lucide React is the single icon source. Import only what is used.
+| react-hook-form | 7.x | Formular-State |
+| zod | 4.x | Schema-Validierung |
+| @hookform/resolvers | 5.x | Brücke zod ↔ RHF |
+| sonner | 2.x | Toast-Notifications |
+| next-themes | 0.4.x | (kam mit sonner; Dark-Mode aktuell inaktiv) |
 
 ---
 
 ## 8. Fonts
 
-Loaded via `next/font` (self-hosted, no Google Fonts external request).
+Via `next/font` (self-hosted, kein externer CDN-Request):
 
-| Font | Weights | Use |
-|---|---|---|
-| Cormorant Garamond | 300, 400, 500 | Headlines, display text |
-| DM Sans | 400, 500 | Body text, UI, navigation |
+| Font | Einsatz |
+|---|---|
+| Fraunces | Headlines / Display |
+| Nunito | Body / UI |
+| Fredoka | Akzent / Kinder-Bereich |
 
-**Both fonts loaded in `app/layout.tsx` as CSS variables:**
-```ts
---font-cormorant: 'Cormorant Garamond', serif
---font-dm-sans: 'DM Sans', sans-serif
-```
+Als CSS-Variablen in `app/layout.tsx`: `--font-fraunces`, `--font-nunito`, `--font-fredoka`.
 
 ---
 
-## 9. Development & Code Quality
+## 9. Dev & Code-Qualität
 
-| Technology | Version | Purpose |
+| Technologie | Version | Zweck |
 |---|---|---|
-| ESLint | 8.x | Linting |
-| eslint-config-next | 14.x | Next.js ESLint rules |
-| Prettier | 3.x | Code formatting |
-| prettier-plugin-tailwindcss | 0.6.x | Auto-sort Tailwind classes |
-| Husky | 9.x | Git hooks |
-| lint-staged | 15.x | Run linters on staged files only |
+| eslint | 9.x | Linting |
+| eslint-config-next | 16.3.x | Next-Regeln |
+| prettier | 3.x | Formatter |
+| prettier-plugin-tailwindcss | 0.8.x | Tailwind-Klassen sortieren |
+| ffmpeg-static | 5.x | Video → Frames (Hero-Scroll-Animation) |
 
-**Prettier runs on every commit via Husky + lint-staged.**  
-**ESLint errors block commits.** Warnings are acceptable temporarily.  
-`.eslintrc` and `.prettierrc` are committed and enforced — no local overrides.
+(Husky/lint-staged aktuell NICHT installiert — bei Bedarf flaggen.)
 
 ---
 
-## 10. Environment Variables
+## 10. Environment-Variablen
 
-All environment variables defined in `.env.local` (local) and Vercel dashboard (production).  
-**Never commit `.env.local`. It is in `.gitignore`.**
+Vorlage: `.env.example` (im Repo). Echte Werte in `.env.local` (gitignored).
 
 ```bash
-# Sanity
-NEXT_PUBLIC_SANITY_PROJECT_ID=
-NEXT_PUBLIC_SANITY_DATASET=production
-SANITY_API_TOKEN=          # server-only, never NEXT_PUBLIC_
-
-# Supabase
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY= # server-only, never NEXT_PUBLIC_
-
-# Contact
-NEXT_PUBLIC_WHATSAPP_NUMBER=  # format: 41791234567 (no + no spaces)
-NEXT_PUBLIC_CONTACT_EMAIL=
-
-# App
-NEXT_PUBLIC_SITE_URL=          # https://atelier-domain.ch (no trailing slash)
-NEXT_PUBLIC_DEFAULT_LOCALE=de
+SUPABASE_SERVICE_ROLE_KEY=        # nur serverseitig, nie NEXT_PUBLIC_
+NEXT_PUBLIC_WHATSAPP_NUMBER=      # Format: 41791234567 (ohne + / Leerzeichen)
 ```
 
-**NEXT_PUBLIC_ prefix = exposed to browser.** Never put secrets with this prefix.  
-`SANITY_API_TOKEN` and `SUPABASE_SERVICE_ROLE_KEY` are server-only.
+`NEXT_PUBLIC_` = im Browser sichtbar. Niemals Secrets mit diesem Präfix.
 
 ---
 
 ## 11. Deployment
 
-| Service | Purpose |
-|---|---|
-| Vercel | Hosting, CI/CD, edge functions, preview deployments |
-| Sanity CDN | Image and asset delivery for CMS content |
-| Supabase (EU Frankfurt) | Database, Storage, Realtime |
-
-**Vercel config:**
-- Production branch: `main`
-- Preview deployments: all other branches
-- Node.js runtime: 20.x
-- Build command: `next build`
-- Output: default (not `export` — we need server features)
-
-**No Docker. No self-hosted servers.** Fully managed infrastructure.
+Vercel (Production = `main`). Build: `next build`. Lokaler Dev-Port: **3003**.
 
 ---
 
-## 12. File & Folder Structure
+## 12. Ordnerstruktur & Naming
 
-```
-/
-├── app/                        # Next.js App Router
-│   ├── [locale]/               # i18n root layout
-│   │   ├── layout.tsx
-│   │   ├── page.tsx            # Home
-│   │   ├── kurse/
-│   │   │   ├── page.tsx        # Course catalogue
-│   │   │   └── [slug]/
-│   │   │       └── page.tsx    # Course detail
-│   │   ├── galerie/
-│   │   │   ├── page.tsx        # Gallery
-│   │   │   └── [slug]/
-│   │   │       └── page.tsx    # Artwork detail
-│   │   ├── atelier/
-│   │   │   └── page.tsx
-│   │   ├── canvas/
-│   │   │   └── page.tsx
-│   │   ├── datenschutz/
-│   │   │   └── page.tsx
-│   │   └── impressum/
-│   │       └── page.tsx
-│   ├── studio/                 # Sanity Studio (embedded)
-│   │   └── [[...tool]]/
-│   │       └── page.tsx
-│   └── api/
-│       └── canvas/
-│           └── submit/
-│               └── route.ts    # Canvas submission endpoint
-├── components/
-│   ├── ui/                     # Base UI components (Button, Card, etc.)
-│   ├── layout/                 # Nav, Footer, Layout wrappers
-│   ├── sections/               # Page sections (Hero, CourseGrid, etc.)
-│   ├── canvas/                 # Community Canvas components
-│   └── sanity/                 # Sanity-specific components (PortableText, etc.)
-├── lib/
-│   ├── sanity/
-│   │   ├── client.ts
-│   │   └── queries.ts
-│   ├── supabase/
-│   │   ├── client.ts
-│   │   └── server.ts
-│   └── utils.ts
-├── sanity/
-│   ├── schemas/                # All Sanity content type schemas
-│   │   ├── course.ts
-│   │   ├── artwork.ts
-│   │   ├── teamMember.ts
-│   │   └── atelierPage.ts
-│   ├── queries/                # All GROQ queries (no inline queries in components)
-│   └── sanity.config.ts
-├── messages/
-│   ├── de.json                 # All DE translations
-│   └── en.json                 # All EN translations
-├── public/
-│   └── fonts/                  # Self-hosted font files
-├── types/
-│   └── index.ts                # All shared TypeScript types
-├── tailwind.config.ts
-├── next.config.ts
-└── .env.local                  # Never committed
-```
+Siehe Root-`CLAUDE.md` Abschnitt 4 (kanonische Struktur) und Abschnitt 6 (Anti-Patterns).
+Kurzform: Komponenten PascalCase, Utilities camelCase, Typen PascalCase, Env
+SCREAMING_SNAKE_CASE, Routen unter `app/[locale]/`.
 
 ---
 
-## 13. Naming Conventions
+## 13. Was wir NICHT nutzen
 
-| Item | Convention | Example |
-|---|---|---|
-| Components | PascalCase | `CourseCard.tsx` |
-| Pages | lowercase | `page.tsx` |
-| Hooks | camelCase with `use` prefix | `useCanvas.ts` |
-| Utilities | camelCase | `formatPrice.ts` |
-| Types/Interfaces | PascalCase | `CourseType`, `ArtworkType` |
-| CSS classes | Tailwind only | `text-ink font-dm-sans` |
-| Constants | SCREAMING_SNAKE_CASE | `MAX_CANVAS_SIZE` |
-| GROQ queries | camelCase, descriptive | `getCourseBySlug`, `getAllArtworks` |
-| Env variables | SCREAMING_SNAKE_CASE | `NEXT_PUBLIC_SANITY_PROJECT_ID` |
-
----
-
-## 14. What We Do NOT Use
-
-This list is definitive. If it's not in the stack above, it's not in the project.
-
-- ❌ WordPress
-- ❌ Webflow
-- ❌ Any page builder or template system
-- ❌ jQuery
-- ❌ Bootstrap or any CSS framework other than Tailwind
-- ❌ GSAP, anime.js, or any animation library other than Framer Motion
-- ❌ Redux, Zustand, or any global state manager (React state + context is sufficient)
-- ❌ Axios (use native fetch)
-- ❌ Moment.js (use native Intl or date-fns if needed)
-- ❌ CSS-in-JS (styled-components, emotion, etc.)
-- ❌ Any icon library other than Lucide React
-- ❌ Any font loading method other than `next/font`
+- ❌ Sanity, WordPress, Webflow, Page-Builder
+- ❌ Framer Motion, anime.js (Animation = GSAP)
+- ❌ jQuery, Bootstrap, CSS-Framework außer Tailwind
+- ❌ Redux/Zustand (React-State + Context reichen)
+- ❌ Axios (native `fetch`)
+- ❌ CSS-in-JS
+- ❌ Icon-Library außer lucide-react
+- ❌ Font-Loading außer `next/font`

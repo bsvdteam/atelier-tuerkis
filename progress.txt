@@ -1,0 +1,59 @@
+================================================================================
+ATELIER TÜRKIS — PROGRESS (Logbuch)
+Neueste Einträge OBEN. Jeder Block endet mit "OPEN (next):".
+Am Ende jeder Session neuen Block oben anhängen. Alte Blöcke nicht editieren.
+================================================================================
+
+--------------------------------------------------------------------------------
+[2026-08-14] PHASE 1 — FOUNDATION + STARTSEITE · läuft auf localhost:3003
+--------------------------------------------------------------------------------
+- Design-Tokens aus prototype-v2 nach app/globals.css (@theme): türkis-Palette,
+  Ink, Akzente, Aquarell-Hintergrund, Radien/Schatten + Komponenten-Klassen
+  (.btn, .frost, .card, .eyebrow, .display/.h1/.h2, .tag, .ph).
+- Fonts via next/font: Fraunces (Display), Nunito (Body), Fredoka (Kinder).
+- next-intl voll verkabelt: i18n/routing|request|navigation, proxy.ts (war
+  middleware.ts — Next 16 umbenannt), app/[locale]/, messages/de.json+en.json,
+  NextIntlClientProvider. DE default (kein Präfix), EN unter /en. Auto-Erkennung aktiv.
+- Datenschicht content/: courses (6 Erwachsene + 6 Kinder), artworks (8), team (3),
+  testimonials (6), faq (7) — typisiert in types/index.ts; Selektoren in content/index.ts.
+- lib/: utils(cn), site(Stammdaten), whatsapp(buildWhatsAppUrl/Mailto), localise.
+- Komponenten: layout/Header (Dropdowns, Mobile-Menü, Sprach-Toggle, Scroll-State),
+  layout/Footer, ui/CourseCard, home/Testimonials (Karussell).
+- Startseite komplett: Hero, Stats, Technik-Grid, aktuelle Kurse, Testimonials, Gutschein-CTA.
+- `npm run build` grün; Dev-Server auf Port 3003 verifiziert (Screenshot DE+EN ok).
+- lucide-react 1.x: Marken-Icons (Instagram/Facebook) entfernt → Camera/Share2 genutzt (siehe lessons).
+
+OPEN (next): Restliche Seiten als echte Inhalte bauen — /atelier (Team, Werte, Räume),
+  /angebot (+ erwachsene/kinder/gruppen/raeume) mit Filter/Kalender, dynamische
+  Detailseiten /angebot/erwachsene/[slug] & /angebot/kinder/[slug] (generateStaticParams),
+  /kunst (+ galerie/verkauf) mit Filter, /kunst/verkauf/[slug], /gutscheine, /faq,
+  /kontakt, Legal-Stubs (impressum/datenschutz/agb), not-found. Danach: Reveal-on-Scroll,
+  Intro-Animation (GSAP), Supabase-Anbindung, EN-Übersetzungen vervollständigen.
+
+--------------------------------------------------------------------------------
+[2026-08-14] PHASE 0 — SETUP + DOKU · committed on main
+--------------------------------------------------------------------------------
+- GitHub-Zugang via SSH eingerichtet und getestet (Account bsvdteam).
+- Repo initialisiert, Prototypen (v1, v2) + project docs gesichert.
+- Next.js 16.3.1 + React 19.2.8 im Repo-Root gescaffoldet (App Router, TS strict,
+  Tailwind v4, ESLint, Turbopack, alias @/*).
+- Alle Dependencies aus der Ziel-package.json installiert + next-intl (DE/EN).
+  `npm run build` läuft sauber. 0 Vulnerabilities.
+- dev/start-Port auf 3003 gesetzt (`next dev -p 3003`).
+- Governance-Doku ins Root gelegt und an den realen Stack angepasst:
+  CLAUDE.md, progress.txt, lessons.md. project docs/ = Design-Referenz.
+- TECH_STACK.md auf realen Stack aktualisiert (Supabase/GSAP/shadcn statt Sanity/Framer).
+- .env.example (Supabase-Variablen) angelegt.
+
+Erledigt: Phase 0.1 (Next.js), 0.2 (Dependencies), Teil 0.3/0.4 (Tailwind/ESLint via Scaffold).
+
+OPEN (next): Foundation bauen — (a) Design-Tokens aus prototype-v2/styles.css nach
+  app/globals.css (@theme: türkis-Palette, Fraunces/Nunito/Fredoka via next/font);
+  (b) shadcn init (components.json + lib/utils.ts cn); (c) next-intl-Wiring
+  (i18n/, messages/de.json+en.json, app/[locale]/ middleware); (d) Header/Footer +
+  Startseite als erste echte Seite. Danach Seite für Seite echte Detailseiten.
+
+================================================================================
+STAND-PLATZHALTER FÜR FRÜHERE PHASEN (aus ursprünglicher Planung, project docs/):
+Der detaillierte Phasenplan liegt in project docs/IMPLEMENTATION_PLAN.md.
+================================================================================
