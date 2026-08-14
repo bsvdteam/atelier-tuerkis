@@ -1,114 +1,111 @@
 import { Link } from "@/i18n/navigation";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { ContactCta } from "@/components/ui/ContactCta";
-import { ArtworkCard } from "@/components/ui/ArtworkCard";
+import { ArtworkGallery } from "@/components/detail/ArtworkGallery";
 import { relatedArtworks, teamBySlug } from "@/content";
 import { getLocalised } from "@/lib/localise";
-import { cn } from "@/lib/utils";
-import type { Artwork, Locale } from "@/types";
+import { buildWhatsAppUrl, buildMailtoUrl } from "@/lib/whatsapp";
+import type { Artwork, Locale, PlaceholderColor } from "@/types";
+
+const PALETTE: PlaceholderColor[] = ["sky", "teal", "green", "violet"];
 
 export function ArtworkDetail({ artwork, locale }: { artwork: Artwork; locale: Locale }) {
   const title = getLocalised(artwork.title, locale);
   const artist = teamBySlug(artwork.instructor);
-  const related = relatedArtworks(artwork.slug, 2);
+  const related = relatedArtworks(artwork.slug, 3);
+  const galleryColors = [artwork.color, ...PALETTE.filter((c) => c !== artwork.color)].slice(0, 4);
 
   return (
     <>
-      <PageHeader
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Shop", href: "/shop" },
-          { label: title },
-        ]}
-        eyebrow={getLocalised(artwork.category, locale)}
-        title={title}
-      />
+      <section className="section" style={{ paddingTop: "40px" }}>
+        <div className="container">
+          <p className="crumbs reveal" style={{ marginBottom: "26px" }}>
+            <Link href="/">Home</Link> · <Link href="/shop">Shop</Link> · {title}
+          </p>
 
-      <section className="section--tight">
-        <div className="container-page grid gap-8 lg:grid-cols-[1.3fr_1fr]">
-          {/* Bild */}
-          <div className={cn("ph min-h-[360px] rounded-[32px]", `ph--${artwork.color}`)}>
-            <span className="ph-label">{title}</span>
-          </div>
+          <div className="kunst-layout">
+            <ArtworkGallery colors={galleryColors} />
 
-          {/* Kauf-Box */}
-          <aside>
-            <div className="card">
-              <div className="flex items-end justify-between">
-                <span className="font-display text-3xl text-teal-ink">{artwork.price}</span>
-                {artwork.availability && (
-                  <span className="tag">{getLocalised(artwork.availability, locale)}</span>
-                )}
+            <aside className="artinfo reveal d1">
+              <span className={`tag tag--${artwork.color}`}>{getLocalised(artwork.category, locale)}</span>
+              <h1 className="artinfo__title">{title}</h1>
+              {artwork.availability && (
+                <span className="spots"><span className="spots__dot" />{getLocalised(artwork.availability, locale)}</span>
+              )}
+              <p className="lead" style={{ marginTop: "14px" }}>{getLocalised(artwork.teaser, locale)}</p>
+
+              <div className="artinfo__buy">
+                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "16px" }}>
+                  <span className="muted" style={{ fontWeight: 700 }}>Preis</span>
+                  <span className="artprice">{artwork.price}</span>
+                </div>
+                <a href={buildWhatsAppUrl(`Hallo Atelier Türkis, ich interessiere mich für das Werk «${title}». Ist es noch verfügbar?`)} target="_blank" rel="noopener noreferrer" className="btn btn--coral" style={{ width: "100%", justifyContent: "center" }}>
+                  Interesse? Auf WhatsApp schreiben
+                </a>
+                <a href={buildMailtoUrl(`Anfrage Werk ${title}`)} className="btn btn--ghost" style={{ width: "100%", justifyContent: "center", marginTop: "10px" }}>
+                  Per E-Mail anfragen
+                </a>
+                <p className="artnote">Abholung im Atelier oder Versand nach Absprache. Bezahlung vor Ort oder auf Rechnung.</p>
               </div>
-
-              <p className="mt-4 text-ink-soft">{getLocalised(artwork.teaser, locale)}</p>
 
               {artwork.specs && (
-                <dl className="mt-5 divide-y divide-line">
+                <dl className="specs" style={{ marginTop: "20px" }}>
                   {artwork.specs.map((s, i) => (
-                    <div key={i} className="flex justify-between gap-4 py-2.5">
-                      <dt className="text-sm text-ink-mute">{getLocalised(s.label, locale)}</dt>
-                      <dd className="text-right text-sm font-bold text-ink">
-                        {getLocalised(s.value, locale)}
-                      </dd>
-                    </div>
+                    <div className="spec" key={i}><dt>{getLocalised(s.label, locale)}</dt><dd>{getLocalised(s.value, locale)}</dd></div>
                   ))}
+                  {artist && <div className="spec"><dt>Urheber:in</dt><dd>{artist.name}</dd></div>}
                 </dl>
               )}
-
-              {artist && (
-                <p className="mt-4 border-t border-line pt-4 text-sm text-ink-mute">
-                  Von <span className="font-bold text-ink">{artist.name}</span>
-                </p>
-              )}
-
-              <div className="mt-6">
-                <ContactCta
-                  whatsappText={`Hallo Atelier Türkis, ich interessiere mich für das Werk «${title}». Ist es noch verfügbar?`}
-                  emailSubject={`Anfrage Werk ${title}`}
-                />
-              </div>
-              <p className="mt-4 text-xs text-ink-mute">
-                Abholung im Atelier oder Versand nach Absprache. Bezahlung vor Ort oder auf Rechnung.
-              </p>
-            </div>
-          </aside>
+            </aside>
+          </div>
         </div>
+      </section>
 
-        {/* Beschreibung / Geschichte */}
-        {(artwork.description || artwork.story) && (
-          <div className="container-page mt-12 grid gap-8 md:grid-cols-2">
-            {artwork.description && (
-              <div>
-                <h2 className="h3">Über das Werk</h2>
-                <p className="mt-3 text-ink-soft">{getLocalised(artwork.description, locale)}</p>
+      {(artwork.description || artwork.story) && (
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <div className="frost reveal" style={{ padding: "44px 34px" }}>
+              <div className="split" style={{ alignItems: "start", gap: "40px" }}>
+                {artwork.description && (
+                  <div>
+                    <span className="eyebrow">Über das Werk</span>
+                    <h2 className="h3 mt-s">Ruhe in Blau und Grün</h2>
+                    <p className="mt-s muted">{getLocalised(artwork.description, locale)}</p>
+                    <p className="mt-s muted">Jedes Original ist ein Unikat und leicht anders als auf dem Foto, das gehört zum Charme.</p>
+                  </div>
+                )}
+                {artwork.story && (
+                  <div>
+                    <span className="eyebrow">Die Geschichte dahinter</span>
+                    <h2 className="h3 mt-s">Ein Morgen am See</h2>
+                    <p className="mt-s muted">{getLocalised(artwork.story, locale)}</p>
+                    <p className="mt-s muted">Ein Werk für alle, die sich ein Stück Ruhe an die Wand holen möchten.</p>
+                  </div>
+                )}
               </div>
-            )}
-            {artwork.story && (
-              <div>
-                <h2 className="h3">Die Geschichte dahinter</h2>
-                <p className="mt-3 text-ink-soft">{getLocalised(artwork.story, locale)}</p>
-              </div>
-            )}
+            </div>
           </div>
-        )}
+        </section>
+      )}
 
-        {/* Ähnliche Werke */}
-        {related.length > 0 && (
-          <div className="container-page mt-14">
-            <div className="mb-6 flex items-center justify-between">
-              <h2 className="h3">Das könnte dir auch gefallen</h2>
-              <Link href="/shop" className="text-sm font-bold text-ink-mute hover:text-teal-deep">
-                Alle Werke
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="stack-head reveal">
+            <div><span className="eyebrow">Vielleicht auch schön</span><h2 className="h2 mt-s">Weitere Werke</h2></div>
+            <Link href="/shop" className="btn btn--outline">Alle Werke <span className="arr">→</span></Link>
+          </div>
+          <div className="grid grid-3">
+            {related.map((a, i) => (
+              <Link key={a.slug} className={`card reveal${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} href={`/shop/${a.slug}`}>
+                <div className="card__media"><div className={`ph ph--${a.color}`} /></div>
+                <div className="card__body">
+                  <span className={`tag tag--${a.color}`}>{getLocalised(a.category, locale)}</span>
+                  <h3 className="card__title">{getLocalised(a.title, locale)}</h3>
+                  <p className="card__desc">{getLocalised(a.teaser, locale)}</p>
+                  <div className="card__foot"><span className="card__price">{a.price}</span><span className="card__arrow">→</span></div>
+                </div>
               </Link>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2">
-              {related.map((a) => (
-                <ArtworkCard key={a.slug} artwork={a} locale={locale} />
-              ))}
-            </div>
+            ))}
           </div>
-        )}
+        </div>
       </section>
     </>
   );

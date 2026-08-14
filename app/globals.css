@@ -887,3 +887,17 @@ html.intro-seen .intro { display: none !important; }
 .squiggle { position: relative; white-space: nowrap; padding-bottom: .14em; }
 .squiggle::after { content:""; position:absolute; left:-.02em; right:-.02em; bottom:0; height:.13em;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none' fill='none'%3E%3Cpath d='M2 8c30-7 60-7 98-2s62 6 98-2' stroke='%23FF6F91' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%; }
+
+/* =====================================================================
+   Squiggle-Fix — Unterstrich sitzt im eigenen Innenabstand, überlappt nie
+   ===================================================================== */
+.squiggle-word, .squiggle {
+  display: inline-block;
+  padding-bottom: 0.18em;
+  white-space: nowrap;
+}
+.squiggle-word::after, .squiggle::after {
+  bottom: 0;
+  top: auto;
+  height: 0.16em;
+}

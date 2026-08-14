@@ -5,6 +5,31 @@ Am Ende jeder Session neuen Block oben anhängen. Alte Blöcke nicht editieren.
 ================================================================================
 
 --------------------------------------------------------------------------------
+[2026-08-14] PHASE 4 — ALLE UNTERSEITEN FAITHFUL + BUG-FIXES
+--------------------------------------------------------------------------------
+- Kunde: Unterseiten müssen 1:1 wie Prototyp aussehen; Bugs fixen.
+- Bug-Fixes: (1) Squiggle-Bleeding global behoben (.squiggle-word/.squiggle:
+  display:inline-block + padding-bottom, ::after bottom:0). (2) Sprach-Mix behoben:
+  en.json = de.json (durchgehend Deutsch wie Prototyp; echtes EN später).
+- PageHeader auf Prototyp-Struktur .pagehead (crumbs · eyebrow · display · lead) umgebaut.
+- ALLE Unterseiten faithful nach prototype-v2 portiert (Original-Markup/-Klassen,
+  Next-Links, datengetrieben wo Detailseiten):
+  atelier (Geschichte/6 Werte/Masonry/Team/Kontakt), angebot (4 pillars + Termine + CTA),
+  gruppen, raeume (specs), angebot-erwachsene (ErwachseneView: Karten/Kalender-Toggle +
+  Filter + Monatskalender als React-Port von app.js), angebot-kinder (theme-kids, kids-card,
+  wiggle, confetti, badge-fun), CourseDetail (Erwachsene + Kinder-Variante, .kurs-layout,
+  Buchungs-Aside, FAQ, ähnliche Kurse), shop (ShopFilterList), galerie (GalleryGrid Masonry-
+  Filter), ArtworkDetail (.gallery Thumb-Switcher als ArtworkGallery-Client, Kauf-Box, specs),
+  gutscheine (badge-fun pagehead), faq (details/summary), kontakt (3 pillars + Adresse).
+- Verwaiste Alt-Komponenten entfernt (ContactCta, CourseFilterList, ui/ArtworkCard).
+- Build grün. Verifiziert per Screenshot: erwachsene (Squiggle-Fix + Toggle + Filter).
+
+OPEN (next): (1) Kalender-Ansicht visuell prüfen (Browser-Pane hing beim Test).
+  (2) Facherl: Inhalt vom Kunden holen + Seite füllen (aktuell Platzhalter).
+  (3) Echtes EN (en.json aktuell deutsch). (4) Echte Bilder statt .ph-Platzhalter.
+  (5) Feinschliff/Abgleich einzelner Seiten gegen :3010.
+
+--------------------------------------------------------------------------------
 [2026-08-14] PHASE 3 — ORIGINALGETREUER PORT (Home + Nav + Interaktionen)
 --------------------------------------------------------------------------------
 - WICHTIG: Erste Neu-Interpretation war zu weit vom Prototyp weg (Kunde: „das ist

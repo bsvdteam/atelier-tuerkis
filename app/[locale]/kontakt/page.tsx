@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { setRequestLocale, getTranslations } from "next-intl/server";
-import { MessageCircle, Mail, MapPin, Phone, Clock } from "lucide-react";
+import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { SITE } from "@/lib/site";
-import { buildWhatsAppUrl, buildMailtoUrl } from "@/lib/whatsapp";
-import type { Locale } from "@/types";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = { title: "Kontakt" };
 
@@ -13,89 +11,79 @@ export default async function KontaktPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale: raw } = await params;
-  setRequestLocale(raw);
-  const locale = raw as Locale;
-  const t = await getTranslations();
+  const { locale } = await params;
+  setRequestLocale(locale);
 
-  const ways = [
-    {
-      icon: MessageCircle,
-      title: "WhatsApp",
-      text: "Am schnellsten. Schreib uns einfach.",
-      href: buildWhatsAppUrl("Hallo Atelier Türkis, ich hätte eine Frage."),
-      cta: t("common.perWhatsapp"),
-      external: true,
-    },
-    {
-      icon: Mail,
-      title: "E-Mail",
-      text: SITE.email,
-      href: buildMailtoUrl(),
-      cta: t("common.perEmail"),
-      external: false,
-    },
-    {
-      icon: Phone,
-      title: "Telefon",
-      text: SITE.phone,
-      href: `tel:${SITE.phone.replace(/\s/g, "")}`,
-      cta: "Anrufen",
-      external: false,
-    },
-  ];
+  const wa = buildWhatsAppUrl("Hallo Atelier Türkis, ich hätte eine Frage.");
 
   return (
     <>
       <PageHeader
-        crumbs={[{ label: "Home", href: "/" }, { label: t("nav.kontakt") }]}
-        eyebrow={t("nav.kontakt")}
-        title={
-          <>
-            Schreib uns <span className="squiggle text-coral">einfach</span>
-          </>
-        }
-        lead="Fragen zu Kursen, Terminen oder Geburtstagen? Wir melden uns rasch zurück."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Kontakt" }]}
+        eyebrow="Kontakt"
+        title={<>Schreib uns <span className="squiggle-word">einfach</span>.</>}
+        lead="Fragen zu einem Kurs, einem Werk oder einem Gutschein? Am schnellsten erreichst du uns per WhatsApp oder E-Mail. Für die Anmeldung genügt eine kurze Nachricht, wir melden uns rasch zurück."
       />
 
-      <section className="section--tight">
-        <div className="container-page grid gap-8 lg:grid-cols-[1.2fr_1fr]">
-          {/* Wege */}
-          <div className="grid gap-5 sm:grid-cols-3">
-            {ways.map((w) => (
-              <a
-                key={w.title}
-                href={w.href}
-                target={w.external ? "_blank" : undefined}
-                rel={w.external ? "noopener noreferrer" : undefined}
-                className="card card--hover flex flex-col"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-teal-deep text-white">
-                  <w.icon size={18} />
-                </span>
-                <h2 className="mt-4 font-display text-lg text-ink">{w.title}</h2>
-                <p className="mt-1 flex-1 text-sm text-ink-soft">{w.text}</p>
-                <span className="mt-3 text-sm font-bold text-teal-deep">{w.cta}</span>
-              </a>
-            ))}
+      <section className="section section--tight">
+        <div className="container">
+          <div className="grid grid-3">
+            <a className="pillar reveal" href={wa} target="_blank" rel="noopener noreferrer">
+              <div className="pillar__icon" style={{ background: "var(--green)" }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M21 11.5a8.4 8.4 0 01-12 7.6L3 21l1.9-6a8.5 8.5 0 1116.1-3.5z" /></svg>
+              </div>
+              <h3>WhatsApp</h3>
+              <p>Am schnellsten &amp; unkompliziert.</p>
+              <span className="pillar__go">+41 79 123 45 67 <span className="arr">→</span></span>
+            </a>
+            <a className="pillar reveal d1" href="mailto:hallo@atelier-tuerkis.ch">
+              <div className="pillar__icon" style={{ background: "var(--coral)" }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
+              </div>
+              <h3>E-Mail</h3>
+              <p>Für ausführlichere Anliegen.</p>
+              <span className="pillar__go">hallo@atelier-tuerkis.ch <span className="arr">→</span></span>
+            </a>
+            <a className="pillar reveal d2" href="tel:+41791234567">
+              <div className="pillar__icon" style={{ background: "var(--violet)" }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z" /></svg>
+              </div>
+              <h3>Telefon</h3>
+              <p>Lieber persönlich? Ruf uns an.</p>
+              <span className="pillar__go">+41 79 123 45 67 <span className="arr">→</span></span>
+            </a>
           </div>
+        </div>
+      </section>
 
-          {/* Adresse */}
-          <div className="card">
-            <h2 className="h3">So findest du uns</h2>
-            <div className="mt-4 flex flex-col gap-3 text-ink-soft">
-              <p className="flex items-start gap-2">
-                <MapPin size={18} className="mt-0.5 text-teal-deep" />
-                {SITE.address.street}, {SITE.address.city}
-              </p>
-              <p className="flex items-center gap-2">
-                <Clock size={18} className="text-teal-deep" />
-                {SITE.hours[locale] ?? SITE.hours.de}
-              </p>
+      <section className="section">
+        <div className="container">
+          <div className="frost reveal" style={{ padding: 0, overflow: "hidden" }}>
+            <div className="split" style={{ gap: 0 }}>
+              <div style={{ padding: "40px 34px" }}>
+                <span className="eyebrow">Besuch uns</span>
+                <h2 className="h2 mt-s">Atelier Türkis</h2>
+                <div className="contact-grid mt-m">
+                  <div className="contact-card"><span className="label">Adresse</span><p>Werkstrasse 12<br />8004 Zürich</p></div>
+                  <div className="contact-card"><span className="label">Öffnungszeiten</span><p>Mi–Fr 9–18 Uhr<br />Sa 9–13 Uhr</p></div>
+                  <div className="contact-card"><span className="label">Anreise</span><p>Parkplätze &amp; ÖV<br />in der Nähe</p></div>
+                  <div className="contact-card"><span className="label">Social</span><p>Instagram<br />&amp; Facebook</p></div>
+                </div>
+              </div>
+              <div className="split__media" style={{ borderRadius: 0, aspectRatio: "auto", minHeight: "340px" }}>
+                <div className="ph ph--teal" style={{ position: "relative" }}><span className="ph-label">🗺️ Lageplan</span></div>
+              </div>
             </div>
-            <div className="ph ph--sky mt-5 h-40 rounded-2xl">
-              <span className="ph-label">Lageplan</span>
-            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--tight">
+        <div className="container">
+          <div className="cta-banner reveal">
+            <h2 className="h2">Häufige Fragen</h2>
+            <p className="lead mt-s center maxw">Vorkenntnisse, Material, Anmeldung? Viele Antworten findest du direkt in unseren FAQ.</p>
+            <div className="btn-row"><Link href="/faq" className="btn btn--outline btn--lg">Zu den FAQ <span className="arr">→</span></Link></div>
           </div>
         </div>
       </section>

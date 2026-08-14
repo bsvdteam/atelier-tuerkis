@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
-import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Check } from "lucide-react";
+import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { ContactCta } from "@/components/ui/ContactCta";
 
 export const metadata: Metadata = { title: "Räume mieten" };
 
 const SPECS = [
-  { label: "Grösse", value: "ca. 65 m²" },
-  { label: "Plätze", value: "bis 15 Personen" },
-  { label: "Ausstattung", value: "Tische, Nähmaschinen, Werkzeuge" },
-  { label: "Infrastruktur", value: "Küche, WC" },
-  { label: "Anreise", value: "Parkplätze & ÖV in der Nähe" },
-  { label: "Mindestdauer", value: "3 Stunden" },
-  { label: "Mietpreis", value: "ab CHF 45 / Stunde" },
-];
-
-const CHECKS = [
-  "Viel Tageslicht",
-  "Grosse Arbeitstische",
-  "Nähmaschinen nutzbar",
-  "Küche & WC vorhanden",
+  ["Grösse", "ca. 65 m²"],
+  ["Plätze", "bis 15 Personen"],
+  ["Ausstattung", "Tische, Nähmaschinen, Werkzeuge"],
+  ["Infrastruktur", "Küche, WC"],
+  ["Anreise", "Parkplätze & ÖV in der Nähe"],
+  ["Mindestdauer", "3 Stunden"],
+  ["Mietpreis", "ab CHF 45 / Stunde"],
 ];
 
 export default async function RaeumePage({
@@ -30,60 +22,58 @@ export default async function RaeumePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations();
 
   return (
     <>
       <PageHeader
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: t("nav.angebot"), href: "/angebot" },
-          { label: t("nav.raeume") },
-        ]}
-        eyebrow={t("nav.raeume")}
-        title={
-          <>
-            Dein Raum für <span className="squiggle text-teal-deep">eigene Ideen</span>
-          </>
-        }
-        lead="Unsere helle Werkstatt kannst du stundenweise mieten — für Workshops, Feiern oder dein eigenes Projekt. Alles da, du musst nur kommen."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Angebot", href: "/angebot" }, { label: "Räume mieten" }]}
+        eyebrow="Räume mieten"
+        title={<>Dein <span className="squiggle-word">Raum</span> für Kreatives.</>}
+        lead="Du gibst selbst Kurse oder brauchst einen inspirierenden Ort für dein Projekt? Unsere hellen, gut ausgestatteten Räume kannst du stundenweise oder für ganze Tage mieten."
       />
 
-      <section className="section--tight">
-        <div className="container-page grid gap-8 lg:grid-cols-[1.1fr_1fr]">
-          <div className="ph ph--teal min-h-[280px] rounded-[32px]">
-            <span className="ph-label">Werkstatt</span>
-          </div>
-
-          <div className="card">
-            <h2 className="h3">Das bekommst du</h2>
-            <dl className="mt-4 divide-y divide-line">
-              {SPECS.map((s) => (
-                <div key={s.label} className="flex justify-between gap-4 py-3">
-                  <dt className="text-ink-mute">{s.label}</dt>
-                  <dd className="text-right font-bold text-ink">{s.value}</dd>
-                </div>
-              ))}
-            </dl>
-            <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-              {CHECKS.map((c) => (
-                <li key={c} className="flex items-center gap-2 text-ink-soft">
-                  <Check size={16} className="text-green" /> {c}
-                </li>
-              ))}
-            </ul>
+      <section className="section section--tight">
+        <div className="container">
+          <div className="split split--wide-l">
+            <div className="split__media reveal"><div className="ph ph--sky" /></div>
+            <div className="reveal d1">
+              <span className="eyebrow">Für wen?</span>
+              <h2 className="h2 mt-s">Kursleiter, Künstler &amp; Kreative</h2>
+              <p className="lead mt-s">Ein Ort, der Konzentration und Freude gleichermassen fördert, mit allem, was du zum Arbeiten brauchst.</p>
+              <ul className="checklist mt-m">
+                <li>Viel Tageslicht &amp; ruhige Lage</li>
+                <li>Grosse Arbeitstische &amp; Stühle</li>
+                <li>Nähmaschinen &amp; Werkzeuge nutzbar</li>
+                <li>Küche &amp; WC vor Ort</li>
+              </ul>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="container-page mt-10">
-          <div className="frost rounded-[32px] px-6 py-10 text-center sm:px-10">
-            <h2 className="h3">Verfügbarkeit anfragen</h2>
-            <p className="mt-2 text-ink-soft">Sag uns Datum und Dauer — wir prüfen und melden uns.</p>
-            <div className="mt-6 flex justify-center">
-              <ContactCta
-                whatsappText="Hallo Atelier Türkis, ich möchte gern eure Räume mieten. Sind sie an folgendem Termin frei?"
-                emailSubject="Anfrage Raummiete"
-              />
+      <section className="section">
+        <div className="container">
+          <div className="split">
+            <div className="reveal">
+              <span className="eyebrow">Ausstattung &amp; Konditionen</span>
+              <h2 className="h2 mt-s">Auf einen Blick</h2>
+              <dl className="specs mt-m">
+                {SPECS.map(([dt, dd]) => (
+                  <div className="spec" key={dt}><dt>{dt}</dt><dd>{dd}</dd></div>
+                ))}
+              </dl>
+            </div>
+            <div className="reveal d1">
+              <div className="frost" style={{ padding: "34px 30px" }}>
+                <h3 className="h3">Verfügbarkeit anfragen</h3>
+                <p className="muted mt-s">Sag uns deinen Wunschtermin und wozu du den Raum brauchst, wir prüfen die Verfügbarkeit und melden uns rasch.</p>
+                <div className="btn-row mt-m"><Link href="/kontakt" className="btn btn--coral">Raum anfragen <span className="arr">→</span></Link></div>
+                <div className="masonry mt-m" style={{ columns: 2 }}>
+                  {[["green", "t2"], ["yellow", "t1"], ["teal", "t1"], ["coral", "t2"]].map(([c, t], i) => (
+                    <div className="masonry__item" key={i}><div className={`ph ph--${c} ${t}`} /></div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
