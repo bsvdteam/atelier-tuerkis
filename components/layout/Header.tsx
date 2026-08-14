@@ -32,15 +32,16 @@ export function Header() {
     };
   }, [mobileOpen]);
 
+  const atelierLinks: SubLink[] = [
+    { href: "/atelier", key: "ueberUns" },
+    { href: "/galerie", key: "galerie" },
+  ];
   const angebotLinks: SubLink[] = [
     { href: "/angebot/erwachsene", key: "erwachsene" },
     { href: "/angebot/kinder", key: "kinder" },
     { href: "/angebot/gruppen", key: "gruppen" },
     { href: "/angebot/raeume", key: "raeume" },
-  ];
-  const kunstLinks: SubLink[] = [
-    { href: "/kunst/galerie", key: "galerie" },
-    { href: "/kunst/verkauf", key: "verkauf" },
+    { href: "/angebot/facherl", key: "facherl" },
   ];
 
   const switchLocale = (next: string) => {
@@ -71,9 +72,9 @@ export function Header() {
 
         {/* Desktop-Menü */}
         <nav className="ml-auto hidden items-center gap-1 lg:flex">
-          <NavLink href="/atelier">{t("atelier")}</NavLink>
+          <NavDropdown label={t("atelier")} links={atelierLinks} t={t} rootHref="/atelier" />
           <NavDropdown label={t("angebot")} links={angebotLinks} t={t} rootHref="/angebot" />
-          <NavDropdown label={t("kunst")} links={kunstLinks} t={t} rootHref="/kunst" />
+          <NavLink href="/shop">{t("shop")}</NavLink>
         </nav>
 
         {/* Aktionen */}
@@ -114,13 +115,12 @@ export function Header() {
       {mobileOpen && (
         <div className="fixed inset-0 top-0 z-40 overflow-y-auto bg-white/95 backdrop-blur-lg lg:hidden">
           <div className="container-page flex flex-col gap-1 pt-24 pb-16">
-            <MobileLink href="/atelier" onClick={() => setMobileOpen(false)}>
-              {t("atelier")}
-            </MobileLink>
-
+            <MobileGroup label={t("atelier")} links={atelierLinks} t={t} onNavigate={() => setMobileOpen(false)} />
             <MobileGroup label={t("angebot")} links={angebotLinks} t={t} onNavigate={() => setMobileOpen(false)} />
-            <MobileGroup label={t("kunst")} links={kunstLinks} t={t} onNavigate={() => setMobileOpen(false)} />
 
+            <MobileLink href="/shop" onClick={() => setMobileOpen(false)}>
+              {t("shop")}
+            </MobileLink>
             <MobileLink href="/gutscheine" onClick={() => setMobileOpen(false)}>
               {t("gutscheine")}
             </MobileLink>

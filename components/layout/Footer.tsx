@@ -9,10 +9,10 @@ export function Footer() {
   const locale = useLocale() as Locale;
 
   const discover = [
-    { href: "/atelier", label: t("nav.atelier") },
+    { href: "/atelier", label: t("nav.ueberUns") },
     { href: "/angebot", label: t("nav.angebot") },
-    { href: "/kunst/galerie", label: t("nav.galerie") },
-    { href: "/kunst/verkauf", label: t("nav.verkauf") },
+    { href: "/galerie", label: t("nav.galerie") },
+    { href: "/shop", label: t("nav.shop") },
     { href: "/gutscheine", label: t("nav.gutscheine") },
     { href: "/faq", label: t("nav.faq") },
   ];

@@ -33,3 +33,18 @@ Finding:  Beide existieren tatsächlich (Stand Aug 2026); Skepsis aus veraltetem
 Fix:      Bei unsicheren Versionen isoliert installieren und npm entscheiden lassen,
           statt aus dem Gedächtnis zu urteilen.
 Takeaway: Versionen empirisch prüfen (npm/registry), nicht aus dem Trainingsstand ableiten.
+
+### [2026-08-14] — ICONS — lucide-react 1.x hat Marken-Icons entfernt
+Context:  Footer nutzte `Instagram` und `Facebook` aus lucide-react.
+Finding:  Build-Fehler „Export Instagram doesn't exist". lucide hat Brand-Icons (Instagram/
+          Facebook/etc.) aus Markenrechtsgründen entfernt.
+Fix:      Auf generische Icons ausgewichen (Camera, Share2). Bei Social-Icons entweder eigenes
+          SVG oder generische Glyphe nutzen.
+Takeaway: Keine Marken-Icons in lucide erwarten. Icon-Namen im Zweifel gegen node_modules prüfen.
+
+### [2026-08-14] — NEXT16 — middleware.ts → proxy.ts
+Context:  next-intl-Middleware lag in middleware.ts.
+Finding:  Next 16 warnt: „middleware file convention is deprecated, use proxy". Funktioniert noch,
+          ist aber veraltet.
+Fix:      Datei zu proxy.ts umbenannt (Inhalt unverändert: createMiddleware(routing) + config.matcher).
+Takeaway: In Next 16 heisst die Konvention proxy.ts.

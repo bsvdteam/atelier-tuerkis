@@ -268,6 +268,45 @@
   .ph--pink { background: linear-gradient(135deg, #ffc0d4, #ff9ab6); }
 }
 
+/* Kinder-Theme — verspielter, Fredoka, dickere Ränder */
+@layer components {
+  .theme-kids h1,
+  .theme-kids h2,
+  .theme-kids h3,
+  .theme-kids .display {
+    font-family: var(--font-kids);
+    font-weight: 600;
+  }
+  .theme-kids .card {
+    border-width: 3px;
+    border-radius: 30px;
+    border-color: rgba(255, 255, 255, 0.9);
+  }
+  .theme-kids .btn {
+    font-family: var(--font-kids);
+  }
+}
+
+/* Handgezeichnete Unterstreichung — sitzt eng unter dem Wort, überlappt nie */
+@layer components {
+  .squiggle {
+    position: relative;
+    white-space: nowrap;
+    padding-bottom: 0.16em;
+  }
+  .squiggle::after {
+    content: "";
+    position: absolute;
+    left: -0.02em;
+    right: -0.02em;
+    bottom: 0;
+    height: 0.14em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none' fill='none'%3E%3Cpath d='M2 8c30-7 60-7 98-2s62 6 98-2' stroke='%23FF6F91' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")
+      no-repeat center / 100% 100%;
+    pointer-events: none;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {

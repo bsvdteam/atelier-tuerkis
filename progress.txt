@@ -5,6 +5,31 @@ Am Ende jeder Session neuen Block oben anhängen. Alte Blöcke nicht editieren.
 ================================================================================
 
 --------------------------------------------------------------------------------
+[2026-08-14] PHASE 2 — ALLE SEITEN + NAV-UMBAU · läuft, Build grün
+--------------------------------------------------------------------------------
+- Entscheidung: Supabase VORERST NICHT (Kurse/Produkte bleiben in content/*.ts).
+  CMS/Tracking bei Bedarf später. Facherl = neues Angebot (Inhalt noch offen, Platzhalterseite).
+- Nav umgebaut: Atelier ▾ (Über uns /atelier, Galerie /galerie) · Angebot ▾ (Erwachsene,
+  Kinder, Gruppen, Räume, Facherl) · Shop (Einzel-Link /shop). Kunst/Galerie-Hub entfernt.
+  Galerie jetzt /galerie, Verkauf → /shop, Werk-Detail → /shop/[slug]. Footer angepasst.
+- Copy geschärft (weniger generisch): Home coursesTitle „Komm vorbei und gestalte mit" u.a.
+- Squiggle-Bug behoben: neue .squiggle-Klasse (eigener padding-bottom) — läuft nie mehr in Text.
+- Kinder-Theme: .theme-kids (Fredoka-Headings, dickere Card-Ränder).
+- ALLE Seiten gebaut & statisch (DE+EN): /atelier, /galerie (Filter), /angebot (Säulen),
+  /angebot/{erwachsene(Filter),kinder(theme-kids),gruppen,raeume,facherl},
+  /angebot/{erwachsene,kinder}/[slug] (je Kurs eigene Seite, generateStaticParams),
+  /shop (Filter), /shop/[slug] (je Werk eigene Seite), /gutscheine, /faq, /kontakt,
+  /impressum, /datenschutz, /agb, not-found.
+- Neue Komponenten: PageHeader, ArtworkCard, ContactCta, GalleryGrid, CourseFilterList,
+  ShopFilterList, detail/CourseDetail, detail/ArtworkDetail.
+- Verifiziert per Screenshot: erwachsene (Squiggle-Fix), Kursdetail, Kinder-Theme.
+
+OPEN (next): (1) Facherl-Inhalt vom Kunden erfragen und füllen. (2) EN-Übersetzungen der
+  Seiten-Body-Texte (aktuell deutsch auch auf /en — nur Nav/Chrome übersetzt). (3) Reveal-on-
+  Scroll + Intro-Animation (GSAP). (4) Echte Bilder statt .ph-Platzhalter. (5) details/summary:
+  Default-Marker ausblenden (nur „+" zeigen). (6) Copy-Feinschliff mit Kunden-Feedback.
+
+--------------------------------------------------------------------------------
 [2026-08-14] PHASE 1 — FOUNDATION + STARTSEITE · läuft auf localhost:3003
 --------------------------------------------------------------------------------
 - Design-Tokens aus prototype-v2 nach app/globals.css (@theme): türkis-Palette,
