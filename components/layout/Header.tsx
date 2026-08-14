@@ -173,12 +173,6 @@ export function Header() {
         <Link href="/shop" onClick={() => setOpen(false)} onMouseEnter={() => setActiveGroup(null)}>
           {t("shop")}
         </Link>
-        <Link href="/gutscheine" onClick={() => setOpen(false)} onMouseEnter={() => setActiveGroup(null)}>
-          {t("gutscheine")}
-        </Link>
-        <Link href="/kontakt" onClick={() => setOpen(false)} onMouseEnter={() => setActiveGroup(null)}>
-          {t("kontakt")}
-        </Link>
       </div>
     </>
   );
