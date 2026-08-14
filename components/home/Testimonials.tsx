@@ -1,76 +1,103 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import { getLocalised } from "@/lib/localise";
-import { cn } from "@/lib/utils";
 import type { Locale, Testimonial } from "@/types";
+
+const initials = (name: string) =>
+  name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
 export function Testimonials({ items }: { items: Testimonial[] }) {
   const locale = useLocale() as Locale;
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [idx, setIdx] = useState(0);
+  const timer = useRef<number | null>(null);
 
-  const go = useCallback(
-    (dir: number) => setIndex((i) => (i + dir + items.length) % items.length),
-    [items.length],
-  );
+  const stop = () => {
+    if (timer.current) window.clearInterval(timer.current);
+  };
+  const start = useCallback(() => {
+    stop();
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    timer.current = window.setInterval(() => setIdx((i) => (i + 1) % items.length), 5200);
+  }, [items.length]);
 
   useEffect(() => {
-    if (paused) return;
-    const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % items.length);
-    }, 5200);
-    return () => window.clearInterval(id);
-  }, [paused, items.length]);
+    start();
+    return stop;
+  }, [start]);
 
-  const current = items[index];
+  const go = (i: number) => {
+    setIdx((i + items.length) % items.length);
+    start();
+  };
 
   return (
     <div
-      className="mx-auto max-w-2xl text-center"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      className="testi__stage reveal"
+      id="testi"
+      onMouseEnter={stop}
+      onMouseLeave={start}
     >
-      <div className="frost min-h-[220px] rounded-[32px] px-8 py-10">
-        <blockquote className="font-display text-2xl leading-snug text-ink sm:text-[1.7rem]">
-          «{getLocalised(current.quote, locale)}»
-        </blockquote>
-        <p className="mt-6 font-bold text-ink">{current.author}</p>
-        <p className="text-sm text-ink-mute">{getLocalised(current.context, locale)}</p>
+      <svg className="testi__doodle" style={{ top: "6%", left: "4%", ["--r" as string]: "-10deg" }} width="46" height="46" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M8 26 Q20 6 32 26" stroke="#FF6F91" strokeWidth="4" fill="none" strokeLinecap="round" />
+      </svg>
+      <svg className="testi__doodle" style={{ bottom: "8%", right: "5%", ["--r" as string]: "12deg" }} width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 4l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12z" fill="#FFC94D" />
+      </svg>
+      <svg className="testi__doodle" style={{ top: "14%", right: "12%", ["--r" as string]: "0deg" }} width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="11" fill="none" stroke="#57C9EC" strokeWidth="4" />
+      </svg>
+
+      <button className="testi__nav testi__prev" aria-label="Vorherige Stimme" onClick={() => go(idx - 1)}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M15 6l-6 6 6 6" />
+        </svg>
+      </button>
+
+      <div className="testi__cards">
+        {items.map((item, i) => (
+          <figure
+            key={i}
+            className={`testi__card${i === idx ? " is-active" : ""}`}
+            style={{ ["--c" as string]: `var(--${item.color})` }}
+          >
+            <div className="testi__mark">&ldquo;</div>
+            <blockquote>{getLocalised(item.quote, locale)}</blockquote>
+            <figcaption>
+              <span className="testi__avatar">{initials(item.author)}</span>
+              <span>
+                <strong>{item.author}</strong>
+                <small>{getLocalised(item.context, locale)}</small>
+              </span>
+            </figcaption>
+          </figure>
+        ))}
       </div>
 
-      <div className="mt-6 flex items-center justify-center gap-4">
-        <button
-          onClick={() => go(-1)}
-          aria-label="Vorheriges"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/70 text-ink transition-colors hover:bg-white"
-        >
-          <ChevronLeft size={18} />
-        </button>
+      <button className="testi__nav testi__next" aria-label="Nächste Stimme" onClick={() => go(idx + 1)}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 6l6 6-6 6" />
+        </svg>
+      </button>
 
-        <div className="flex gap-2">
-          {items.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              aria-label={`Stimme ${i + 1}`}
-              className={cn(
-                "h-2.5 rounded-full transition-all",
-                i === index ? "w-6 bg-teal-deep" : "w-2.5 bg-ink/20 hover:bg-ink/40",
-              )}
-            />
-          ))}
-        </div>
-
-        <button
-          onClick={() => go(1)}
-          aria-label="Nächstes"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/70 text-ink transition-colors hover:bg-white"
-        >
-          <ChevronRight size={18} />
-        </button>
+      <div className="testi__dots" role="tablist" aria-label="Stimmen auswählen">
+        {items.map((_, i) => (
+          <button
+            key={i}
+            role="tab"
+            aria-label={`Stimme ${i + 1}`}
+            className={i === idx ? "is-active" : ""}
+            aria-selected={i === idx}
+            onClick={() => go(i)}
+          />
+        ))}
       </div>
     </div>
   );

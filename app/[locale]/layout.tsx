@@ -8,15 +8,20 @@ import { routing } from "@/i18n/routing";
 import { fraunces, nunito, fredoka } from "../fonts";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { Intro } from "@/components/layout/Intro";
+import { RevealObserver } from "@/components/layout/RevealObserver";
 
 export const metadata: Metadata = {
   title: {
-    default: "Atelier Türkis — Kunst- & Kreativ-Atelier Zürich",
+    default: "Atelier Türkis · Kreativkurse & Workshops in Zürich",
     template: "%s · Atelier Türkis",
   },
   description:
-    "Kurse, Workshops und Kunst für Kinder und Erwachsene — in einer hellen, ruhigen Werkstatt mitten in Zürich.",
+    "Kreativkurse und Workshops für Kinder und Erwachsene in Zürich: Aquarell, Lettering, Nähen, Cyanotypie und mehr. Kleine Gruppen, persönliche Begleitung.",
 };
+
+// Setzt vor dem Paint die 'js'- und ggf. 'intro-seen'-Klasse (wie im Prototyp)
+const bootScript = `document.documentElement.classList.add('js');try{if(localStorage.getItem('at_intro_seen')||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('intro-seen');}catch(e){}`;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -36,13 +41,17 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${fraunces.variable} ${nunito.variable} ${fredoka.variable} antialiased`}
+      className={`${fraunces.variable} ${nunito.variable} ${fredoka.variable}`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-dvh flex-col">
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <NextIntlClientProvider>
+          <Intro />
           <Header />
-          <main className="flex-1">{children}</main>
+          <main>{children}</main>
           <Footer />
+          <RevealObserver />
           <Toaster position="top-center" richColors />
         </NextIntlClientProvider>
       </body>

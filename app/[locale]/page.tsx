@@ -1,160 +1,236 @@
 import { setRequestLocale } from "next-intl/server";
-import { useLocale, useTranslations } from "next-intl";
-import { ArrowRight, Star } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { CourseCard } from "@/components/ui/CourseCard";
 import { Testimonials } from "@/components/home/Testimonials";
-import { featuredCourses, TESTIMONIALS } from "@/content";
-import type { Locale, PlaceholderColor } from "@/types";
+import { courseBySlug, TESTIMONIALS } from "@/content";
+import type { Course, Locale } from "@/types";
+
+const FLOAT = {
+  arc: (c: string) => <path d="M8 26 Q20 6 32 26" stroke={c} strokeWidth="4" fill="none" strokeLinecap="round" />,
+  circle: (c: string) => <circle cx="20" cy="20" r="12" fill="none" stroke={c} strokeWidth="4" />,
+  star: (c: string) => <path d="M20 4l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12z" fill={c} />,
+  square: (c: string) => <rect x="8" y="8" width="24" height="24" rx="8" fill="none" stroke={c} strokeWidth="4" />,
+};
+
+const TECHS = [
+  { c: "coral", e: "🎨", t: "Aquarell", s: "Farbe, die fliesst" },
+  { c: "violet", e: "✒️", t: "Handlettering", s: "Schöne Buchstaben" },
+  { c: "sky", e: "🧵", t: "Nähen", s: "Vom Stoff zum Stück" },
+  { c: "teal", e: "🌿", t: "Cyanotypie", s: "Blaudruck mit Sonne" },
+  { c: "green", e: "✏️", t: "Zeichnen", s: "Sehen und festhalten" },
+  { c: "orange", e: "📓", t: "Buchbinden", s: "Eigene Notizbücher" },
+];
 
 export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-  return <Home />;
-}
+  const { locale: raw } = await params;
+  setRequestLocale(raw);
+  const locale = raw as Locale;
 
-function Home() {
-  const t = useTranslations("home");
-  const tt = useTranslations("technique");
-  const locale = useLocale() as Locale;
-  const courses = featuredCourses();
-
-  const stats: { value: string; label: { de: string; en: string } }[] = [
-    { value: "12", label: { de: "Jahre Erfahrung", en: "years of experience" } },
-    { value: "40+", label: { de: "Kurse & Workshops", en: "courses & workshops" } },
-    { value: "2000+", label: { de: "Teilnehmende", en: "participants" } },
-    { value: "4.9★", label: { de: "auf Google", en: "on Google" } },
-  ];
-
-  const techniques: { label: string; href: string; color: PlaceholderColor }[] = [
-    { label: tt("malen"), href: "/angebot/erwachsene", color: "teal" },
-    { label: tt("zeichnen"), href: "/angebot/erwachsene", color: "violet" },
-    { label: tt("papier"), href: "/angebot/erwachsene", color: "coral" },
-    { label: tt("textil"), href: "/angebot/erwachsene", color: "green" },
-    { label: tt("experimentell"), href: "/angebot/erwachsene", color: "sky" },
-    { label: tt("kinder"), href: "/angebot/kinder", color: "yellow" },
-  ];
+  const featured = ["aquarell-fuer-einsteiger", "handlettering-kalligrafie", "naehen-fuer-einsteiger"]
+    .map((s) => courseBySlug("erwachsene", s))
+    .filter(Boolean) as Course[];
 
   return (
     <>
-      {/* Hero */}
-      <section className="section--tight pt-10 sm:pt-16">
-        <div className="container-page grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <span className="eyebrow">{t("heroEyebrow")}</span>
-            <h1 className="display mt-4">{t("heroTitle")}</h1>
-            <p className="lead mt-5 max-w-xl">{t("heroLead")}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/angebot" className="btn btn--primary btn--lg">
-                {t("heroCtaCourses")}
-                <ArrowRight size={18} />
-              </Link>
-              <Link href="/atelier" className="btn btn--ghost btn--lg">
-                {t("heroCtaAtelier")}
-              </Link>
-            </div>
-          </div>
+      {/* HERO */}
+      <section className="hero">
+        <svg className="float" style={{ top: "8%", left: "6%", ["--r" as string]: "-8deg" }} width="70" height="70" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.arc("#FF6F91")}</svg>
+        <svg className="float float--2" style={{ top: "14%", right: "8%", ["--r" as string]: "10deg" }} width="58" height="58" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.circle("#FFC94D")}</svg>
+        <svg className="float float--3" style={{ bottom: "6%", left: "12%", ["--r" as string]: "6deg" }} width="48" height="48" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.star("#9B8CFF")}</svg>
+        <svg className="float" style={{ bottom: "14%", right: "10%", ["--r" as string]: "-12deg" }} width="54" height="54" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.square("#57C9EC")}</svg>
 
-          {/* Deko */}
-          <div className="relative hidden gap-4 lg:grid lg:grid-cols-2">
-            <div className="ph ph--teal aspect-[3/4] rounded-[28px]" />
-            <div className="mt-10 grid gap-4">
-              <div className="ph ph--coral aspect-square rounded-[28px]" />
-              <div className="ph ph--yellow aspect-[4/3] rounded-[28px]" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="section--tight">
-        <div className="container-page">
-          <div className="frost grid grid-cols-2 gap-6 rounded-[32px] px-6 py-8 md:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.value} className="text-center">
-                <p className="font-display text-3xl text-teal-ink sm:text-4xl">{s.value}</p>
-                <p className="mt-1 text-sm text-ink-soft">{s.label[locale] ?? s.label.de}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technik-Grid */}
-      <section className="section">
-        <div className="container-page">
-          <div className="max-w-xl">
-            <span className="eyebrow">{t("techniqueEyebrow")}</span>
-            <h2 className="h2 mt-3">{t("techniqueTitle")}</h2>
-            <p className="lead mt-3">{t("techniqueLead")}</p>
-          </div>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {techniques.map((tech) => (
-              <Link
-                key={tech.label}
-                href={tech.href}
-                className={`ph ph--${tech.color} card--hover aspect-[5/4] rounded-[24px] font-display text-xl`}
-              >
-                {tech.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Aktuelle Kurse */}
-      <section className="section--tight">
-        <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div className="max-w-xl">
-              <span className="eyebrow">{t("coursesEyebrow")}</span>
-              <h2 className="h2 mt-3">{t("coursesTitle")}</h2>
-              <p className="lead mt-3">{t("coursesLead")}</p>
-            </div>
-            <Link href="/angebot" className="btn btn--outline btn--sm">
-              {t("coursesAll")}
-              <ArrowRight size={16} />
+        <div className="container hero__inner">
+          <span className="eyebrow reveal">Kunst- &amp; Kreativatelier · Zürich</span>
+          <h1 className="display reveal d1">
+            Kreativität <span className="squiggle-word">erleben</span>,<br />entdecken &amp; gestalten.
+          </h1>
+          <p className="lead reveal d2">
+            Ein heller, ruhiger Ort für Kinder und Erwachsene. Hier zählt nicht die Perfektion,
+            sondern die Freude am Gestalten.
+          </p>
+          <div className="btn-row hero__ctas reveal d3">
+            <Link href="/angebot" className="btn btn--coral btn--lg">
+              Kurse entdecken <span className="arr">→</span>
+            </Link>
+            <Link href="/kontakt" className="btn btn--ghost btn--lg">
+              Kontakt
             </Link>
           </div>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {courses.map((c) => (
-              <CourseCard key={c.slug} course={c} locale={locale} />
+        </div>
+      </section>
+
+      {/* WILLKOMMEN */}
+      <section className="section section--tight">
+        <div className="container">
+          <div className="split split--wide-l">
+            <div className="reveal">
+              <span className="eyebrow">Willkommen</span>
+              <h2 className="h2 mt-s">Ein Atelier, das Mut zum Gestalten macht.</h2>
+              <p className="lead mt-s">
+                Wir glauben: Jeder Mensch kann kreativ sein. Bei uns findest du Raum zum Abschalten,
+                zum Ausprobieren und zum Wachsen.
+              </p>
+              <div className="btn-row mt-m">
+                <Link href="/atelier" className="btn btn--outline">
+                  Mehr über uns <span className="arr">→</span>
+                </Link>
+              </div>
+            </div>
+            <div className="grid" style={{ gap: "14px" }}>
+              <div className="value reveal frost" style={{ padding: "20px", borderRadius: "24px" }}>
+                <div className="value__icon" style={{ background: "var(--coral)" }}>
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 7c-2.5 4.5-9.5 9-9.5 9z" /></svg>
+                </div>
+                <div><h3>Viel Zeit für dich</h3><p>Kleine Gruppen, in denen jede und jeder gesehen wird.</p></div>
+              </div>
+              <div className="value reveal d1 frost" style={{ padding: "20px", borderRadius: "24px" }}>
+                <div className="value__icon" style={{ background: "var(--violet)" }}>
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21l2.3-7.2-6-4.4h7.6z" /></svg>
+                </div>
+                <div><h3>Freude statt Perfektion</h3><p>Es darf gelingen, und es darf auch mal krumm sein.</p></div>
+              </div>
+              <div className="value reveal d2 frost" style={{ padding: "20px", borderRadius: "24px" }}>
+                <div className="value__icon" style={{ background: "var(--teal)" }}>
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20h16M6 16l4-8 4 6 4-10" /></svg>
+                </div>
+                <div><h3>Persönliche Begleitung</h3><p>Wir gehen auf dich ein, vom ersten Strich an.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* VERTRAUENS-ZAHLEN */}
+      <section className="section section--tight">
+        <div className="container">
+          <div className="frost reveal" style={{ padding: "34px 28px" }}>
+            <div className="stats">
+              <div className="stat"><div className="stat__num">12</div><div className="stat__label">Jahre Erfahrung</div></div>
+              <div className="stat"><div className="stat__num">40<sup>+</sup></div><div className="stat__label">Kurse &amp; Workshops</div></div>
+              <div className="stat"><div className="stat__num">2000<sup>+</sup></div><div className="stat__label">Teilnehmende</div></div>
+              <div className="stat"><div className="stat__num">4.9<sup>★</sup></div><div className="stat__label">auf Google</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* KURSANGEBOT */}
+      <section className="section">
+        <div className="container">
+          <div className="center maxw reveal">
+            <span className="eyebrow">Kurse &amp; Workshops</span>
+            <h2 className="h2 mt-s">Finde deine Technik</h2>
+            <p className="lead mt-s">
+              Von der ersten Farbe bis zur eigenen Handschrift. Entdecke in ruhiger Atmosphäre und
+              kleinen Gruppen, was dir liegt.
+            </p>
+          </div>
+          <div className="techgrid mt-l">
+            {TECHS.map((tech, i) => (
+              <Link key={tech.t} className={`tech reveal${i % 3 === 1 ? " d1" : i % 3 === 2 ? " d2" : ""}`} href="/angebot/erwachsene">
+                <span className="tech__dot" style={{ background: `var(--${tech.c})` }}>{tech.e}</span>
+                <span><b>{tech.t}</b><span>{tech.s}</span></span>
+              </Link>
+            ))}
+          </div>
+          <div className="btn-row mt-m" style={{ justifyContent: "center" }}>
+            <Link href="/angebot/erwachsene" className="btn btn--coral">Alle Kurse für Erwachsene <span className="arr">→</span></Link>
+          </div>
+          <div className="agerow reveal" style={{ marginTop: "36px" }}>
+            <Link href="/angebot/kinder" className="agerow__link"><strong>Auch für Kinder</strong><span>Kreativwerkstatt, Ferien &amp; Geburtstage</span></Link>
+            <Link href="/angebot/gruppen" className="agerow__link"><strong>Gruppen &amp; Feiern</strong><span>Firmen, Vereine, Geburtstage</span></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* AKTUELLE KURSE */}
+      <section className="section">
+        <div className="container">
+          <div className="stack-head reveal">
+            <div>
+              <span className="eyebrow">Aktuelle Kurse</span>
+              <h2 className="h2 mt-s">Komm vorbei und gestalte mit</h2>
+            </div>
+            <Link href="/angebot" className="btn btn--outline">Alle Kurse <span className="arr">→</span></Link>
+          </div>
+          <div className="grid grid-3">
+            {featured.map((c, i) => (
+              <CourseCard key={c.slug} course={c} locale={locale} reveal={i === 1 ? "reveal d1" : i === 2 ? "reveal d2" : "reveal"} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* AKTUELLES */}
+      <section className="section section--tight">
+        <div className="container">
+          <div className="frost reveal" style={{ padding: "26px 28px", display: "flex", flexWrap: "wrap", gap: "18px", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
+              <span className="tag tag--green">Aktuell</span>
+              <span className="pill-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg> Ferienkurse Herbst: noch Plätze frei</span>
+              <span className="pill-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2L12 16.4 5.7 21l2.3-7.2-6-4.4h7.6z" /></svg> Neu: Cyanotypie-Workshop im November</span>
+            </div>
+            <Link href="/angebot" className="btn btn--ghost btn--sm">Termine ansehen <span className="arr">→</span></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* EINBLICKE / INSTAGRAM */}
       <section className="section">
-        <div className="container-page">
-          <div className="mb-8 text-center">
-            <span className="eyebrow justify-center">{t("testimonialsEyebrow")}</span>
-            <h2 className="h2 mt-3 flex items-center justify-center gap-2">
-              <Star size={22} className="text-yellow" fill="currentColor" />
-              {t("testimonialsTitle")}
-            </h2>
+        <div className="container">
+          <div className="stack-head reveal">
+            <div>
+              <span className="eyebrow">Einblicke</span>
+              <h2 className="h2 mt-s">Aus dem Atelier, Tag für Tag</h2>
+            </div>
+            <a href="https://instagram.com/atelier.tuerkis" target="_blank" rel="noopener noreferrer" className="btn btn--outline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg> @atelier.tuerkis
+            </a>
+          </div>
+          <div className="insta__grid reveal">
+            {["sky", "coral", "green", "yellow", "violet", "orange"].map((c, i) => (
+              <a className="insta__tile" href="https://instagram.com/atelier.tuerkis" target="_blank" rel="noopener noreferrer" key={i} aria-label="Instagram-Beitrag"><div className={`ph ph--${c}`} /></a>
+            ))}
+          </div>
+          <div className="center" style={{ marginTop: "22px" }}>
+            <Link href="/galerie" className="insta__handle">Mehr in der Galerie <span className="arr">→</span></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* STIMMEN */}
+      <section className="section testi">
+        <div className="container">
+          <div className="center maxw reveal">
+            <span className="eyebrow">Stimmen</span>
+            <h2 className="h2 mt-s">Das schönste Feedback kommt von Herzen</h2>
           </div>
           <Testimonials items={TESTIMONIALS} />
         </div>
       </section>
 
-      {/* Gutschein-CTA */}
-      <section className="section--tight pb-4">
-        <div className="container-page">
-          <div className="frost flex flex-col items-center gap-5 rounded-[32px] px-6 py-12 text-center">
-            <h2 className="h2 max-w-xl">{t("ctaTitle")}</h2>
-            <p className="lead max-w-lg">{t("ctaLead")}</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/gutscheine" className="btn btn--coral btn--lg">
-                {t("ctaGutschein")}
-              </Link>
-              <Link href="/kontakt" className="btn btn--ghost btn--lg">
-                {t("ctaKontakt")}
-              </Link>
+      {/* GUTSCHEINE + KONTAKT */}
+      <section className="section">
+        <div className="container">
+          <div className="grid grid-2">
+            <div className="cta-banner reveal" style={{ textAlign: "left" }}>
+              <span className="tag tag--coral">Sehr beliebt</span>
+              <h2 className="h2 mt-s">Kreativität verschenken</h2>
+              <p className="lead mt-s">Gutscheine für Kurse, Geburtstage oder als Weihnachtsgeschenk, Freude zum Auspacken.</p>
+              <div className="btn-row mt-m"><Link href="/gutscheine" className="btn btn--coral">Zu den Gutscheinen <span className="arr">→</span></Link></div>
+            </div>
+            <div className="cta-banner reveal d1" style={{ textAlign: "left" }}>
+              <span className="tag tag--sky">Kontakt</span>
+              <h2 className="h2 mt-s">Fragen? Schreib uns.</h2>
+              <p className="lead mt-s">Am schnellsten per WhatsApp oder E-Mail. Wir freuen uns auf dich.</p>
+              <div className="btn-row mt-m">
+                <a href="https://wa.me/41791234567?text=Hallo%20Atelier%20T%C3%BCrkis%2C%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Kurs.%20K%C3%B6nnt%20ihr%20mir%20mehr%20Infos%20geben%3F" target="_blank" rel="noopener noreferrer" className="btn btn--primary">Auf WhatsApp schreiben <span className="arr">→</span></a>
+                <Link href="/kontakt" className="btn btn--ghost">Alle Kontakt-Wege</Link>
+              </div>
             </div>
           </div>
         </div>

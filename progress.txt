@@ -5,6 +5,37 @@ Am Ende jeder Session neuen Block oben anhängen. Alte Blöcke nicht editieren.
 ================================================================================
 
 --------------------------------------------------------------------------------
+[2026-08-14] PHASE 3 — ORIGINALGETREUER PORT (Home + Nav + Interaktionen)
+--------------------------------------------------------------------------------
+- WICHTIG: Erste Neu-Interpretation war zu weit vom Prototyp weg (Kunde: „das ist
+  null was im html ist"). Umgestellt auf FAITHFUL PORT des prototype-v2.
+- app/globals.css = @import tailwindcss + @theme(Farb-Tokens) + KOMPLETTES
+  prototype-v2/styles.css (verbatim, Fonts auf next/font-Vars gemappt) + Bridge.
+- Interaktionen aus app.js nach React portiert:
+  · Intro-Animation (components/layout/Intro.tsx, localStorage at_intro_seen)
+  · Header: Burger (bunte Punkte) + Vollbild-Menü mit Farbkreis (--bx/--by),
+    Hover-Untermenüs rechts, Escape/Link schliesst, Scroll-State. Nav-Struktur wie
+    gewünscht: Atelier(Über uns/Galerie), Angebot(+Facherl), Shop, Gutscheine, Kontakt.
+  · Testimonials-Karussell (proto-Markup .testi__stage, Auto 5200ms)
+  · RevealObserver: reveal-on-scroll, GEHÄRTET (Sofort-Reveal in-view + Scroll-
+    Fallback + 1.5s-Safety-Timeout), weil IntersectionObserver im Test-Pane nicht feuert.
+- Boot-Inline-Script im Layout setzt 'js'/'intro-seen' vor Paint (wie Prototyp);
+  <html suppressHydrationWarning>.
+- Home komplett faithful nachgebaut (Hero zentriert + Deko-Floats, Willkommen+Werte,
+  Stats, Technik-Grid mit Emojis, aktuelle Kurse (datengetrieben → Detailseiten),
+  Aktuelles-Banner, Instagram-Grid, Stimmen, Gutschein+Kontakt-CTA).
+- CourseCard auf proto-Markup umgestellt (.card__media/.card__body/.card__spots).
+- Footer faithful. Verifiziert per Screenshot: Intro, Farbkreis-Menü, Hover-Sub, Hero.
+- Build grün. Konsole sauber (nur Dev-HMR-WebSocket-Rauschen).
+
+OPEN (next): Die UNTERSEITEN ebenfalls faithful porten — aktuell nutzen sie noch
+  meine erste Interpretation (PageHeader/eigene Struktur) auf dem neuen CSS. Reihenfolge:
+  atelier, angebot(+erwachsene mit Filter+Kalender-View, kinder theme-kids, gruppen,
+  raeume), kurs-detail (proto .split/Buchungsbox), kunst→shop/galerie, kunst-detail
+  (.gallery Thumb-Switch), gutscheine, faq, kontakt. Danach: Facherl-Inhalt, EN-Texte,
+  echte Bilder. Prototyp-Referenz läuft auf :3010 (python http.server in prototype-v2).
+
+--------------------------------------------------------------------------------
 [2026-08-14] PHASE 2 — ALLE SEITEN + NAV-UMBAU · läuft, Build grün
 --------------------------------------------------------------------------------
 - Entscheidung: Supabase VORERST NICHT (Kurse/Produkte bleiben in content/*.ts).

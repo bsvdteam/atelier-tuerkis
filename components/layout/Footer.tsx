@@ -1,5 +1,4 @@
 import { useLocale, useTranslations } from "next-intl";
-import { Camera, Share2 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { SITE } from "@/lib/site";
 import type { Locale } from "@/types";
@@ -18,86 +17,62 @@ export function Footer() {
   ];
 
   return (
-    <footer className="mt-10">
-      <div className="container-page">
-        <div className="frost rounded-t-[40px] px-6 py-12 sm:px-10">
-          <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1.2fr]">
-            {/* Brand */}
+    <footer className="footer">
+      <div className="container">
+        <div className="footer__inner">
+          <div className="footer__grid">
             <div>
-              <p className="font-display text-2xl text-ink">
-                Atelier <span className="text-teal-deep">Türkis</span>
-              </p>
-              <p className="mt-3 max-w-xs text-ink-soft">
+              <div className="footer__brand">
+                Atelier <span>Türkis</span>
+              </div>
+              <p className="muted" style={{ marginTop: "10px", maxWidth: "34ch" }}>
                 {SITE.tagline[locale] ?? SITE.tagline.de}
               </p>
-              <div className="mt-5 flex gap-3">
-                <a
-                  href={SITE.instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/70 text-ink transition-colors hover:bg-white"
-                >
-                  <Camera size={18} />
+              <div className="social" style={{ marginTop: "16px" }}>
+                <a href={SITE.instagram.url} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
                 </a>
-                <a
-                  href="#"
-                  aria-label="Facebook"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/70 text-ink transition-colors hover:bg-white"
-                >
-                  <Share2 size={18} />
+                <a href="#" aria-label="Facebook">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z" />
+                  </svg>
                 </a>
               </div>
             </div>
 
-            {/* Entdecken */}
             <div>
-              <p className="eyebrow mb-4">{t("footer.discover")}</p>
-              <ul className="flex flex-col gap-2">
-                {discover.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href} className="text-ink-soft transition-colors hover:text-teal-deep">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <h4>{t("footer.discover")}</h4>
+              {discover.map((l) => (
+                <Link key={l.href} href={l.href}>
+                  {l.label}
+                </Link>
+              ))}
             </div>
 
-            {/* Kontakt */}
             <div>
-              <p className="eyebrow mb-4">{t("footer.contact")}</p>
-              <address className="flex flex-col gap-2 not-italic text-ink-soft">
-                <span>
-                  {SITE.address.street}
-                  <br />
-                  {SITE.address.city}
-                </span>
-                <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="hover:text-teal-deep">
-                  {SITE.phone}
-                </a>
-                <a href={`mailto:${SITE.email}`} className="hover:text-teal-deep">
-                  {SITE.email}
-                </a>
-                <span>{SITE.hours[locale] ?? SITE.hours.de}</span>
-              </address>
+              <h4>{t("footer.contact")}</h4>
+              <a href="#">
+                {SITE.address.street}, {SITE.address.city}
+              </a>
+              <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a>
+              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              <p className="muted" style={{ marginTop: "8px" }}>
+                {SITE.hours[locale] ?? SITE.hours.de}
+              </p>
             </div>
           </div>
 
-          {/* Bottom */}
-          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-sm text-ink-mute sm:flex-row">
-            <p>© 2026 Atelier Türkis · {t("footer.rights")}</p>
-            <div className="flex gap-4">
-              <Link href="/impressum" className="hover:text-ink">
-                {t("footer.impressum")}
-              </Link>
-              <Link href="/datenschutz" className="hover:text-ink">
-                {t("footer.datenschutz")}
-              </Link>
-              <Link href="/agb" className="hover:text-ink">
-                {t("footer.agb")}
-              </Link>
-            </div>
+          <div className="footer__bottom">
+            <span>© 2026 Atelier Türkis · {t("footer.rights")}</span>
+            <span>
+              <Link href="/impressum">{t("footer.impressum")}</Link> ·{" "}
+              <Link href="/datenschutz">{t("footer.datenschutz")}</Link> ·{" "}
+              <Link href="/agb">{t("footer.agb")}</Link>
+            </span>
           </div>
         </div>
       </div>

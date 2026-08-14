@@ -1,12 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
 
-type SubLink = { href: string; key: string };
+type Group = { key: string; label: string; href: string; sub: { href: string; label: string }[] };
 
 export function Header() {
   const t = useTranslations("nav");
@@ -14,241 +12,174 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [activeGroup, setActiveGroup] = useState<string | null>(null);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const mmenuRef = useRef<HTMLDivElement>(null);
 
+  // Blur-Streifen beim Scrollen
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const nav = document.querySelector(".nav");
+    const onScroll = () => nav?.classList.toggle("scrolled", window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Body-Scroll sperren, wenn Mobile-Menü offen
+  // Body-Scroll sperren + Escape schliesst
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = open ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
     return () => {
+      document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [mobileOpen]);
+  }, [open]);
 
-  const atelierLinks: SubLink[] = [
-    { href: "/atelier", key: "ueberUns" },
-    { href: "/galerie", key: "galerie" },
+  const groups: Group[] = [
+    {
+      key: "atelier",
+      label: t("atelier"),
+      href: "/atelier",
+      sub: [
+        { href: "/atelier", label: t("ueberUns") },
+        { href: "/galerie", label: t("galerie") },
+      ],
+    },
+    {
+      key: "angebot",
+      label: t("angebot"),
+      href: "/angebot",
+      sub: [
+        { href: "/angebot/erwachsene", label: t("erwachsene") },
+        { href: "/angebot/kinder", label: t("kinder") },
+        { href: "/angebot/gruppen", label: t("gruppen") },
+        { href: "/angebot/raeume", label: t("raeume") },
+        { href: "/angebot/facherl", label: t("facherl") },
+      ],
+    },
   ];
-  const angebotLinks: SubLink[] = [
-    { href: "/angebot/erwachsene", key: "erwachsene" },
-    { href: "/angebot/kinder", key: "kinder" },
-    { href: "/angebot/gruppen", key: "gruppen" },
-    { href: "/angebot/raeume", key: "raeume" },
-    { href: "/angebot/facherl", key: "facherl" },
-  ];
+
+  const openMenu = () => {
+    const b = burgerRef.current;
+    const m = mmenuRef.current;
+    if (b && m) {
+      const r = b.getBoundingClientRect();
+      m.style.setProperty("--bx", `${Math.round(r.left + r.width / 2)}px`);
+      m.style.setProperty("--by", `${Math.round(r.top + r.height / 2)}px`);
+    }
+    setActiveGroup(null);
+    setOpen(true);
+  };
 
   const switchLocale = (next: string) => {
     if (next !== locale) router.replace(pathname, { locale: next });
   };
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 transition-all",
-        scrolled && "backdrop-blur-md",
-      )}
-    >
-      <div
-        className={cn(
-          "container-page mt-3 flex items-center gap-4 rounded-full px-4 py-2 transition-all sm:px-5",
-          scrolled ? "frost" : "bg-white/40",
-        )}
-      >
-        {/* Brand */}
-        <Link
-          href="/"
-          className="font-display text-xl font-medium tracking-tight text-ink"
-          onClick={() => setMobileOpen(false)}
-        >
-          Atelier <span className="text-teal-deep">Türkis</span>
-        </Link>
-
-        {/* Desktop-Menü */}
-        <nav className="ml-auto hidden items-center gap-1 lg:flex">
-          <NavDropdown label={t("atelier")} links={atelierLinks} t={t} rootHref="/atelier" />
-          <NavDropdown label={t("angebot")} links={angebotLinks} t={t} rootHref="/angebot" />
-          <NavLink href="/shop">{t("shop")}</NavLink>
-        </nav>
-
-        {/* Aktionen */}
-        <div className="ml-auto flex items-center gap-2 lg:ml-2">
-          <Link href="/kontakt" className="btn btn--primary btn--sm hidden sm:inline-flex">
-            {t("contactCta")}
+    <>
+      <header className="nav">
+        <div className="nav__inner">
+          <Link className="brand" href="/">
+            Atelier <span>Türkis</span>
           </Link>
 
-          <div className="hidden items-center rounded-full border border-line bg-white/60 p-0.5 text-sm font-bold sm:flex">
-            {["de", "en"].map((l) => (
-              <button
-                key={l}
-                onClick={() => switchLocale(l)}
-                className={cn(
-                  "rounded-full px-2.5 py-1 uppercase transition-colors",
-                  locale === l ? "bg-teal-deep text-white" : "text-ink-mute hover:text-ink",
-                )}
-                aria-pressed={locale === l}
-              >
-                {l}
-              </button>
+          {/* Desktop-Fallback (ohne JS) */}
+          <nav className="nav__menu" aria-label="Hauptnavigation">
+            {groups.map((g) => (
+              <div key={g.key} className="nav__group">
+                <Link href={g.href} className="nav__top">
+                  {g.label}
+                </Link>
+                <div className="nav__drop">
+                  {g.sub.map((s) => (
+                    <Link key={s.href} href={s.href}>
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
-          </div>
+            <Link href="/shop">{t("shop")}</Link>
+          </nav>
 
-          {/* Burger */}
-          <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/60 text-ink lg:hidden"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          <div className="nav__right">
+            <Link href="/kontakt" className="btn btn--primary btn--sm hide-m">
+              {t("contactCta")}
+            </Link>
+            <div className="lang">
+              <button className={locale === "de" ? "active" : ""} onClick={() => switchLocale("de")}>
+                DE
+              </button>
+              <span>/</span>
+              <button className={locale === "en" ? "active" : ""} onClick={() => switchLocale("en")}>
+                EN
+              </button>
+            </div>
+            <button
+              ref={burgerRef}
+              className="burger"
+              aria-label={t("openMenu")}
+              onClick={openMenu}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Vollbild-Menü mit Farbkreis */}
+      <div
+        ref={mmenuRef}
+        className={`mmenu${open ? " open" : ""}`}
+        aria-hidden={!open}
+      >
+        <div className="mmenu__paint" />
+        <div className="mmenu__top">
+          <span className="brand">
+            Atelier <span>Türkis</span>
+          </span>
+          <button className="mmenu__close" aria-label={t("closeMenu")} onClick={() => setOpen(false)}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
           </button>
         </div>
-      </div>
 
-      {/* Mobile-Menü */}
-      {mobileOpen && (
-        <div className="fixed inset-0 top-0 z-40 overflow-y-auto bg-white/95 backdrop-blur-lg lg:hidden">
-          <div className="container-page flex flex-col gap-1 pt-24 pb-16">
-            <MobileGroup label={t("atelier")} links={atelierLinks} t={t} onNavigate={() => setMobileOpen(false)} />
-            <MobileGroup label={t("angebot")} links={angebotLinks} t={t} onNavigate={() => setMobileOpen(false)} />
-
-            <MobileLink href="/shop" onClick={() => setMobileOpen(false)}>
-              {t("shop")}
-            </MobileLink>
-            <MobileLink href="/gutscheine" onClick={() => setMobileOpen(false)}>
-              {t("gutscheine")}
-            </MobileLink>
-            <MobileLink href="/faq" onClick={() => setMobileOpen(false)}>
-              {t("faq")}
-            </MobileLink>
-            <MobileLink href="/kontakt" onClick={() => setMobileOpen(false)}>
-              {t("kontakt")}
-            </MobileLink>
-
-            <div className="mt-6 flex items-center gap-2">
-              {["de", "en"].map((l) => (
-                <button
-                  key={l}
-                  onClick={() => {
-                    switchLocale(l);
-                    setMobileOpen(false);
-                  }}
-                  className={cn(
-                    "rounded-full border border-line px-4 py-2 text-sm font-bold uppercase",
-                    locale === l ? "bg-teal-deep text-white" : "text-ink-mute",
-                  )}
-                >
-                  {l}
-                </button>
+        {groups.map((g) => (
+          <Fragment key={g.key}>
+            <Link
+              href={g.href}
+              className={activeGroup === g.key ? "is-active" : ""}
+              onMouseEnter={() => setActiveGroup(g.key)}
+              onFocus={() => setActiveGroup(g.key)}
+              onClick={() => setOpen(false)}
+            >
+              {g.label}
+            </Link>
+            <div className={`sub${activeGroup === g.key ? " show" : ""}`}>
+              {g.sub.map((s) => (
+                <Link key={s.href} href={s.href} onClick={() => setOpen(false)}>
+                  {s.label}
+                </Link>
               ))}
             </div>
-          </div>
-        </div>
-      )}
-    </header>
-  );
-}
-
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="rounded-full px-3.5 py-2 font-bold text-ink transition-colors hover:bg-white/70"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function NavDropdown({
-  label,
-  links,
-  t,
-  rootHref,
-}: {
-  label: string;
-  links: SubLink[];
-  t: (k: string) => string;
-  rootHref: string;
-}) {
-  return (
-    <div className="group relative">
-      <Link
-        href={rootHref}
-        className="inline-flex items-center gap-1 rounded-full px-3.5 py-2 font-bold text-ink transition-colors hover:bg-white/70 group-focus-within:bg-white/70"
-      >
-        {label}
-        <ChevronDown size={15} className="transition-transform group-hover:rotate-180" />
-      </Link>
-      <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-        <div className="frost flex w-52 flex-col gap-0.5 rounded-2xl p-2">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="rounded-xl px-3 py-2 font-semibold text-ink transition-colors hover:bg-white/70"
-            >
-              {t(l.key)}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function MobileLink({
-  href,
-  onClick,
-  children,
-}: {
-  href: string;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className="border-b border-line py-3 font-display text-2xl text-ink"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function MobileGroup({
-  label,
-  links,
-  t,
-  onNavigate,
-}: {
-  label: string;
-  links: SubLink[];
-  t: (k: string) => string;
-  onNavigate: () => void;
-}) {
-  return (
-    <div className="border-b border-line py-3">
-      <p className="font-display text-2xl text-ink">{label}</p>
-      <div className="mt-1 flex flex-col">
-        {links.map((l) => (
-          <Link
-            key={l.href}
-            href={l.href}
-            onClick={onNavigate}
-            className="py-1.5 pl-1 font-semibold text-ink-soft"
-          >
-            {t(l.key)}
-          </Link>
+          </Fragment>
         ))}
+
+        <Link href="/shop" onClick={() => setOpen(false)} onMouseEnter={() => setActiveGroup(null)}>
+          {t("shop")}
+        </Link>
+        <Link href="/gutscheine" onClick={() => setOpen(false)} onMouseEnter={() => setActiveGroup(null)}>
+          {t("gutscheine")}
+        </Link>
+        <Link href="/kontakt" onClick={() => setOpen(false)} onMouseEnter={() => setActiveGroup(null)}>
+          {t("kontakt")}
+        </Link>
       </div>
-    </div>
+    </>
   );
 }
