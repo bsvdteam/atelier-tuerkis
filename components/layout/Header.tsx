@@ -29,6 +29,7 @@ export function Header() {
   // Body-Scroll sperren + Escape schliesst
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (!open) setActiveGroup(null);
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
     return () => {
@@ -160,7 +161,7 @@ export function Header() {
             >
               {g.label}
             </Link>
-            <div className={`sub${activeGroup === g.key ? " show" : ""}`}>
+            <div className={`sub${open && activeGroup === g.key ? " show" : ""}`}>
               {g.sub.map((s) => (
                 <Link key={s.href} href={s.href} onClick={() => setOpen(false)}>
                   {s.label}
