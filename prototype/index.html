@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atelier Türkis — Kunst- und Kreativ-Atelier</title>
+<meta name="description" content="Ein Ort für Kunst und Kreativität. Kurse, Werke und ein lebendiges Atelier. Aquarell, Acryl, Zeichnen und Keramik." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<noscript><style>body.cine-active .nav,body.cine-active main,body.cine-active .footer{display:block!important}.cinematic,.cine-spacer,.cine-veil{display:none!important}</style></noscript>
+</head>
+<body class="cine-active">
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- CINEMATIC SCROLL INTRO (first visit) -->
+<div class="cinematic" id="cinematic" aria-hidden="true">
+  <div class="cine-bg" id="cineBg"></div>
+  <div class="cine-words" id="cineWords"></div>
+  <div class="cine-final" id="cineFinal">
+    <div class="cine-final__eyebrow" id="cineEyebrow" data-de="Atelier" data-en="Atelier">Atelier</div>
+    <div class="cine-final__word" id="cineWord">Türkis</div>
+    <p class="cine-final__sentence" id="cineSentence" data-de="Ein Ort, an dem Kreativität entsteht." data-en="A place where creativity comes to life.">Ein Ort, an dem Kreativität entsteht.</p>
+  </div>
+  <div class="cine-hint" id="cineHint">
+    <span data-de="Scroll" data-en="Scroll">Scroll</span>
+    <svg class="cine-hint__chev" width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l8 7 8-7"/></svg>
+  </div>
+</div>
+<div class="cine-spacer" id="cineSpacer"></div>
+<div class="cine-veil" id="cineVeil"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="Atelier Türkis — Startseite">Atelier <span>Türkis</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link active" href="index.html" data-de="Home" data-en="Home">Home</a>
+      <a class="nav__link" href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+      <a class="nav__link" href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+      <a class="nav__link" href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+      <a class="nav__link" href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active" aria-pressed="true">DE</button>
+        <span class="sep">|</span>
+        <button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top">
+    <button class="mobile-menu__close" id="menuClose" aria-label="Menü schliessen">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu__links" aria-label="Mobile Navigation">
+    <a href="index.html" data-de="Home" data-en="Home">Home</a>
+    <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+    <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+    <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+    <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+  </nav>
+  <div class="mobile-menu__lang">
+    <button data-lang="de" class="active">DE</button><span>|</span><button data-lang="en">EN</button>
+  </div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="blob blob--1"></span>
+    <span class="blob blob--2"></span>
+    <span class="blob blob--3"></span>
+  </div>
+  <div class="container hero__inner">
+    <p class="eyebrow hero__eyebrow" data-de="Kunst- und Kreativ-Atelier" data-en="Art & Creative Studio">Kunst- und Kreativ-Atelier</p>
+    <h1 class="display hero__title">
+      <span class="line1">Ein Ort, an dem</span><br />
+      <span class="line2">Kreativität</span> <span data-de="entsteht." data-en="comes to life.">entsteht.</span>
+    </h1>
+    <p class="hero__tagline" data-de="Malen, zeichnen, formen — in einem lichten Raum, der zum Ausprobieren einlädt. Für Anfänger und Fortgeschrittene." data-en="Paint, draw, shape — in a light-filled space that invites you to experiment. For beginners and advanced alike.">
+      Malen, zeichnen, formen — in einem lichten Raum, der zum Ausprobieren einlädt. Für Anfänger und Fortgeschrittene.
+    </p>
+    <p class="hero__tagline-en" data-de="A space for art, learning and community." data-en="Malen, zeichnen, formen — für alle, die gerne gestalten.">A space for art, learning and community.</p>
+    <div class="hero__ctas">
+      <a href="kurse.html" class="btn btn-primary">
+        <span data-de="Kurse entdecken" data-en="Discover courses">Kurse entdecken</span><span class="arrow">→</span>
+      </a>
+      <a href="galerie.html" class="btn btn-secondary">
+        <span data-de="Galerie ansehen" data-en="View gallery">Galerie ansehen</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">
+    <div class="hero__scroll-line"></div>
+    <span class="label" data-de="Scrollen" data-en="Scroll">Scrollen</span>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="section philosophy">
+  <div class="container">
+    <div class="philosophy__inner reveal">
+      <div class="philosophy__rule"></div>
+      <p class="philosophy__text" data-de-html="Wir glauben, dass jeder Mensch gestalten kann. Kunst ist kein Talent, das man hat oder nicht hat — sie ist ein <em>Weg</em>, die Welt zu sehen und sich selbst darin zu entdecken."
+         data-en-html="We believe everyone can create. Art is not a talent you either have or don't — it is a <em>way</em> of seeing the world and discovering yourself within it.">
+        Wir glauben, dass jeder Mensch gestalten kann. Kunst ist kein Talent, das man hat oder nicht hat — sie ist ein <em>Weg</em>, die Welt zu sehen und sich selbst darin zu entdecken.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORKS -->
+<section class="section" id="werke">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow" style="margin-bottom:12px;" data-de="Ausgewählte Werke" data-en="Featured works">Ausgewählte Werke</p>
+        <h2 class="h2" data-de="Aus dem Atelier" data-en="From the atelier">Aus dem Atelier</h2>
+      </div>
+      <a href="galerie.html" class="section-head__link">
+        <span data-de="Zur Galerie" data-en="View gallery">Zur Galerie</span> <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="featured-grid">
+      <a class="artwork reveal" href="galerie-detail.html">
+        <div class="artwork__img ph ph--teal"></div>
+        <span class="artwork__badge"><span class="dot"></span><span data-de="Erhältlich" data-en="Available">Erhältlich</span></span>
+        <div class="artwork__overlay"><span class="artwork__title">Stille Ufer</span><span class="tag tag--aquarell">Aquarell</span></div>
+      </a>
+      <a class="artwork reveal d1" href="galerie-detail.html">
+        <div class="artwork__img ph ph--terra"></div>
+        <div class="artwork__overlay"><span class="artwork__title">Farbfeld III</span><span class="tag tag--acryl">Acryl</span></div>
+      </a>
+      <a class="artwork reveal d2" href="galerie-detail.html">
+        <div class="artwork__img ph ph--graph"></div>
+        <span class="artwork__badge"><span class="dot"></span><span data-de="Erhältlich" data-en="Available">Erhältlich</span></span>
+        <div class="artwork__overlay"><span class="artwork__title">Studie in Grau</span><span class="tag tag--zeichnen">Zeichnen</span></div>
+      </a>
+      <a class="artwork reveal d3" href="galerie-detail.html">
+        <div class="artwork__img ph ph--sage"></div>
+        <div class="artwork__overlay"><span class="artwork__title">Gefäss No. 7</span><span class="tag tag--keramik">Keramik</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE PREVIEW -->
+<section class="section courses" id="kurse-preview">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow" style="margin-bottom:12px;" data-de="Kurse & Workshops" data-en="Courses & workshops">Kurse & Workshops</p>
+        <h2 class="h2" data-de="Komm vorbei und gestalte mit" data-en="Come by and create">Komm vorbei und gestalte mit</h2>
+      </div>
+      <a href="kurse.html" class="section-head__link">
+        <span data-de="Alle Kurse" data-en="All courses">Alle Kurse</span> <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="course-grid">
+      <a class="course-card reveal" href="kurse-detail.html">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--rose"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--aquarell course-card__tag">Aquarell</span>
+          <h3 class="h3 course-card__title" data-de="Aquarell Grundkurs" data-en="Watercolour Basics">Aquarell Grundkurs</h3>
+          <p class="course-card__desc" data-de="Lerne die Grundlagen der Aquarellmalerei: Farbverläufe, Nass-in-Nass und Komposition." data-en="Learn the foundations of watercolour: washes, wet-on-wet and composition.">Lerne die Grundlagen der Aquarellmalerei: Farbverläufe, Nass-in-Nass und Komposition.</p>
+          <div class="course-card__meta">
+            <span class="course-card__schedule">Di &amp; Do · 18:00–20:00</span>
+            <div class="course-card__footer"><span class="course-card__price">CHF 280</span><span class="course-card__arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+      <a class="course-card reveal d1" href="kurse-detail.html">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--terra"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--acryl course-card__tag">Acryl</span>
+          <h3 class="h3 course-card__title" data-de="Acryl & Abstraktion" data-en="Acrylic & Abstraction">Acryl &amp; Abstraktion</h3>
+          <p class="course-card__desc" data-de="Freies Malen mit Acryl. Wir arbeiten mit Fläche, Textur und Farbe auf grossem Format." data-en="Free painting with acrylics. Working with surface, texture and colour on large formats.">Freies Malen mit Acryl. Wir arbeiten mit Fläche, Textur und Farbe auf grossem Format.</p>
+          <div class="course-card__meta">
+            <span class="course-card__schedule">Mi · 19:00–21:30</span>
+            <div class="course-card__footer"><span class="course-card__price">CHF 320</span><span class="course-card__arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+      <a class="course-card reveal d2" href="kurse-detail.html">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--sage"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--keramik course-card__tag">Keramik</span>
+          <h3 class="h3 course-card__title" data-de="Keramik am Rad" data-en="Wheel Throwing">Keramik am Rad</h3>
+          <p class="course-card__desc" data-de="Töpfern an der Drehscheibe. Von der ersten Schale bis zur eigenen Formsprache." data-en="Pottery on the wheel. From your first bowl to your own visual language.">Töpfern an der Drehscheibe. Von der ersten Schale bis zur eigenen Formsprache.</p>
+          <div class="course-card__meta">
+            <span class="course-card__schedule">Sa · 10:00–13:00</span>
+            <div class="course-card__footer"><span class="course-card__price">CHF 360</span><span class="course-card__arrow">→</span></div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CANVAS TEASER -->
+<section class="section canvas-teaser">
+  <div class="container">
+    <div class="canvas-teaser__grid">
+      <div class="reveal">
+        <p class="eyebrow" data-de="Community Canvas" data-en="Community Canvas">Community Canvas</p>
+        <h2 class="h1 canvas-teaser__title" data-de="Male mit — auf unserer digitalen Leinwand" data-en="Draw with us — on our digital canvas">Male mit — auf unserer digitalen Leinwand</h2>
+        <p class="canvas-teaser__text" data-de="Ein kleines Werk, direkt im Browser. Zeichne, reiche es ein und werde Teil unserer wachsenden Gemeinschafts-Galerie." data-en="A small piece, right in your browser. Draw it, submit it and become part of our growing community gallery.">Ein kleines Werk, direkt im Browser. Zeichne, reiche es ein und werde Teil unserer wachsenden Gemeinschafts-Galerie.</p>
+        <a href="canvas.html" class="btn btn-canvas">
+          <span data-de="Jetzt mitmachen" data-en="Join now">Jetzt mitmachen</span><span class="arrow">→</span>
+        </a>
+      </div>
+      <div class="mosaic reveal d1" aria-hidden="true">
+        <div class="mosaic__tile"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="#E8C87A"/></svg></div>
+        <div class="mosaic__tile"><svg viewBox="0 0 40 40"><path d="M6 30 L20 8 L34 30 Z" fill="#C4623A"/></svg></div>
+        <div class="mosaic__tile"><svg viewBox="0 0 40 40"><path d="M8 20 Q20 4 32 20 T32 20" stroke="#2E9EA4" stroke-width="4" fill="none"/></svg></div>
+        <div class="mosaic__tile"><svg viewBox="0 0 40 40"><rect x="9" y="9" width="22" height="22" fill="#C48A7E"/></svg></div>
+        <div class="mosaic__tile"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="none" stroke="#F5F0E8" stroke-width="4"/></svg></div>
+        <div class="mosaic__tile"><svg viewBox="0 0 40 40"><path d="M8 32 C 14 10, 26 10, 32 32" fill="#7A9E7E"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact">
+  <div class="container">
+    <div class="contact__grid">
+      <div class="reveal">
+        <p class="eyebrow" data-de="Kontakt" data-en="Get in touch">Kontakt</p>
+        <h2 class="h1 contact__title" data-de="Besuch uns im Atelier" data-en="Visit us at the atelier">Besuch uns im Atelier</h2>
+        <p class="contact__lead" data-de="Fragen zu einem Kurs oder einem Werk? Schreib uns direkt — am schnellsten per WhatsApp. Wir freuen uns auf dich." data-en="Questions about a course or a piece? Write to us directly — fastest via WhatsApp. We look forward to hearing from you.">Fragen zu einem Kurs oder einem Werk? Schreib uns direkt — am schnellsten per WhatsApp. Wir freuen uns auf dich.</p>
+      </div>
+      <div class="contact__items reveal d1">
+        <div class="contact__item"><span class="label" data-de="WhatsApp" data-en="WhatsApp">WhatsApp</span><a href="#">+41 79 123 45 67</a></div>
+        <div class="contact__item"><span class="label" data-de="E-Mail" data-en="Email">E-Mail</span><a href="#">hallo@atelier-tuerkis.ch</a></div>
+        <div class="contact__item"><span class="label" data-de="Adresse" data-en="Address">Adresse</span><p>Werkstrasse 12<br />8004 Zürich</p></div>
+        <div class="contact__whatsapp">
+          <a href="#" class="btn btn-primary"><span data-de="Auf WhatsApp schreiben" data-en="Message on WhatsApp">Auf WhatsApp schreiben</span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Atelier <span>Türkis</span></div>
+        <p class="footer__tagline" data-de="Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen." data-en="Art & creative studio. Minimal in structure, creative at heart.">Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+        <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+        <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+        <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+        <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+        <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Atelier Türkis. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></span>
+      <div class="footer__lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active">DE</button><span class="sep">|</span><button data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="intro.js"></script>
+</body>
+</html>

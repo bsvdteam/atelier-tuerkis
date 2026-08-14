@@ -1,0 +1,127 @@
+================================================================================
+ATELIER WEBSITE — PROGRESS TRACKER
+================================================================================
+Last updated: [DATE — update this every session]
+Current phase: Phase 0 — Not started
+Current step: —
+
+RULE: Every agent reads this file before starting any work.
+RULE: Every agent updates this file after completing any step.
+RULE: Mark steps as DONE / IN PROGRESS / BLOCKED. Never delete completed steps.
+================================================================================
+
+--- PHASE 0 — PROJECT SETUP ---
+[ ] 0.1 — Initialise Next.js project
+[ ] 0.2 — Install all dependencies
+[ ] 0.3 — Configure Tailwind (with atelier color tokens)
+[ ] 0.4 — Configure ESLint & Prettier
+[ ] 0.5 — Setup Husky git hooks
+[ ] 0.6 — Create folder structure
+[ ] 0.7 — Setup environment variables (.env.local + .env.example)
+[ ] 0.8 — Configure next.config.ts
+
+--- PHASE 1 — FOUNDATION ---
+[ ] 1.1 — TypeScript types (/types/index.ts)
+[ ] 1.2 — Fonts (Cormorant Garamond + DM Sans via next/font)
+[ ] 1.3 — Global CSS (bg-creme default, ink text)
+[ ] 1.4 — i18n setup (next-intl, DE/EN, message files)
+[ ] 1.5 — Utility functions (cn, formatPrice, getLocalised, buildWhatsAppUrl)
+
+--- PHASE 2 — SANITY CMS ---
+[ ] 2.1 — Initialise Sanity project
+[ ] 2.2 — Sanity Studio route (/studio)
+[ ] 2.3 — Define all schemas (course, artwork, teamMember, atelierPage)
+[ ] 2.4 — Sanity client (/lib/sanity/client.ts)
+[ ] 2.5 — All GROQ queries (/sanity/queries/index.ts)
+[ ] 2.6 — Seed test data (3 courses, 4 artworks, 1 team member, atelier page)
+
+--- PHASE 3 — SUPABASE ---
+[ ] 3.1 — Create Supabase project (EU Frankfurt region)
+[ ] 3.2 — Run DB migration (canvas_submissions table, indexes, RLS, policies)
+[ ] 3.3 — Create Storage bucket (canvas, public)
+[ ] 3.4 — Supabase clients (browser + server)
+[ ] 3.5 — Canvas submit API route (/api/canvas/submit)
+
+--- PHASE 4 — LAYOUT COMPONENTS ---
+[ ] 4.1 — Navbar component (desktop + mobile overlay)
+[ ] 4.2 — Footer component
+[ ] 4.3 — Root layout (locale wrapper, nav, footer, lang attribute)
+[ ] 4.4 — Base UI components (Button, Tag, Container, SectionWrapper)
+
+--- PHASE 5 — HOME PAGE ---
+[ ] 5.1 — Intro animation component (brush stroke, localStorage flag)
+[ ] 5.2 — Hero section
+[ ] 5.3 — Philosophy statement section
+[ ] 5.4 — Featured works section (parallax)
+[ ] 5.5 — Course preview section (3 courses)
+[ ] 5.6 — Canvas teaser section
+[ ] 5.7 — Contact section (WhatsApp + email + address)
+[ ] 5.8 — Scroll progress indicator
+
+--- PHASE 6 — COURSES PAGES ---
+[ ] 6.1 — CourseCard component
+[ ] 6.2 — FilterBar component (technique + audience)
+[ ] 6.3 — Courses list page (/kurse)
+[ ] 6.4 — Course detail page (/kurse/[slug]) + WhatsApp/email CTAs
+[ ] 6.5 — generateStaticParams for course detail
+
+--- PHASE 7 — GALLERY PAGES ---
+[ ] 7.1 — Artwork masonry component (CSS columns, lazy load, pagination)
+[ ] 7.2 — Gallery page (/galerie)
+[ ] 7.3 — Artwork detail page (/galerie/[slug]) + price logic + CTAs
+
+--- PHASE 8 — ATELIER PAGE ---
+[ ] 8.1 — Atelier page (/atelier) — all sections + team cards
+
+--- PHASE 9 — COMMUNITY CANVAS ---
+[ ] 9.1 — DrawingCanvas component (touch + mouse, undo, clear)
+[ ] 9.2 — CanvasGallery component (Supabase fetch + Realtime)
+[ ] 9.3 — CanvasSubmit component (WebP conversion + API call + states)
+[ ] 9.4 — Canvas page (/canvas)
+
+--- PHASE 10 — POLISH & SEO ---
+[ ] 10.1 — Legal pages (Datenschutz, Impressum)
+[ ] 10.2 — SEO metadata (generateMetadata on all pages)
+[ ] 10.3 — Sitemap (app/sitemap.ts)
+[ ] 10.4 — 404 page
+[ ] 10.5 — On-demand revalidation (Sanity webhook + /api/revalidate)
+[ ] 10.6 — Lighthouse audit + fixes (target: 90/95/95)
+[ ] 10.7 — Cross-browser + device testing
+
+--- PHASE 11 — LAUNCH ---
+[ ] 11.1 — Vercel production setup (env vars, domain)
+[ ] 11.2 — Supabase production check
+[ ] 11.3 — Sanity production dataset + real content
+[ ] 11.4 — DNS & domain → Vercel
+[ ] 11.5 — CMS handoff + documentation for atelier team
+[ ] 11.6 — LAUNCHED ✓
+
+================================================================================
+DEVIATIONS & DECISIONS LOG
+(document every decision that differs from the original docs)
+================================================================================
+
+[DATE] — [STEP] — [What changed and why]
+
+================================================================================
+KNOWN ISSUES / BLOCKERS
+================================================================================
+
+None currently.
+
+================================================================================
+ENVIRONMENT VARIABLES STATUS
+================================================================================
+
+NEXT_PUBLIC_SANITY_PROJECT_ID    [ ] Set
+NEXT_PUBLIC_SANITY_DATASET       [ ] Set
+SANITY_API_TOKEN                 [ ] Set
+NEXT_PUBLIC_SUPABASE_URL         [ ] Set
+NEXT_PUBLIC_SUPABASE_ANON_KEY   [ ] Set
+SUPABASE_SERVICE_ROLE_KEY        [ ] Set
+NEXT_PUBLIC_WHATSAPP_NUMBER      [ ] Set
+NEXT_PUBLIC_CONTACT_EMAIL        [ ] Set
+NEXT_PUBLIC_SITE_URL             [ ] Set
+NEXT_PUBLIC_DEFAULT_LOCALE       [ ] Set (= de)
+
+================================================================================

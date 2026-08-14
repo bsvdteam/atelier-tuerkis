@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aquarell Grundkurs — Atelier Türkis</title>
+<meta name="description" content="Aquarell Grundkurs im Atelier Türkis. Grundlagen der Aquarellmalerei in kleinen Gruppen." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav solid" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Atelier <span>Türkis</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html" data-de="Home" data-en="Home">Home</a>
+      <a class="nav__link active" href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+      <a class="nav__link" href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+      <a class="nav__link" href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+      <a class="nav__link" href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active" aria-pressed="true">DE</button><span class="sep">|</span><button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top"><button class="mobile-menu__close" id="menuClose" aria-label="Menü schliessen"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <nav class="mobile-menu__links" aria-label="Mobile Navigation">
+    <a href="index.html" data-de="Home" data-en="Home">Home</a>
+    <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+    <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+    <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+    <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+  </nav>
+  <div class="mobile-menu__lang"><button data-lang="de" class="active">DE</button><span>|</span><button data-lang="en">EN</button></div>
+</div>
+
+<main class="detail">
+  <div class="container">
+    <a href="kurse.html" class="detail__back"><span class="arrow">←</span> <span data-de="Alle Kurse" data-en="All courses">Alle Kurse</span></a>
+
+    <div class="detail__grid">
+      <!-- MEDIA + INFO -->
+      <div>
+        <div class="detail__media reveal">
+          <div class="detail__main-img ph ph--rose"></div>
+          <div class="detail__thumbs">
+            <div class="detail__thumb ph ph--rose"></div>
+            <div class="detail__thumb ph ph--teal"></div>
+            <div class="detail__thumb ph ph--yellow"></div>
+            <div class="detail__thumb ph ph--mix"></div>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top:40px;">
+          <span class="tag tag--aquarell">Aquarell</span>
+          <h1 class="h1 detail__title" data-de="Aquarell Grundkurs" data-en="Watercolour Basics">Aquarell Grundkurs</h1>
+          <div class="detail__desc prose">
+            <p data-de="In diesem Grundkurs lernst du die Aquarellmalerei von Grund auf kennen. Wir beginnen mit dem Material — Papier, Pinsel, Farben — und tasten uns über einfache Farbverläufe an die ersten eigenen Bilder heran." data-en="In this foundation course you'll get to know watercolour painting from the ground up. We start with the materials — paper, brushes, paints — and work our way through simple washes towards your first own paintings.">In diesem Grundkurs lernst du die Aquarellmalerei von Grund auf kennen. Wir beginnen mit dem Material — Papier, Pinsel, Farben — und tasten uns über einfache Farbverläufe an die ersten eigenen Bilder heran.</p>
+            <p data-de="Im Verlauf der Wochen widmen wir uns der Nass-in-Nass-Technik, dem Umgang mit Wasser und Zeit sowie einfachen Kompositionen. Am Ende nimmst du nicht nur Bilder mit nach Hause, sondern ein Gefühl dafür, wie Aquarell «funktioniert»." data-en="Over the weeks we turn to the wet-on-wet technique, working with water and timing, and simple compositions. In the end you'll take home not just paintings, but a feel for how watercolour actually works.">Im Verlauf der Wochen widmen wir uns der Nass-in-Nass-Technik, dem Umgang mit Wasser und Zeit sowie einfachen Kompositionen. Am Ende nimmst du nicht nur Bilder mit nach Hause, sondern ein Gefühl dafür, wie Aquarell «funktioniert».</p>
+          </div>
+
+          <h3 class="h3" style="margin:40px 0 16px;" data-de="Was du mitbringst" data-en="What to bring">Was du mitbringst</h3>
+          <div class="detail__desc prose">
+            <p data-de="Nur dich und Neugier. Material (Farben, Papier, Pinsel) wird im Atelier gestellt und ist im Kurspreis enthalten." data-en="Just yourself and curiosity. All materials (paints, paper, brushes) are provided at the atelier and included in the price.">Nur dich und Neugier. Material (Farben, Papier, Pinsel) wird im Atelier gestellt und ist im Kurspreis enthalten.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ASIDE / CTA -->
+      <aside class="detail__aside">
+        <div class="detail__aside-inner reveal d1">
+          <ul class="spec-list">
+            <li><span class="spec-key" data-de="Termine" data-en="Schedule">Termine</span><span class="spec-val">Di &amp; Do · 18:00–20:00</span></li>
+            <li><span class="spec-key" data-de="Dauer" data-en="Duration">Dauer</span><span class="spec-val" data-de="8 Einheiten" data-en="8 sessions">8 Einheiten</span></li>
+            <li><span class="spec-key" data-de="Niveau" data-en="Level">Niveau</span><span class="spec-val" data-de="Einsteiger" data-en="Beginner">Einsteiger</span></li>
+            <li><span class="spec-key" data-de="Für" data-en="For">Für</span><span class="spec-val" data-de="Erwachsene" data-en="Adults">Erwachsene</span></li>
+            <li><span class="spec-key" data-de="Leitung" data-en="Instructor">Leitung</span><span class="spec-val">Lena Marmet</span></li>
+          </ul>
+
+          <div class="price-block">
+            <span class="price-block__label" data-de="Preis" data-en="Price">Preis</span>
+            <span class="price-block__value">CHF 280</span>
+          </div>
+
+          <div class="cta-card">
+            <h3 class="h3" data-de="Interesse?" data-en="Interested?">Interesse?</h3>
+            <p data-de="Schreib uns kurz — wir melden uns mit dem nächsten Termin und allen Details." data-en="Just drop us a line — we'll get back to you with the next date and all the details.">Schreib uns kurz — wir melden uns mit dem nächsten Termin und allen Details.</p>
+            <a href="#" class="btn btn-wa btn-block"><span data-de="Jetzt anfragen" data-en="Enquire now">Jetzt anfragen</span><span class="arrow">→</span></a>
+            <a href="#" class="btn btn-secondary btn-block"><span data-de="Per E-Mail anfragen" data-en="Enquire by email">Per E-Mail anfragen</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- RELATED -->
+    <section class="section" style="padding-bottom:120px;">
+      <div class="section-head reveal">
+        <h2 class="h2" data-de="Ähnliche Kurse" data-en="Related courses">Ähnliche Kurse</h2>
+      </div>
+      <div class="course-grid">
+        <a class="course-card reveal" href="kurse-detail.html">
+          <div class="course-card__img-wrap"><div class="course-card__img ph ph--yellow"></div></div>
+          <div class="course-card__body">
+            <span class="tag tag--aquarell course-card__tag">Aquarell</span>
+            <h3 class="h3 course-card__title" data-de="Farbwerkstatt für Kinder" data-en="Colour Lab for Kids">Farbwerkstatt für Kinder</h3>
+            <p class="course-card__desc" data-de="Spielerisch malen und experimentieren. Für Kinder von 7–12 Jahren." data-en="Playful painting and experimenting. For children aged 7–12.">Spielerisch malen und experimentieren. Für Kinder von 7–12 Jahren.</p>
+            <div class="course-card__meta"><span class="course-card__schedule">Mi · 14:00–15:30</span><div class="course-card__footer"><span class="course-card__price">CHF 180</span><span class="course-card__arrow">→</span></div></div>
+          </div>
+        </a>
+        <a class="course-card reveal d1" href="kurse-detail.html">
+          <div class="course-card__img-wrap"><div class="course-card__img ph ph--teal"></div></div>
+          <div class="course-card__body">
+            <span class="tag tag--aquarell course-card__tag">Aquarell</span>
+            <h3 class="h3 course-card__title" data-de="Aquarell Vertiefung" data-en="Watercolour Advanced">Aquarell Vertiefung</h3>
+            <p class="course-card__desc" data-de="Für alle mit Grundkenntnissen. Wir vertiefen Technik, Farbe und Bildaufbau." data-en="For those with basic skills. We deepen technique, colour and composition.">Für alle mit Grundkenntnissen. Wir vertiefen Technik, Farbe und Bildaufbau.</p>
+            <div class="course-card__meta"><span class="course-card__schedule">Do · 18:00–20:30</span><div class="course-card__footer"><span class="course-card__price">CHF 340</span><span class="course-card__arrow">→</span></div></div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- STICKY MOBILE CTA -->
+<div class="detail__sticky-mobile">
+  <span class="price">CHF 280</span>
+  <a href="#" class="btn btn-wa"><span data-de="Jetzt anfragen" data-en="Enquire now">Jetzt anfragen</span></a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Atelier <span>Türkis</span></div>
+        <p class="footer__tagline" data-de="Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen." data-en="Art & creative studio. Minimal in structure, creative at heart.">Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+        <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+        <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+        <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+        <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+        <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Atelier Türkis. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></span>
+      <div class="footer__lang"><button data-lang="de" class="active">DE</button><span class="sep">|</span><button data-lang="en">EN</button></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

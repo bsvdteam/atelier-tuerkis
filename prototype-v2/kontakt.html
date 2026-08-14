@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kontakt, Atelier Türkis</title>
+<meta name="description" content="So erreichst du uns: WhatsApp, E-Mail, Telefon. Adresse, Öffnungszeiten und Anfahrt zum Atelier Türkis in Zürich." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">Atelier <span>Türkis</span></a>
+    <nav class="nav__menu" aria-label="Hauptnavigation">
+      <a href="atelier.html">Atelier</a>
+      <div class="nav__group"><a href="angebot.html" class="nav__top">Angebot</a><div class="nav__drop"><a href="angebot-erwachsene.html">Erwachsene</a><a href="angebot-kinder.html">Kinder</a><a href="angebot-gruppen.html">Gruppen</a><a href="angebot-raeume.html">Räume mieten</a></div></div>
+      <div class="nav__group"><a href="kunst.html" class="nav__top">Kunst</a><div class="nav__drop"><a href="kunst-galerie.html">Galerie</a><a href="kunst-verkauf.html">Verkauf</a></div></div>
+    </nav>
+    <div class="nav__right">
+      <a href="kontakt.html" class="btn btn--primary btn--sm hide-m">Kontakt</a>
+      <div class="lang"><button class="active">DE</button><span>/</span><button>EN</button></div>
+      <button class="burger" id="burger" aria-label="Menü öffnen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu">
+  <div class="mmenu__top"><span class="brand">Atelier <span>Türkis</span></span><button class="mmenu__close" id="mclose" aria-label="Schliessen"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <a href="atelier.html">Atelier</a><a href="angebot.html">Angebot</a>
+  <div class="sub"><a href="angebot-erwachsene.html">Erwachsene</a><a href="angebot-kinder.html">Kinder</a><a href="angebot-gruppen.html">Gruppen</a><a href="angebot-raeume.html">Räume mieten</a></div>
+  <a href="kunst.html">Kunst</a><div class="sub"><a href="kunst-galerie.html">Galerie</a><a href="kunst-verkauf.html">Verkauf</a></div>
+  <a href="gutscheine.html">Gutscheine</a><a href="kontakt.html">Kontakt</a>
+  <div class="mmenu__foot"><a href="kontakt.html" class="btn btn--primary">Kontakt aufnehmen</a></div>
+</div>
+
+<main>
+
+<section class="pagehead">
+  <div class="container">
+    <p class="crumbs reveal"><a href="index.html">Home</a> · Kontakt</p>
+    <span class="eyebrow reveal">Kontakt</span>
+    <h1 class="display reveal d1">Schreib uns <span class="squiggle-word">einfach</span>.</h1>
+    <p class="lead reveal d2">Fragen zu einem Kurs, einem Werk oder einem Gutschein? Am schnellsten erreichst du uns per WhatsApp oder E-Mail. Für die Anmeldung genügt eine kurze Nachricht, wir melden uns rasch zurück.</p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="grid grid-3">
+      <a class="pillar reveal" href="#">
+        <div class="pillar__icon" style="background:var(--green)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-12 7.6L3 21l1.9-6a8.5 8.5 0 1116.1-3.5z"/></svg></div>
+        <h3>WhatsApp</h3>
+        <p>Am schnellsten &amp; unkompliziert.</p>
+        <span class="pillar__go">+41 79 123 45 67 <span class="arr">→</span></span>
+      </a>
+      <a class="pillar reveal d1" href="mailto:hallo@atelier-tuerkis.ch">
+        <div class="pillar__icon" style="background:var(--coral)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <h3>E-Mail</h3>
+        <p>Für ausführlichere Anliegen.</p>
+        <span class="pillar__go">hallo@atelier-tuerkis.ch <span class="arr">→</span></span>
+      </a>
+      <a class="pillar reveal d2" href="tel:+41791234567">
+        <div class="pillar__icon" style="background:var(--violet)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></div>
+        <h3>Telefon</h3>
+        <p>Lieber persönlich? Ruf uns an.</p>
+        <span class="pillar__go">+41 79 123 45 67 <span class="arr">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="frost reveal" style="padding:0;overflow:hidden">
+      <div class="split" style="gap:0">
+        <div style="padding:40px 34px">
+          <span class="eyebrow">Besuch uns</span>
+          <h2 class="h2 mt-s">Atelier Türkis</h2>
+          <div class="contact-grid mt-m">
+            <div class="contact-card"><span class="label">Adresse</span><p>Werkstrasse 12<br />8004 Zürich</p></div>
+            <div class="contact-card"><span class="label">Öffnungszeiten</span><p>Mi–Fr 9–18 Uhr<br />Sa 9–13 Uhr</p></div>
+            <div class="contact-card"><span class="label">Anreise</span><p>Parkplätze &amp; ÖV<br />in der Nähe</p></div>
+            <div class="contact-card"><span class="label">Social</span><p>Instagram<br />&amp; Facebook</p></div>
+          </div>
+        </div>
+        <div class="split__media" style="border-radius:0;aspect-ratio:auto;min-height:340px">
+          <div class="ph ph--teal" style="position:relative"><span class="ph-label">🗺️ Lageplan</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <h2 class="h2">Häufige Fragen</h2>
+      <p class="lead mt-s center maxw">Vorkenntnisse, Material, Anmeldung? Viele Antworten findest du direkt in unseren FAQ.</p>
+      <div class="btn-row"><a href="faq.html" class="btn btn--outline btn--lg">Zu den FAQ <span class="arr">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">Atelier <span>Türkis</span></div>
+          <p class="muted" style="margin-top:10px;max-width:34ch">Ein heller, ruhiger Ort für Kunst und Kreativität, für Kinder und Erwachsene.</p>
+          <div class="social" style="margin-top:16px"><a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a></div>
+        </div>
+        <div><h4>Entdecken</h4><a href="atelier.html">Atelier</a><a href="angebot.html">Angebot</a><a href="kunst-galerie.html">Galerie</a><a href="kunst-verkauf.html">Verkauf</a><a href="gutscheine.html">Gutscheine</a><a href="faq.html">FAQ</a></div>
+        <div><h4>Kontakt</h4><a href="#">Werkstrasse 12, 8004 Zürich</a><a href="tel:+41791234567">+41 79 123 45 67</a><a href="mailto:hallo@atelier-tuerkis.ch">hallo@atelier-tuerkis.ch</a><p class="muted" style="margin-top:8px">Mi–Fr 9–18 Uhr · Sa 9–13 Uhr</p></div>
+      </div>
+      <div class="footer__bottom"><span>© 2026 Atelier Türkis · Alle Rechte vorbehalten.</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

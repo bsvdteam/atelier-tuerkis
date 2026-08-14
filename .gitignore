@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Backup-Archive (Prototyp liegt schon entpackt im Repo)
+*.zip
+
+# --- Vorbereitet für das kommende Next.js-Projekt ---
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js Build-Output
+.next/
+out/
+build/
+dist/
+
+# Environment-Dateien (enthalten Secrets — NIE committen)
+.env
+.env*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor / IDE
+.vscode/
+.idea/

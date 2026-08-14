@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atelier, Atelier Türkis</title>
+<meta name="description" content="Wer wir sind, woran wir glauben und wo wir arbeiten. Lerne das Team und die Philosophie des Atelier Türkis kennen." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">Atelier <span>Türkis</span></a>
+    <nav class="nav__menu" aria-label="Hauptnavigation">
+      <a href="atelier.html" class="active">Atelier</a>
+      <div class="nav__group">
+        <a href="angebot.html" class="nav__top">Angebot</a>
+        <div class="nav__drop">
+          <a href="angebot-erwachsene.html">Erwachsene</a>
+          <a href="angebot-kinder.html">Kinder</a>
+          <a href="angebot-gruppen.html">Gruppen</a>
+          <a href="angebot-raeume.html">Räume mieten</a>
+        </div>
+      </div>
+      <div class="nav__group">
+        <a href="kunst.html" class="nav__top">Kunst</a>
+        <div class="nav__drop">
+          <a href="kunst-galerie.html">Galerie</a>
+          <a href="kunst-verkauf.html">Verkauf</a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav__right">
+      <a href="kontakt.html" class="btn btn--primary btn--sm hide-m">Kontakt</a>
+      <div class="lang"><button class="active">DE</button><span>/</span><button>EN</button></div>
+      <button class="burger" id="burger" aria-label="Menü öffnen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu">
+  <div class="mmenu__top"><span class="brand">Atelier <span>Türkis</span></span><button class="mmenu__close" id="mclose" aria-label="Schliessen"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <a href="atelier.html">Atelier</a>
+  <a href="angebot.html">Angebot</a>
+  <div class="sub"><a href="angebot-erwachsene.html">Erwachsene</a><a href="angebot-kinder.html">Kinder</a><a href="angebot-gruppen.html">Gruppen</a><a href="angebot-raeume.html">Räume mieten</a></div>
+  <a href="kunst.html">Kunst</a>
+  <div class="sub"><a href="kunst-galerie.html">Galerie</a><a href="kunst-verkauf.html">Verkauf</a></div>
+  <a href="gutscheine.html">Gutscheine</a>
+  <a href="kontakt.html">Kontakt</a>
+  <div class="mmenu__foot"><a href="kontakt.html" class="btn btn--primary">Kontakt aufnehmen</a></div>
+</div>
+
+<main>
+
+<!-- HERO / SLOGAN -->
+<section class="pagehead">
+  <div class="container">
+    <p class="crumbs reveal"><a href="index.html">Home</a> · Atelier</p>
+    <span class="eyebrow reveal">Unser Atelier</span>
+    <h1 class="display reveal d1">Ein Ort zum <span class="squiggle-word">Aufatmen</span><br />und Gestalten.</h1>
+    <p class="lead reveal d2">Wir sind ein kleines Kreativatelier mit einem grossen Glauben: Jeder Mensch kann gestalten. Bei uns findest du Ruhe, Material und Menschen, die dich begleiten, egal, ob du zum ersten Mal einen Pinsel hältst oder schon lange malst.</p>
+  </div>
+</section>
+
+<!-- GESCHICHTE -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="split__media reveal"><div class="ph ph--teal"></div></div>
+      <div class="reveal d1">
+        <span class="eyebrow">Unsere Geschichte</span>
+        <h2 class="h2 mt-s">Aus Freude entstanden</h2>
+        <p class="lead mt-s">Das Atelier Türkis begann als Idee an einem Küchentisch, mit dem Wunsch, einen Raum zu schaffen, in dem Kreativität nicht bewertet, sondern gefeiert wird.</p>
+        <p class="mt-s muted">Heute ist es ein heller Ort, an dem Kinder ihre ersten Kunstwerke schaffen und Erwachsene neue Techniken entdecken. Was uns geblieben ist: die Überzeugung, dass Gestalten guttut, dem Kopf, dem Herzen und der Gemeinschaft.</p>
+        <div class="btn-row mt-m"><a href="angebot.html" class="btn btn--coral">Unser Angebot <span class="arr">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHIE / WERTE -->
+<section class="section">
+  <div class="container">
+    <div class="center maxw reveal">
+      <span class="eyebrow">Unsere Philosophie</span>
+      <h2 class="h2 mt-s">Woran wir glauben</h2>
+      <p class="lead mt-s">Sechs Grundsätze, die man bei uns spürt, vom ersten Moment an.</p>
+    </div>
+    <div class="grid grid-3 mt-l">
+      <div class="value reveal frost" style="padding:24px;border-radius:26px"><div class="value__icon" style="background:var(--teal)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div><div><h3>Raum zum Abschalten</h3><p>Zeit nur für dich und deine Kreativität.</p></div></div>
+      <div class="value reveal d1 frost" style="padding:24px;border-radius:26px"><div class="value__icon" style="background:var(--coral)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg></div><div><h3>Raum zum Ausprobieren</h3><p>Fehler sind hier erlaubt, sie gehören dazu.</p></div></div>
+      <div class="value reveal d2 frost" style="padding:24px;border-radius:26px"><div class="value__icon" style="background:var(--violet)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="9" r="4"/><path d="M15 21a6 6 0 00-12 0M16 11a4 4 0 100-8M21 21a6 6 0 00-4-5.7"/></svg></div><div><h3>Kreativität verbindet</h3><p>Gemeinsam gestalten schafft echte Nähe.</p></div></div>
+      <div class="value reveal frost" style="padding:24px;border-radius:26px"><div class="value__icon" style="background:var(--yellow)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2L12 16.4 5.7 21l2.3-7.2-6-4.4h7.6z"/></svg></div><div><h3>Wertschätzende Atmosphäre</h3><p>Jedes Werk und jeder Mensch ist willkommen.</p></div></div>
+      <div class="value reveal d1 frost" style="padding:24px;border-radius:26px"><div class="value__icon" style="background:var(--green)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div><div><h3>Kleine Gruppen</h3><p>Ruhe und Aufmerksamkeit für jeden Einzelnen.</p></div></div>
+      <div class="value reveal d2 frost" style="padding:24px;border-radius:26px"><div class="value__icon" style="background:var(--sky)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 7c-2.5 4.5-9.5 9-9.5 9z"/></svg></div><div><h3>Individuelle Begleitung</h3><p>Wir gehen auf dein Tempo und deine Ideen ein.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIE RÄUME -->
+<section class="section">
+  <div class="container">
+    <div class="stack-head reveal">
+      <div>
+        <span class="eyebrow">Die Räume</span>
+        <h2 class="h2 mt-s">Hell, ruhig, inspirierend</h2>
+      </div>
+      <a href="angebot-raeume.html" class="btn btn--outline">Räume mieten <span class="arr">→</span></a>
+    </div>
+    <div class="masonry reveal">
+      <div class="masonry__item"><div class="ph ph--sky t3"></div></div>
+      <div class="masonry__item"><div class="ph ph--green t2"></div></div>
+      <div class="masonry__item"><div class="ph ph--yellow t4"></div></div>
+      <div class="masonry__item"><div class="ph ph--teal t1"></div></div>
+      <div class="masonry__item"><div class="ph ph--coral t2"></div></div>
+      <div class="masonry__item"><div class="ph ph--violet t3"></div></div>
+      <div class="masonry__item"><div class="ph ph--orange t1"></div></div>
+      <div class="masonry__item"><div class="ph ph--pink t4"></div></div>
+    </div>
+    <div class="grid grid-3 mt-l">
+      <span class="pill-info reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Viel Tageslicht &amp; Platz</span>
+      <span class="pill-info reveal d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Hochwertiges Material</span>
+      <span class="pill-info reveal d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Ruhige, freundliche Umgebung</span>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section">
+  <div class="container">
+    <div class="center maxw reveal">
+      <span class="eyebrow">Das Team</span>
+      <h2 class="h2 mt-s">Wer dich begleitet</h2>
+      <p class="lead mt-s">Menschen, die ihr Handwerk lieben, und es mit Geduld und Freude weitergeben.</p>
+    </div>
+    <div class="grid grid-3 mt-l">
+      <article class="card team-card reveal">
+        <div class="card__media"><div class="ph ph--coral"></div></div>
+        <div class="card__body">
+          <span class="role">Leitung · Malerei</span>
+          <h3>Lena Baumann</h3>
+          <p class="card__desc">Ausbildung in Bildender Kunst, 15 Jahre Kurserfahrung. Schwerpunkte: Aquarell &amp; freies Malen. „Ich liebe den Moment, in dem jemand merkt: Ich kann das ja doch."</p>
+        </div>
+      </article>
+      <article class="card team-card reveal d1">
+        <div class="card__media"><div class="ph ph--violet"></div></div>
+        <div class="card__body">
+          <span class="role">Lettering · Papier</span>
+          <h3>Mara Kunz</h3>
+          <p class="card__desc">Grafikerin &amp; Kalligrafin. Schwerpunkte: Handlettering, Buchbinden, Cyanotypie. Bringt Ordnung und Verspieltheit zusammen, mit viel Ruhe.</p>
+        </div>
+      </article>
+      <article class="card team-card reveal d2">
+        <div class="card__media"><div class="ph ph--yellow"></div></div>
+        <div class="card__body">
+          <span class="role">Kinderkurse</span>
+          <h3>Sofia Meier</h3>
+          <p class="card__desc">Werklehrerin mit einem grossen Herz für Kinder. Schwerpunkte: Kreativwerkstatt &amp; Ferienkurse. Ihre Motivation: Kindern Mut zum eigenen Ausdruck geben.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="section">
+  <div class="container">
+    <div class="frost reveal" style="padding:40px 34px">
+      <div class="split" style="align-items:center">
+        <div>
+          <span class="eyebrow">Kontakt &amp; Anfahrt</span>
+          <h2 class="h2 mt-s">Besuch uns im Atelier</h2>
+          <p class="lead mt-s" style="max-width:34ch">Komm vorbei oder schreib uns, am liebsten per WhatsApp.</p>
+          <div class="btn-row mt-m">
+            <a href="https://wa.me/41791234567?text=Hallo%20Atelier%20T%C3%BCrkis%2C%20ich%20h%C3%A4tte%20eine%20Frage." target="_blank" rel="noopener" class="btn btn--primary">Auf WhatsApp schreiben <span class="arr">→</span></a>
+            <a href="kontakt.html" class="btn btn--ghost">Kontaktseite</a>
+          </div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card"><span class="label">Adresse</span><p>Werkstrasse 12<br />8004 Zürich</p></div>
+          <div class="contact-card"><span class="label">Öffnungszeiten</span><p>Mi–Fr 9–18 Uhr<br />Sa 9–13 Uhr</p></div>
+          <div class="contact-card"><span class="label">Telefon</span><a href="tel:+41791234567">+41 79 123 45 67</a></div>
+          <div class="contact-card"><span class="label">E-Mail</span><a href="mailto:hallo@atelier-tuerkis.ch">hallo@atelier-tuerkis.ch</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">Atelier <span>Türkis</span></div>
+          <p class="muted" style="margin-top:10px;max-width:34ch">Ein heller, ruhiger Ort für Kunst und Kreativität, für Kinder und Erwachsene.</p>
+          <div class="social" style="margin-top:16px">
+            <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+          </div>
+        </div>
+        <div><h4>Entdecken</h4><a href="atelier.html">Atelier</a><a href="angebot.html">Angebot</a><a href="kunst-galerie.html">Galerie</a><a href="kunst-verkauf.html">Verkauf</a><a href="gutscheine.html">Gutscheine</a><a href="faq.html">FAQ</a></div>
+        <div><h4>Kontakt</h4><a href="#">Werkstrasse 12, 8004 Zürich</a><a href="tel:+41791234567">+41 79 123 45 67</a><a href="mailto:hallo@atelier-tuerkis.ch">hallo@atelier-tuerkis.ch</a><p class="muted" style="margin-top:8px">Mi–Fr 9–18 Uhr · Sa 9–13 Uhr</p></div>
+      </div>
+      <div class="footer__bottom"><span>© 2026 Atelier Türkis · Alle Rechte vorbehalten.</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

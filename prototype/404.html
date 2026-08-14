@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Seite nicht gefunden — Atelier Türkis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="nav solid" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Atelier <span>Türkis</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html" data-de="Home" data-en="Home">Home</a>
+      <a class="nav__link" href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+      <a class="nav__link" href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+      <a class="nav__link" href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+      <a class="nav__link" href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active" aria-pressed="true">DE</button><span class="sep">|</span><button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top"><button class="mobile-menu__close" id="menuClose" aria-label="Menü schliessen"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <nav class="mobile-menu__links" aria-label="Mobile Navigation">
+    <a href="index.html" data-de="Home" data-en="Home">Home</a>
+    <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+    <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+    <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+    <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+  </nav>
+  <div class="mobile-menu__lang"><button data-lang="de" class="active">DE</button><span>|</span><button data-lang="en">EN</button></div>
+</div>
+
+<main class="notfound">
+  <div class="hero__bg" aria-hidden="true"><span class="blob blob--1"></span><span class="blob blob--2"></span><span class="blob blob--3"></span></div>
+  <div class="notfound__inner container">
+    <p class="eyebrow" style="margin-bottom:16px;" data-de="Fehler 404" data-en="Error 404">Fehler 404</p>
+    <div class="notfound__num">404</div>
+    <p class="notfound__msg" data-de="Diese Seite existiert nicht." data-en="This page doesn't exist.">Diese Seite existiert nicht.</p>
+    <a href="index.html" class="btn btn-primary"><span data-de="Zurück zur Startseite" data-en="Back to home">Zurück zur Startseite</span><span class="arrow">→</span></a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Atelier <span>Türkis</span></div>
+        <p class="footer__tagline" data-de="Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen." data-en="Art & creative studio. Minimal in structure, creative at heart.">Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+        <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+        <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+        <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+        <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+        <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Atelier Türkis. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></span>
+      <div class="footer__lang"><button data-lang="de" class="active">DE</button><span class="sep">|</span><button data-lang="en">EN</button></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

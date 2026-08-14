@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stille Ufer — Atelier Türkis</title>
+<meta name="description" content="Stille Ufer — Aquarell aus dem Atelier Türkis." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav solid" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Atelier <span>Türkis</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html" data-de="Home" data-en="Home">Home</a>
+      <a class="nav__link" href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+      <a class="nav__link active" href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+      <a class="nav__link" href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+      <a class="nav__link" href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active" aria-pressed="true">DE</button><span class="sep">|</span><button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top"><button class="mobile-menu__close" id="menuClose" aria-label="Menü schliessen"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <nav class="mobile-menu__links" aria-label="Mobile Navigation">
+    <a href="index.html" data-de="Home" data-en="Home">Home</a>
+    <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+    <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+    <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+    <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+  </nav>
+  <div class="mobile-menu__lang"><button data-lang="de" class="active">DE</button><span>|</span><button data-lang="en">EN</button></div>
+</div>
+
+<main class="detail">
+  <div class="container">
+    <a href="galerie.html" class="detail__back"><span class="arrow">←</span> <span data-de="Alle Werke" data-en="All works">Alle Werke</span></a>
+
+    <div class="detail__grid">
+      <div>
+        <div class="detail__media reveal">
+          <div class="detail__main-img ph ph--teal" style="aspect-ratio:4/5;"></div>
+          <div class="detail__thumbs">
+            <div class="detail__thumb ph ph--teal"></div>
+            <div class="detail__thumb ph ph--tealdeep"></div>
+            <div class="detail__thumb ph ph--rose"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="detail__aside">
+        <div class="detail__aside-inner reveal d1">
+          <span class="tag tag--aquarell">Aquarell</span>
+          <h1 class="h1 detail__title" style="margin-top:16px;">Stille Ufer</h1>
+
+          <ul class="spec-list">
+            <li><span class="spec-key" data-de="Technik" data-en="Technique">Technik</span><span class="spec-val" data-de="Aquarell auf Papier" data-en="Watercolour on paper">Aquarell auf Papier</span></li>
+            <li><span class="spec-key" data-de="Masse" data-en="Dimensions">Masse</span><span class="spec-val">42 × 56 cm</span></li>
+            <li><span class="spec-key" data-de="Jahr" data-en="Year">Jahr</span><span class="spec-val">2024</span></li>
+            <li><span class="spec-key" data-de="Urheber" data-en="Creator">Urheber</span><span class="spec-val">Atelier Türkis</span></li>
+          </ul>
+
+          <div class="detail__desc prose" style="margin-bottom:28px;">
+            <p data-de="Eine ruhige Studie in gebrochenen Blaugrün-Tönen. Das Motiv entstand in mehreren nass-in-nass gemalten Schichten, die dem Wasser Zeit gaben, seine eigenen Ränder zu ziehen." data-en="A quiet study in muted blue-green tones. The motif emerged in several wet-on-wet layers that gave the water time to draw its own edges.">Eine ruhige Studie in gebrochenen Blaugrün-Tönen. Das Motiv entstand in mehreren nass-in-nass gemalten Schichten, die dem Wasser Zeit gaben, seine eigenen Ränder zu ziehen.</p>
+          </div>
+
+          <div class="price-block">
+            <span class="price-block__label" data-de="Preis" data-en="Price">Preis</span>
+            <span class="price-block__value">CHF 480</span>
+          </div>
+
+          <div class="cta-card">
+            <h3 class="h3" data-de="Interesse an diesem Werk?" data-en="Interested in this piece?">Interesse an diesem Werk?</h3>
+            <p data-de="Schreib uns auf WhatsApp — wir sagen dir, ob es noch verfügbar ist." data-en="Message us on WhatsApp — we'll let you know if it's still available.">Schreib uns auf WhatsApp — wir sagen dir, ob es noch verfügbar ist.</p>
+            <a href="#" class="btn btn-wa btn-block"><span data-de="Auf WhatsApp anfragen" data-en="Ask on WhatsApp">Auf WhatsApp anfragen</span><span class="arrow">→</span></a>
+            <a href="#" class="btn btn-secondary btn-block"><span data-de="Per E-Mail anfragen" data-en="Ask by email">Per E-Mail anfragen</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="section" style="padding-bottom:120px;">
+      <div class="section-head reveal">
+        <h2 class="h2" data-de="Weitere Werke" data-en="More works">Weitere Werke</h2>
+        <a href="galerie.html" class="section-head__link"><span data-de="Zur Galerie" data-en="View gallery">Zur Galerie</span> <span class="arrow">→</span></a>
+      </div>
+      <div class="featured-grid">
+        <a class="artwork reveal" href="galerie-detail.html"><div class="artwork__img ph ph--rose"></div><div class="artwork__overlay"><span class="artwork__title">Morgenlicht</span><span class="tag tag--aquarell">Aquarell</span></div></a>
+        <a class="artwork reveal d1" href="galerie-detail.html"><div class="artwork__img ph ph--teal"></div><div class="artwork__overlay"><span class="artwork__title">Nebelmeer</span><span class="tag tag--aquarell">Aquarell</span></div></a>
+        <a class="artwork reveal d2" href="galerie-detail.html"><div class="artwork__img ph ph--tealdeep"></div><div class="artwork__overlay"><span class="artwork__title">Schale in Petrol</span><span class="tag tag--keramik">Keramik</span></div></a>
+        <a class="artwork reveal d3" href="galerie-detail.html"><div class="artwork__img ph ph--mix"></div><div class="artwork__overlay"><span class="artwork__title">Aktstudie II</span><span class="tag tag--zeichnen">Zeichnen</span></div></a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="detail__sticky-mobile">
+  <span class="price">CHF 480</span>
+  <a href="#" class="btn btn-wa"><span data-de="Anfragen" data-en="Enquire">Anfragen</span></a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Atelier <span>Türkis</span></div>
+        <p class="footer__tagline" data-de="Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen." data-en="Art & creative studio. Minimal in structure, creative at heart.">Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+        <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+        <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+        <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+        <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+        <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Atelier Türkis. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></span>
+      <div class="footer__lang"><button data-lang="de" class="active">DE</button><span class="sep">|</span><button data-lang="en">EN</button></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

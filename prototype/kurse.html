@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kurse — Atelier Türkis</title>
+<meta name="description" content="Kurse und Workshops im Atelier Türkis: Aquarell, Acryl, Zeichnen & Illustration und Keramik. Für Erwachsene, Kinder und Jugendliche." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav solid" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Atelier <span>Türkis</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html" data-de="Home" data-en="Home">Home</a>
+      <a class="nav__link active" href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+      <a class="nav__link" href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+      <a class="nav__link" href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+      <a class="nav__link" href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active" aria-pressed="true">DE</button><span class="sep">|</span><button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top"><button class="mobile-menu__close" id="menuClose" aria-label="Menü schliessen"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <nav class="mobile-menu__links" aria-label="Mobile Navigation">
+    <a href="index.html" data-de="Home" data-en="Home">Home</a>
+    <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+    <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+    <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+    <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+  </nav>
+  <div class="mobile-menu__lang"><button data-lang="de" class="active">DE</button><span>|</span><button data-lang="en">EN</button></div>
+</div>
+
+<main>
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header__bg" aria-hidden="true"><span class="blob blob--1"></span><span class="blob blob--3"></span></div>
+  <div class="container page-header__inner">
+    <p class="eyebrow page-header__eyebrow" data-de="Kurse & Workshops" data-en="Courses & workshops">Kurse & Workshops</p>
+    <h1 class="display page-header__title" data-de="Finde deinen Kurs" data-en="Find your course">Finde deinen Kurs</h1>
+    <p class="page-header__lead" data-de="Vom ersten Pinselstrich bis zur eigenen Handschrift — in kleinen Gruppen, mit viel Raum für dich." data-en="From your first brushstroke to your own signature style — in small groups, with plenty of space for you.">Vom ersten Pinselstrich bis zur eigenen Handschrift — in kleinen Gruppen, mit viel Raum für dich.</p>
+  </div>
+</section>
+
+<!-- FILTERS + GRID -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="filter-bar reveal">
+      <div class="filter-group" data-filter-group="technik">
+        <span class="filter-group__label" data-de="Technik" data-en="Technique">Technik</span>
+        <button class="filter-btn active" data-value="all" data-de="Alle" data-en="All">Alle</button>
+        <button class="filter-btn" data-value="aquarell">Aquarell</button>
+        <button class="filter-btn" data-value="acryl">Acryl</button>
+        <button class="filter-btn" data-value="zeichnen" data-de="Zeichnen" data-en="Drawing">Zeichnen</button>
+        <button class="filter-btn" data-value="keramik">Keramik</button>
+      </div>
+      <div class="filter-group" data-filter-group="zielgruppe">
+        <span class="filter-group__label" data-de="Zielgruppe" data-en="Audience">Zielgruppe</span>
+        <button class="filter-btn active" data-value="all" data-de="Alle" data-en="All">Alle</button>
+        <button class="filter-btn" data-value="erwachsene" data-de="Erwachsene" data-en="Adults">Erwachsene</button>
+        <button class="filter-btn" data-value="kinder" data-de="Kinder & Jugendliche" data-en="Children & Teens">Kinder & Jugendliche</button>
+      </div>
+    </div>
+
+    <p class="result-count" id="resultCount" data-de="6 Ergebnisse" data-en="6 results">6 Ergebnisse</p>
+
+    <div class="course-grid">
+      <a class="course-card reveal" href="kurse-detail.html" data-item data-technik="aquarell" data-zielgruppe="erwachsene">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--rose"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--aquarell course-card__tag">Aquarell</span>
+          <h3 class="h3 course-card__title" data-de="Aquarell Grundkurs" data-en="Watercolour Basics">Aquarell Grundkurs</h3>
+          <p class="course-card__desc" data-de="Grundlagen der Aquarellmalerei: Farbverläufe, Nass-in-Nass und Komposition." data-en="Watercolour foundations: washes, wet-on-wet and composition.">Grundlagen der Aquarellmalerei: Farbverläufe, Nass-in-Nass und Komposition.</p>
+          <div class="course-card__meta"><span class="course-card__schedule">Di &amp; Do · 18:00–20:00</span><div class="course-card__footer"><span class="course-card__price">CHF 280</span><span class="course-card__arrow">→</span></div></div>
+        </div>
+      </a>
+      <a class="course-card reveal d1" href="kurse-detail.html" data-item data-technik="acryl" data-zielgruppe="erwachsene">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--terra"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--acryl course-card__tag">Acryl</span>
+          <h3 class="h3 course-card__title" data-de="Acryl & Abstraktion" data-en="Acrylic & Abstraction">Acryl &amp; Abstraktion</h3>
+          <p class="course-card__desc" data-de="Freies Malen mit Acryl. Fläche, Textur und Farbe auf grossem Format." data-en="Free painting with acrylics. Surface, texture and colour on large formats.">Freies Malen mit Acryl. Fläche, Textur und Farbe auf grossem Format.</p>
+          <div class="course-card__meta"><span class="course-card__schedule">Mi · 19:00–21:30</span><div class="course-card__footer"><span class="course-card__price">CHF 320</span><span class="course-card__arrow">→</span></div></div>
+        </div>
+      </a>
+      <a class="course-card reveal d2" href="kurse-detail.html" data-item data-technik="keramik" data-zielgruppe="erwachsene">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--sage"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--keramik course-card__tag">Keramik</span>
+          <h3 class="h3 course-card__title" data-de="Keramik am Rad" data-en="Wheel Throwing">Keramik am Rad</h3>
+          <p class="course-card__desc" data-de="Töpfern an der Drehscheibe. Von der ersten Schale bis zur eigenen Formsprache." data-en="Pottery on the wheel. From your first bowl to your own visual language.">Töpfern an der Drehscheibe. Von der ersten Schale bis zur eigenen Formsprache.</p>
+          <div class="course-card__meta"><span class="course-card__schedule">Sa · 10:00–13:00</span><div class="course-card__footer"><span class="course-card__price">CHF 360</span><span class="course-card__arrow">→</span></div></div>
+        </div>
+      </a>
+      <a class="course-card reveal" href="kurse-detail.html" data-item data-technik="zeichnen" data-zielgruppe="erwachsene">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--graph"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--zeichnen course-card__tag" data-de="Zeichnen & Illustration" data-en="Drawing & Illustration">Zeichnen & Illustration</span>
+          <h3 class="h3 course-card__title" data-de="Zeichnen für Einsteiger" data-en="Drawing for Beginners">Zeichnen für Einsteiger</h3>
+          <p class="course-card__desc" data-de="Linie, Licht und Perspektive. Beobachten lernen mit Bleistift und Kohle." data-en="Line, light and perspective. Learning to observe with pencil and charcoal.">Linie, Licht und Perspektive. Beobachten lernen mit Bleistift und Kohle.</p>
+          <div class="course-card__meta"><span class="course-card__schedule">Mo · 18:30–20:30</span><div class="course-card__footer"><span class="course-card__price">CHF 240</span><span class="course-card__arrow">→</span></div></div>
+        </div>
+      </a>
+      <a class="course-card reveal d1" href="kurse-detail.html" data-item data-technik="aquarell" data-zielgruppe="kinder">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--yellow"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--aquarell course-card__tag">Aquarell</span>
+          <h3 class="h3 course-card__title" data-de="Farbwerkstatt für Kinder" data-en="Colour Lab for Kids">Farbwerkstatt für Kinder</h3>
+          <p class="course-card__desc" data-de="Spielerisch malen und experimentieren. Für Kinder von 7–12 Jahren." data-en="Playful painting and experimenting. For children aged 7–12.">Spielerisch malen und experimentieren. Für Kinder von 7–12 Jahren.</p>
+          <div class="course-card__meta"><span class="course-card__schedule" data-de="Mi · 14:00–15:30" data-en="Wed · 14:00–15:30">Mi · 14:00–15:30</span><div class="course-card__footer"><span class="course-card__price">CHF 180</span><span class="course-card__arrow">→</span></div></div>
+        </div>
+      </a>
+      <a class="course-card reveal d2" href="kurse-detail.html" data-item data-technik="keramik" data-zielgruppe="kinder">
+        <div class="course-card__img-wrap"><div class="course-card__img ph ph--mix"></div></div>
+        <div class="course-card__body">
+          <span class="tag tag--keramik course-card__tag">Keramik</span>
+          <h3 class="h3 course-card__title" data-de="Ton & Fantasie" data-en="Clay & Imagination">Ton & Fantasie</h3>
+          <p class="course-card__desc" data-de="Formen, kneten, gestalten. Keramik für Jugendliche von 12–16 Jahren." data-en="Shaping, kneading, creating. Ceramics for teens aged 12–16.">Formen, kneten, gestalten. Keramik für Jugendliche von 12–16 Jahren.</p>
+          <div class="course-card__meta"><span class="course-card__schedule" data-de="Fr · 16:00–18:00" data-en="Fri · 16:00–18:00">Fr · 16:00–18:00</span><div class="course-card__footer"><span class="course-card__price">CHF 220</span><span class="course-card__arrow">→</span></div></div>
+        </div>
+      </a>
+    </div>
+
+    <div id="emptyState" style="display:none; text-align:center; padding:64px 0;">
+      <p class="h3" style="margin-bottom:16px;" data-de="Keine Kurse für diese Auswahl gefunden." data-en="No courses found for this selection.">Keine Kurse für diese Auswahl gefunden.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Atelier <span>Türkis</span></div>
+        <p class="footer__tagline" data-de="Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen." data-en="Art & creative studio. Minimal in structure, creative at heart.">Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+        <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+        <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+        <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+        <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+        <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Atelier Türkis. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></span>
+      <div class="footer__lang"><button data-lang="de" class="active">DE</button><span class="sep">|</span><button data-lang="en">EN</button></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

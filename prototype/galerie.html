@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Galerie — Atelier Türkis</title>
+<meta name="description" content="Werke aus dem Atelier Türkis — von Kursleiterinnen, Teilnehmenden und dem Atelier. Aquarell, Acryl, Zeichnen und Keramik." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav solid" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Atelier <span>Türkis</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html" data-de="Home" data-en="Home">Home</a>
+      <a class="nav__link" href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+      <a class="nav__link active" href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+      <a class="nav__link" href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+      <a class="nav__link" href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active" aria-pressed="true">DE</button><span class="sep">|</span><button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top"><button class="mobile-menu__close" id="menuClose" aria-label="Menü schliessen"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <nav class="mobile-menu__links" aria-label="Mobile Navigation">
+    <a href="index.html" data-de="Home" data-en="Home">Home</a>
+    <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+    <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+    <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+    <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+  </nav>
+  <div class="mobile-menu__lang"><button data-lang="de" class="active">DE</button><span>|</span><button data-lang="en">EN</button></div>
+</div>
+
+<main>
+<section class="page-header">
+  <div class="page-header__bg" aria-hidden="true"><span class="blob blob--1"></span><span class="blob blob--3"></span></div>
+  <div class="container page-header__inner">
+    <p class="eyebrow page-header__eyebrow" data-de="Galerie" data-en="Gallery">Galerie</p>
+    <h1 class="display page-header__title" data-de="Werke aus dem Atelier" data-en="Works from the atelier">Werke aus dem Atelier</h1>
+    <p class="page-header__lead" data-de="Arbeiten von Kursleiterinnen, Teilnehmenden und aus dem Atelier selbst. Manche sind erhältlich — schreib uns einfach." data-en="Works by instructors, participants and the atelier itself. Some are available — just get in touch.">Arbeiten von Kursleiterinnen, Teilnehmenden und aus dem Atelier selbst. Manche sind erhältlich — schreib uns einfach.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="filter-bar reveal">
+      <div class="filter-group" data-filter-group="technik">
+        <span class="filter-group__label" data-de="Technik" data-en="Technique">Technik</span>
+        <button class="filter-btn active" data-value="all" data-de="Alle" data-en="All">Alle</button>
+        <button class="filter-btn" data-value="aquarell">Aquarell</button>
+        <button class="filter-btn" data-value="acryl">Acryl</button>
+        <button class="filter-btn" data-value="zeichnen" data-de="Zeichnen" data-en="Drawing">Zeichnen</button>
+        <button class="filter-btn" data-value="keramik">Keramik</button>
+      </div>
+      <div class="filter-group" data-filter-group="ersteller">
+        <span class="filter-group__label" data-de="Ersteller" data-en="Creator">Ersteller</span>
+        <button class="filter-btn active" data-value="all" data-de="Alle" data-en="All">Alle</button>
+        <button class="filter-btn" data-value="atelier">Atelier</button>
+        <button class="filter-btn" data-value="kurs" data-de="Kursteilnehmer" data-en="Participants">Kursteilnehmer</button>
+      </div>
+    </div>
+
+    <p class="result-count" id="resultCount" data-de="9 Werke" data-en="9 works">9 Werke</p>
+
+    <div class="masonry">
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="aquarell" data-ersteller="atelier">
+        <div class="ph ph--teal" style="aspect-ratio:4/5;"></div>
+        <span class="artwork__badge"><span class="dot"></span><span data-de="Erhältlich" data-en="Available">Erhältlich</span></span>
+        <div class="artwork__overlay"><span class="artwork__title">Stille Ufer</span><span class="tag tag--aquarell">Aquarell</span></div>
+      </a>
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="acryl" data-ersteller="atelier">
+        <div class="ph ph--terra" style="aspect-ratio:3/4;"></div>
+        <div class="artwork__overlay"><span class="artwork__title">Farbfeld III</span><span class="tag tag--acryl">Acryl</span></div>
+      </a>
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="keramik" data-ersteller="atelier">
+        <div class="ph ph--sage" style="aspect-ratio:1;"></div>
+        <span class="artwork__badge"><span class="dot"></span><span data-de="Erhältlich" data-en="Available">Erhältlich</span></span>
+        <div class="artwork__overlay"><span class="artwork__title">Gefäss No. 7</span><span class="tag tag--keramik">Keramik</span></div>
+      </a>
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="zeichnen" data-ersteller="kurs">
+        <div class="ph ph--graph" style="aspect-ratio:4/5;"></div>
+        <div class="artwork__overlay"><span class="artwork__title">Studie in Grau</span><span class="tag tag--zeichnen">Zeichnen</span></div>
+      </a>
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="aquarell" data-ersteller="kurs">
+        <div class="ph ph--rose" style="aspect-ratio:3/4;"></div>
+        <div class="artwork__overlay"><span class="artwork__title">Morgenlicht</span><span class="tag tag--aquarell">Aquarell</span></div>
+      </a>
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="acryl" data-ersteller="kurs">
+        <div class="ph ph--yellow" style="aspect-ratio:1;"></div>
+        <span class="artwork__badge"><span class="dot"></span><span data-de="Erhältlich" data-en="Available">Erhältlich</span></span>
+        <div class="artwork__overlay"><span class="artwork__title">Ohne Titel (Gelb)</span><span class="tag tag--acryl">Acryl</span></div>
+      </a>
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="keramik" data-ersteller="kurs">
+        <div class="ph ph--tealdeep" style="aspect-ratio:4/5;"></div>
+        <div class="artwork__overlay"><span class="artwork__title">Schale in Petrol</span><span class="tag tag--keramik">Keramik</span></div>
+      </a>
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="zeichnen" data-ersteller="atelier">
+        <div class="ph ph--mix" style="aspect-ratio:3/4;"></div>
+        <div class="artwork__overlay"><span class="artwork__title">Aktstudie II</span><span class="tag tag--zeichnen">Zeichnen</span></div>
+      </a>
+      <a class="artwork masonry__item reveal" href="galerie-detail.html" data-item data-technik="aquarell" data-ersteller="atelier">
+        <div class="ph ph--teal" style="aspect-ratio:1;"></div>
+        <span class="artwork__badge"><span class="dot"></span><span data-de="Erhältlich" data-en="Available">Erhältlich</span></span>
+        <div class="artwork__overlay"><span class="artwork__title">Nebelmeer</span><span class="tag tag--aquarell">Aquarell</span></div>
+      </a>
+    </div>
+
+    <div id="emptyState" style="display:none; text-align:center; padding:64px 0;">
+      <p class="h3" data-de="Keine Werke für diese Auswahl gefunden." data-en="No works found for this selection.">Keine Werke für diese Auswahl gefunden.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Atelier <span>Türkis</span></div>
+        <p class="footer__tagline" data-de="Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen." data-en="Art & creative studio. Minimal in structure, creative at heart.">Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+        <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+        <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+        <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+        <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+        <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Atelier Türkis. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></span>
+      <div class="footer__lang"><button data-lang="de" class="active">DE</button><span class="sep">|</span><button data-lang="en">EN</button></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

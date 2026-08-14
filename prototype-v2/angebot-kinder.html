@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kinderkurse, Atelier Türkis</title>
+<meta name="description" content="Kreativwerkstatt, Ferienkurse und Kindergeburtstage. Basteln, malen und werken für Kinder von 4 bis 12 Jahren." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="theme-kids">
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">Atelier <span>Türkis</span></a>
+    <nav class="nav__menu" aria-label="Hauptnavigation">
+      <a href="atelier.html">Atelier</a>
+      <div class="nav__group"><a href="angebot.html" class="nav__top active">Angebot</a><div class="nav__drop"><a href="angebot-erwachsene.html">Erwachsene</a><a href="angebot-kinder.html">Kinder</a><a href="angebot-gruppen.html">Gruppen</a><a href="angebot-raeume.html">Räume mieten</a></div></div>
+      <div class="nav__group"><a href="kunst.html" class="nav__top">Kunst</a><div class="nav__drop"><a href="kunst-galerie.html">Galerie</a><a href="kunst-verkauf.html">Verkauf</a></div></div>
+    </nav>
+    <div class="nav__right">
+      <a href="kontakt.html" class="btn btn--primary btn--sm hide-m">Kontakt</a>
+      <div class="lang"><button class="active">DE</button><span>/</span><button>EN</button></div>
+      <button class="burger" id="burger" aria-label="Menü öffnen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu">
+  <div class="mmenu__top"><span class="brand">Atelier <span>Türkis</span></span><button class="mmenu__close" id="mclose" aria-label="Schliessen"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <a href="atelier.html">Atelier</a><a href="angebot.html">Angebot</a>
+  <div class="sub"><a href="angebot-erwachsene.html">Erwachsene</a><a href="angebot-kinder.html">Kinder</a><a href="angebot-gruppen.html">Gruppen</a><a href="angebot-raeume.html">Räume mieten</a></div>
+  <a href="kunst.html">Kunst</a><div class="sub"><a href="kunst-galerie.html">Galerie</a><a href="kunst-verkauf.html">Verkauf</a></div>
+  <a href="gutscheine.html">Gutscheine</a><a href="kontakt.html">Kontakt</a>
+  <div class="mmenu__foot"><a href="kontakt.html" class="btn btn--primary">Kontakt aufnehmen</a></div>
+</div>
+
+<main>
+
+<!-- HERO KINDER -->
+<section class="pagehead" style="position:relative">
+  <span class="confetti-dots" aria-hidden="true"></span>
+  <div class="container">
+    <p class="crumbs reveal"><a href="index.html">Home</a> · <a href="angebot.html">Angebot</a> · Kinder</p>
+    <span class="badge-fun reveal">🎨 Für kleine Künstler:innen</span>
+    <h1 class="h1 reveal d1" style="font-size:clamp(2.6rem,7vw,4.4rem);margin:16px 0 14px">Hier wird <span class="wiggle" style="display:inline-block;color:var(--coral)">gematscht</span>,<br />gebaut &amp; gemalt! ✨</h1>
+    <p class="lead reveal d2">Bei uns dürfen Kinder ausprobieren, staunen und stolz sein. Kein Richtig, kein Falsch, nur ganz viel Farbe, Kleber und gute Laune. Für Kinder von 4 bis 12 Jahren.</p>
+  </div>
+</section>
+
+<!-- ANGEBOTE -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="grid grid-3">
+      <article class="card kids-card reveal">
+        <div class="kids-card__top" style="background:var(--coral)"><span class="kids-card__emoji wiggle">🖌️</span><br /><span class="kids-card__age">4–7 Jahre</span></div>
+        <div class="card__body"><h3 class="card__title">Kreativwerkstatt Mittwoch</h3><p class="card__desc">Malen, basteln, kleben, jede Woche eine neue lustige Idee für die Kleinsten.</p><div class="card__foot"><span class="card__price">CHF 20 / Mal</span><a class="btn btn--coral btn--sm" href="kurs-detail-kinder.html">Los!</a></div></div>
+      </article>
+      <article class="card kids-card reveal d1">
+        <div class="kids-card__top" style="background:var(--yellow)"><span class="kids-card__emoji wiggle">✂️</span><br /><span class="kids-card__age">8–12 Jahre</span></div>
+        <div class="card__body"><h3 class="card__title">Kreativwerkstatt Mittwoch</h3><p class="card__desc">Werken, gestalten und eigene Projekte umsetzen, für die Grösseren.</p><div class="card__foot"><span class="card__price">CHF 22 / Mal</span><a class="btn btn--coral btn--sm" href="kurs-detail-kinder.html">Los!</a></div></div>
+      </article>
+      <article class="card kids-card reveal d2">
+        <div class="kids-card__top" style="background:var(--violet)"><span class="kids-card__emoji wiggle">🌈</span><br /><span class="kids-card__age">5–12 Jahre</span></div>
+        <div class="card__body"><h3 class="card__title">Samstagskurse</h3><p class="card__desc">Ein ganzer Vormittag zum Gestalten, mit wechselnden Themen.</p><div class="card__foot"><span class="card__price">CHF 45</span><a class="btn btn--coral btn--sm" href="kurs-detail-kinder.html">Los!</a></div></div>
+      </article>
+      <article class="card kids-card reveal">
+        <div class="kids-card__top" style="background:var(--green)"><span class="kids-card__emoji wiggle">🏖️</span><br /><span class="kids-card__age">Ferien</span></div>
+        <div class="card__body"><h3 class="card__title">Ferienkurse</h3><p class="card__desc">Mehrere Tage voller Kunst, Spiel und neuer Freundschaften.</p><div class="card__foot"><span class="card__price">CHF 120</span><a class="btn btn--coral btn--sm" href="kurs-detail-kinder.html">Los!</a></div></div>
+      </article>
+      <article class="card kids-card reveal d1">
+        <div class="kids-card__top" style="background:var(--sky)"><span class="kids-card__emoji wiggle">🎂</span><br /><span class="kids-card__age">Feiern</span></div>
+        <div class="card__body"><h3 class="card__title">Kindergeburtstage</h3><p class="card__desc">Feiere kreativ! Wir gestalten mit euch einen bunten Bastel-Geburtstag.</p><div class="card__foot"><span class="card__price">auf Anfrage</span><a class="btn btn--coral btn--sm" href="kontakt.html">Anfragen</a></div></div>
+      </article>
+      <article class="card kids-card reveal d2">
+        <div class="kids-card__top" style="background:var(--orange)"><span class="kids-card__emoji wiggle">🖐️</span><br /><span class="kids-card__age">Special</span></div>
+        <div class="card__body"><h3 class="card__title">Stempel selber machen</h3><p class="card__desc">Eigene Stempel schnitzen und drucken, und mit nach Hause nehmen!</p><div class="card__foot"><span class="card__price">CHF 35</span><a class="btn btn--coral btn--sm" href="kurs-detail-kinder.html">Los!</a></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WARUM -->
+<section class="section">
+  <div class="container">
+    <div class="frost reveal" style="padding:44px 34px;position:relative;overflow:hidden">
+      <span class="confetti-dots" aria-hidden="true"></span>
+      <div class="center maxw">
+        <h2 class="h2">Warum Kinder uns lieben 💛</h2>
+        <p class="lead mt-s">Weil sie hier einfach machen dürfen. Wir geben Anregung, Material und Zeit, und staunen, was daraus entsteht.</p>
+      </div>
+      <div class="grid grid-3 mt-l">
+        <div class="value reveal" style="justify-content:center;text-align:center;flex-direction:column;align-items:center"><span style="font-size:2.6rem">🎨</span><h3 style="margin-top:8px">Alles darf</h3><p>Kein Richtig, kein Falsch.</p></div>
+        <div class="value reveal d1" style="justify-content:center;text-align:center;flex-direction:column;align-items:center"><span style="font-size:2.6rem">🤝</span><h3 style="margin-top:8px">Kleine Gruppen</h3><p>Jedes Kind wird gesehen.</p></div>
+        <div class="value reveal d2" style="justify-content:center;text-align:center;flex-direction:column;align-items:center"><span style="font-size:2.6rem">🌟</span><h3 style="margin-top:8px">Stolz nach Hause</h3><p>Mit einem echten Kunstwerk.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELTERN CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <span class="badge-fun">👋 Für Eltern</span>
+      <h2 class="h2 mt-s">Noch Fragen? Wir helfen gern.</h2>
+      <p class="lead mt-s center maxw">Anmeldung, Termine oder Geburtstage, schreib uns einfach kurz.</p>
+      <div class="btn-row"><a href="kontakt.html" class="btn btn--coral btn--lg">Kontakt aufnehmen <span class="arr">→</span></a><a href="gutscheine.html" class="btn btn--ghost btn--lg">Gutschein verschenken</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">Atelier <span>Türkis</span></div>
+          <p class="muted" style="margin-top:10px;max-width:34ch">Ein heller, ruhiger Ort für Kunst und Kreativität, für Kinder und Erwachsene.</p>
+          <div class="social" style="margin-top:16px"><a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a></div>
+        </div>
+        <div><h4>Entdecken</h4><a href="atelier.html">Atelier</a><a href="angebot.html">Angebot</a><a href="kunst-galerie.html">Galerie</a><a href="kunst-verkauf.html">Verkauf</a><a href="gutscheine.html">Gutscheine</a><a href="faq.html">FAQ</a></div>
+        <div><h4>Kontakt</h4><a href="#">Werkstrasse 12, 8004 Zürich</a><a href="tel:+41791234567">+41 79 123 45 67</a><a href="mailto:hallo@atelier-tuerkis.ch">hallo@atelier-tuerkis.ch</a><p class="muted" style="margin-top:8px">Mi–Fr 9–18 Uhr · Sa 9–13 Uhr</p></div>
+      </div>
+      <div class="footer__bottom"><span>© 2026 Atelier Türkis · Alle Rechte vorbehalten.</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

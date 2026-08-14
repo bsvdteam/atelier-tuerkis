@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atelier Türkis · Kreativkurse &amp; Workshops in Zürich</title>
+<meta name="description" content="Kreativkurse und Workshops für Erwachsene in Zürich: Aquarell, Lettering, Nähen, Cyanotypie und mehr. Kleine Gruppen, persönliche Begleitung. Auch Kinderkurse, Gruppen und Gutscheine." />
+<meta name="theme-color" content="#7BEEDF" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%23ffffff'/%3E%3Ccircle cx='50' cy='34' r='9' fill='%23FF6F91'/%3E%3Ccircle cx='36' cy='60' r='9' fill='%2312B3A6'/%3E%3Ccircle cx='64' cy='60' r='9' fill='%23FFC94D'/%3E%3C/svg%3E" />
+<!-- Open Graph / Social Sharing -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Atelier Türkis · Kreativkurse &amp; Workshops in Zürich" />
+<meta property="og:description" content="Aquarell, Lettering, Nähen und mehr. Kreativ werden in kleinen Gruppen, mit persönlicher Begleitung." />
+<meta property="og:locale" content="de_CH" />
+<meta property="og:image" content="assets/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+<script>try{if(localStorage.getItem('at_intro_seen')||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('intro-seen');}catch(e){}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Atelier Türkis","description":"Kunst- und Kreativatelier in Zürich. Kurse und Workshops für Erwachsene und Kinder.","image":"assets/og-image.jpg","address":{"@type":"PostalAddress","streetAddress":"Werkstrasse 12","postalCode":"8004","addressLocality":"Zürich","addressCountry":"CH"},"telephone":"+41791234567","email":"hallo@atelier-tuerkis.ch","url":"https://atelier-tuerkis.ch","priceRange":"CHF","openingHours":["We-Fr 09:00-18:00","Sa 09:00-13:00"]}
+</script>
+</head>
+<body>
+
+<!-- INTRO (erster Besuch): die leere Leinwand füllt sich -->
+<div class="intro" id="intro" role="presentation">
+  <div class="intro__wash"></div>
+  <svg class="intro__doodle" style="top:16%;left:14%;--r:-12deg;animation-delay:2.4s" width="52" height="52" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 26 Q20 6 32 26" stroke="#FF6F91" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+  <svg class="intro__doodle" style="top:20%;right:16%;--r:10deg;animation-delay:2.7s" width="46" height="46" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="12" fill="none" stroke="#57C9EC" stroke-width="4"/></svg>
+  <svg class="intro__doodle" style="bottom:20%;left:20%;--r:8deg;animation-delay:3s" width="50" height="50" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12z" fill="#FFC94D"/></svg>
+  <svg class="intro__doodle" style="bottom:18%;right:18%;--r:-8deg;animation-delay:3.3s" width="44" height="44" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" rx="7" fill="none" stroke="#9B8CFF" stroke-width="4"/></svg>
+  <div class="intro__stage">
+    <div class="intro__brand">Atelier <em>Türkis</em></div>
+    <svg class="intro__squiggle" viewBox="0 0 340 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 9C60 2 110 2 170 7s110 5 166-3"/></svg>
+  </div>
+  <button class="intro__skip" id="introSkip" type="button">Überspringen</button>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">Atelier <span>Türkis</span></a>
+    <nav class="nav__menu" aria-label="Hauptnavigation">
+      <a href="atelier.html">Atelier</a>
+      <div class="nav__group">
+        <a href="angebot.html" class="nav__top">Angebot</a>
+        <div class="nav__drop">
+          <a href="angebot-erwachsene.html">Erwachsene</a>
+          <a href="angebot-kinder.html">Kinder</a>
+          <a href="angebot-gruppen.html">Gruppen</a>
+          <a href="angebot-raeume.html">Räume mieten</a>
+        </div>
+      </div>
+      <div class="nav__group">
+        <a href="kunst.html" class="nav__top">Kunst</a>
+        <div class="nav__drop">
+          <a href="kunst-galerie.html">Galerie</a>
+          <a href="kunst-verkauf.html">Verkauf</a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav__right">
+      <a href="kontakt.html" class="btn btn--primary btn--sm hide-m">Kontakt</a>
+      <div class="lang"><button class="active">DE</button><span>/</span><button>EN</button></div>
+      <button class="burger" id="burger" aria-label="Menü öffnen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu">
+  <div class="mmenu__top">
+    <span class="brand">Atelier <span>Türkis</span></span>
+    <button class="mmenu__close" id="mclose" aria-label="Schliessen"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  </div>
+  <a href="atelier.html">Atelier</a>
+  <a href="angebot.html">Angebot</a>
+  <div class="sub">
+    <a href="angebot-erwachsene.html">Erwachsene</a>
+    <a href="angebot-kinder.html">Kinder</a>
+    <a href="angebot-gruppen.html">Gruppen</a>
+    <a href="angebot-raeume.html">Räume mieten</a>
+  </div>
+  <a href="kunst.html">Kunst</a>
+  <div class="sub">
+    <a href="kunst-galerie.html">Galerie</a>
+    <a href="kunst-verkauf.html">Verkauf</a>
+  </div>
+  <a href="gutscheine.html">Gutscheine</a>
+  <a href="kontakt.html">Kontakt</a>
+  <div class="mmenu__foot">
+    <a href="kontakt.html" class="btn btn--primary">Kontakt aufnehmen</a>
+    <div class="lang mlang" style="display:flex"><button class="active">DE</button><span>/</span><button>EN</button></div>
+  </div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- verspielte Deko -->
+  <svg class="float" style="top:8%;left:6%;--r:-8deg" width="70" height="70" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 26 Q20 6 32 26" stroke="#FF6F91" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+  <svg class="float float--2" style="top:14%;right:8%;--r:10deg" width="58" height="58" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="12" fill="none" stroke="#FFC94D" stroke-width="4"/></svg>
+  <svg class="float float--3" style="bottom:6%;left:12%;--r:6deg" width="48" height="48" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12z" fill="#9B8CFF"/></svg>
+  <svg class="float" style="bottom:14%;right:10%;--r:-12deg" width="54" height="54" viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="8" width="24" height="24" rx="8" fill="none" stroke="#57C9EC" stroke-width="4"/></svg>
+
+  <div class="container hero__inner">
+    <span class="eyebrow reveal">Kunst- &amp; Kreativatelier · Zürich</span>
+    <h1 class="display reveal d1">Kreativität <span class="squiggle-word">erleben</span>,<br />entdecken &amp; gestalten.</h1>
+    <p class="lead reveal d2">Ein heller, ruhiger Ort für Kinder und Erwachsene. Hier zählt nicht die Perfektion, sondern die Freude am Gestalten.</p>
+    <div class="btn-row hero__ctas reveal d3">
+      <a href="angebot.html" class="btn btn--coral btn--lg">Kurse entdecken <span class="arr">→</span></a>
+      <a href="kontakt.html" class="btn btn--ghost btn--lg">Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<!-- WILLKOMMEN -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="split split--wide-l">
+      <div class="reveal">
+        <span class="eyebrow">Willkommen</span>
+        <h2 class="h2 mt-s">Ein Atelier, das Mut zum Gestalten macht.</h2>
+        <p class="lead mt-s">Wir glauben: Jeder Mensch kann kreativ sein. Bei uns findest du Raum zum Abschalten, zum Ausprobieren und zum Wachsen.</p>
+        <div class="btn-row mt-m">
+          <a href="atelier.html" class="btn btn--outline">Mehr über uns <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="grid" style="gap:14px">
+        <div class="value reveal frost" style="padding:20px;border-radius:24px">
+          <div class="value__icon" style="background:var(--coral)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 7c-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+          <div><h3>Viel Zeit für dich</h3><p>Kleine Gruppen, in denen jede und jeder gesehen wird.</p></div>
+        </div>
+        <div class="value reveal d1 frost" style="padding:20px;border-radius:24px">
+          <div class="value__icon" style="background:var(--violet)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21l2.3-7.2-6-4.4h7.6z"/></svg></div>
+          <div><h3>Freude statt Perfektion</h3><p>Es darf gelingen, und es darf auch mal krumm sein.</p></div>
+        </div>
+        <div class="value reveal d2 frost" style="padding:20px;border-radius:24px">
+          <div class="value__icon" style="background:var(--teal)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 16l4-8 4 6 4-10"/></svg></div>
+          <div><h3>Persönliche Begleitung</h3><p>Wir gehen auf dich ein, vom ersten Strich an.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERTRAUENS-ZAHLEN -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="frost reveal" style="padding:34px 28px">
+      <div class="stats">
+        <div class="stat"><div class="stat__num">12</div><div class="stat__label">Jahre Erfahrung</div></div>
+        <div class="stat"><div class="stat__num">40<sup>+</sup></div><div class="stat__label">Kurse &amp; Workshops</div></div>
+        <div class="stat"><div class="stat__num">2000<sup>+</sup></div><div class="stat__label">Teilnehmende</div></div>
+        <div class="stat"><div class="stat__num">4.9<sup>★</sup></div><div class="stat__label">auf Google</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KURSANGEBOT (Erwachsene im Fokus) -->
+<section class="section">
+  <div class="container">
+    <div class="center maxw reveal">
+      <span class="eyebrow">Kurse &amp; Workshops</span>
+      <h2 class="h2 mt-s">Finde deine Technik</h2>
+      <p class="lead mt-s">Von der ersten Farbe bis zur eigenen Handschrift. Entdecke in ruhiger Atmosphäre und kleinen Gruppen, was dir liegt.</p>
+    </div>
+    <div class="techgrid mt-l">
+      <a class="tech reveal" href="angebot-erwachsene.html"><span class="tech__dot" style="background:var(--coral)">🎨</span><span><b>Aquarell</b><span>Farbe, die fliesst</span></span></a>
+      <a class="tech reveal d1" href="angebot-erwachsene.html"><span class="tech__dot" style="background:var(--violet)">✒️</span><span><b>Handlettering</b><span>Schöne Buchstaben</span></span></a>
+      <a class="tech reveal d2" href="angebot-erwachsene.html"><span class="tech__dot" style="background:var(--sky)">🧵</span><span><b>Nähen</b><span>Vom Stoff zum Stück</span></span></a>
+      <a class="tech reveal" href="angebot-erwachsene.html"><span class="tech__dot" style="background:var(--teal)">🌿</span><span><b>Cyanotypie</b><span>Blaudruck mit Sonne</span></span></a>
+      <a class="tech reveal d1" href="angebot-erwachsene.html"><span class="tech__dot" style="background:var(--green)">✏️</span><span><b>Zeichnen</b><span>Sehen und festhalten</span></span></a>
+      <a class="tech reveal d2" href="angebot-erwachsene.html"><span class="tech__dot" style="background:var(--orange)">📓</span><span><b>Buchbinden</b><span>Eigene Notizbücher</span></span></a>
+    </div>
+    <div class="btn-row mt-m" style="justify-content:center"><a href="angebot-erwachsene.html" class="btn btn--coral">Alle Kurse für Erwachsene <span class="arr">→</span></a></div>
+    <div class="agerow reveal" style="margin-top:36px">
+      <a href="angebot-kinder.html" class="agerow__link"><strong>Auch für Kinder</strong><span>Kreativwerkstatt, Ferien &amp; Geburtstage</span></a>
+      <a href="angebot-gruppen.html" class="agerow__link"><strong>Gruppen &amp; Feiern</strong><span>Firmen, Vereine, Geburtstage</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- AKTUELLE KURSE -->
+<section class="section">
+  <div class="container">
+    <div class="stack-head reveal">
+      <div>
+        <span class="eyebrow">Aktuelle Kurse</span>
+        <h2 class="h2 mt-s">Komm vorbei und gestalte mit</h2>
+      </div>
+      <a href="angebot.html" class="btn btn--outline">Alle Kurse <span class="arr">→</span></a>
+    </div>
+    <div class="grid grid-3">
+      <a class="card reveal" href="kurs-detail.html">
+        <div class="card__media"><div class="ph ph--coral"></div><div class="ph-label">Aquarell</div></div>
+        <div class="card__body">
+          <div class="card__spots"><span class="tag tag--coral">Erwachsene</span><span class="spots spots--few"><span class="spots__dot"></span>noch 3 Plätze</span></div>
+          <h3 class="card__title">Aquarell für Einsteiger</h3>
+          <p class="card__desc">Farbverläufe, Nass-in-Nass und der Mut zur leeren Fläche.</p>
+          <div class="card__foot"><span class="card__price">CHF 280</span><span class="muted" style="font-weight:800;font-size:.82rem">Start 14. Sep</span></div>
+        </div>
+      </a>
+      <a class="card reveal d1" href="kurs-detail.html">
+        <div class="card__media"><div class="ph ph--violet"></div><div class="ph-label">Lettering</div></div>
+        <div class="card__body">
+          <div class="card__spots"><span class="tag tag--violet">Erwachsene</span><span class="spots"><span class="spots__dot"></span>noch 5 Plätze</span></div>
+          <h3 class="card__title">Handlettering &amp; Kalligrafie</h3>
+          <p class="card__desc">Schöne Buchstaben von Hand, für Karten, Geschenke und dich.</p>
+          <div class="card__foot"><span class="card__price">CHF 240</span><span class="muted" style="font-weight:800;font-size:.82rem">Start 21. Sep</span></div>
+        </div>
+      </a>
+      <a class="card reveal d2" href="kurs-detail.html">
+        <div class="card__media"><div class="ph ph--sky"></div><div class="ph-label">Nähen</div></div>
+        <div class="card__body">
+          <div class="card__spots"><span class="tag tag--sky">Erwachsene</span><span class="spots spots--few"><span class="spots__dot"></span>wenige Plätze</span></div>
+          <h3 class="card__title">Nähen für Einsteiger</h3>
+          <p class="card__desc">Von der Nähmaschine bis zum ersten fertigen Stück.</p>
+          <div class="card__foot"><span class="card__price">CHF 300</span><span class="muted" style="font-weight:800;font-size:.82rem">Start 28. Sep</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AKTUELLES -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="frost reveal" style="padding:26px 28px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <span class="tag tag--green">Aktuell</span>
+        <span class="pill-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Ferienkurse Herbst: noch Plätze frei</span>
+        <span class="pill-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2L12 16.4 5.7 21l2.3-7.2-6-4.4h7.6z"/></svg> Neu: Cyanotypie-Workshop im November</span>
+      </div>
+      <a href="angebot.html" class="btn btn--ghost btn--sm">Termine ansehen <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM / EINBLICKE -->
+<section class="section">
+  <div class="container">
+    <div class="stack-head reveal">
+      <div>
+        <span class="eyebrow">Einblicke</span>
+        <h2 class="h2 mt-s">Aus dem Atelier, Tag für Tag</h2>
+      </div>
+      <a href="#" class="btn btn--outline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> @atelier.tuerkis</a>
+    </div>
+    <div class="insta__grid reveal">
+      <a class="insta__tile" href="#" aria-label="Instagram-Beitrag"><div class="ph ph--sky"></div></a>
+      <a class="insta__tile" href="#" aria-label="Instagram-Beitrag"><div class="ph ph--coral"></div></a>
+      <a class="insta__tile" href="#" aria-label="Instagram-Beitrag"><div class="ph ph--green"></div></a>
+      <a class="insta__tile" href="#" aria-label="Instagram-Beitrag"><div class="ph ph--yellow"></div></a>
+      <a class="insta__tile" href="#" aria-label="Instagram-Beitrag"><div class="ph ph--violet"></div></a>
+      <a class="insta__tile" href="#" aria-label="Instagram-Beitrag"><div class="ph ph--orange"></div></a>
+    </div>
+    <div class="center" style="margin-top:22px"><a href="kunst-galerie.html" class="insta__handle">Mehr in der Galerie <span class="arr">→</span></a></div>
+  </div>
+</section>
+
+<!-- STIMMEN (verspieltes Karussell) -->
+<section class="section testi">
+  <div class="container">
+    <div class="center maxw reveal">
+      <span class="eyebrow">Stimmen</span>
+      <h2 class="h2 mt-s">Das schönste Feedback kommt von Herzen</h2>
+    </div>
+
+    <div class="testi__stage reveal" id="testi">
+      <!-- verspielte Deko -->
+      <svg class="testi__doodle" style="top:6%;left:4%;--r:-10deg" width="46" height="46" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 26 Q20 6 32 26" stroke="#FF6F91" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+      <svg class="testi__doodle" style="bottom:8%;right:5%;--r:12deg" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12z" fill="#FFC94D"/></svg>
+      <svg class="testi__doodle" style="top:14%;right:12%;--r:0deg" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="11" fill="none" stroke="#57C9EC" stroke-width="4"/></svg>
+
+      <button class="testi__nav testi__prev" id="testiPrev" aria-label="Vorherige Stimme"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+
+      <div class="testi__cards">
+        <figure class="testi__card is-active" style="--c:var(--coral)">
+          <div class="testi__mark">&ldquo;</div>
+          <blockquote>Unsere Tochter kommt jede Woche begeistert nach Hause und erzählt tagelang von ihren Werken.</blockquote>
+          <figcaption><span class="testi__avatar">SM</span><span><strong>Sandra M.</strong><small>Mama von Lea, 7</small></span></figcaption>
+        </figure>
+        <figure class="testi__card" style="--c:var(--teal)">
+          <div class="testi__mark">&ldquo;</div>
+          <blockquote>Die Atmosphäre ist wunderbar. Ich schalte hier komplett ab und tanke richtig auf.</blockquote>
+          <figcaption><span class="testi__avatar">PL</span><span><strong>Petra L.</strong><small>Aquarellkurs</small></span></figcaption>
+        </figure>
+        <figure class="testi__card" style="--c:var(--violet)">
+          <div class="testi__mark">&ldquo;</div>
+          <blockquote>Ich habe unglaublich viel gelernt und dabei genauso viel gelacht. Freu mich auf jede Stunde.</blockquote>
+          <figcaption><span class="testi__avatar">MR</span><span><strong>Michael R.</strong><small>Handlettering</small></span></figcaption>
+        </figure>
+        <figure class="testi__card" style="--c:var(--sky)">
+          <div class="testi__mark">&ldquo;</div>
+          <blockquote>Endlich ein Ort, an dem ich einfach machen darf, ohne dass es perfekt sein muss.</blockquote>
+          <figcaption><span class="testi__avatar">NB</span><span><strong>Nina B.</strong><small>Nähkurs</small></span></figcaption>
+        </figure>
+        <figure class="testi__card" style="--c:var(--orange)">
+          <div class="testi__mark">&ldquo;</div>
+          <blockquote>Mein Sohn spricht die ganze Woche vom Basteln. Schöner kann ein Hobby nicht sein.</blockquote>
+          <figcaption><span class="testi__avatar">TK</span><span><strong>Thomas K.</strong><small>Papa von Elia, 9</small></span></figcaption>
+        </figure>
+        <figure class="testi__card" style="--c:var(--green)">
+          <div class="testi__mark">&ldquo;</div>
+          <blockquote>So viel Ruhe und Farbe an einem Ort. Ich gehe jedes Mal glücklich nach Hause.</blockquote>
+          <figcaption><span class="testi__avatar">CW</span><span><strong>Claudia W.</strong><small>Cyanotypie</small></span></figcaption>
+        </figure>
+      </div>
+
+      <button class="testi__nav testi__next" id="testiNext" aria-label="Nächste Stimme"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+
+      <div class="testi__dots" id="testiDots" role="tablist" aria-label="Stimmen auswählen"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUTSCHEINE + KONTAKT CTA -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-2">
+      <div class="cta-banner reveal" style="text-align:left">
+        <span class="tag tag--coral">Sehr beliebt</span>
+        <h2 class="h2 mt-s">Kreativität verschenken</h2>
+        <p class="lead mt-s">Gutscheine für Kurse, Geburtstage oder als Weihnachtsgeschenk, Freude zum Auspacken.</p>
+        <div class="btn-row mt-m"><a href="gutscheine.html" class="btn btn--coral">Zu den Gutscheinen <span class="arr">→</span></a></div>
+      </div>
+      <div class="cta-banner reveal d1" style="text-align:left">
+        <span class="tag tag--sky">Kontakt</span>
+        <h2 class="h2 mt-s">Fragen? Schreib uns.</h2>
+        <p class="lead mt-s">Am schnellsten per WhatsApp oder E-Mail. Wir freuen uns auf dich.</p>
+        <div class="btn-row mt-m">
+          <a href="https://wa.me/41791234567?text=Hallo%20Atelier%20T%C3%BCrkis%2C%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Kurs.%20K%C3%B6nnt%20ihr%20mir%20mehr%20Infos%20geben%3F" target="_blank" rel="noopener" class="btn btn--primary">Auf WhatsApp schreiben <span class="arr">→</span></a>
+          <a href="kontakt.html" class="btn btn--ghost">Alle Kontakt-Wege</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">Atelier <span>Türkis</span></div>
+          <p class="muted" style="margin-top:10px;max-width:34ch">Ein heller, ruhiger Ort für Kunst und Kreativität, für Kinder und Erwachsene.</p>
+          <div class="social" style="margin-top:16px">
+            <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Entdecken</h4>
+          <a href="atelier.html">Atelier</a>
+          <a href="angebot.html">Angebot</a>
+          <a href="kunst-galerie.html">Galerie</a>
+          <a href="kunst-verkauf.html">Verkauf</a>
+          <a href="gutscheine.html">Gutscheine</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <a href="#">Werkstrasse 12, 8004 Zürich</a>
+          <a href="tel:+41791234567">+41 79 123 45 67</a>
+          <a href="mailto:hallo@atelier-tuerkis.ch">hallo@atelier-tuerkis.ch</a>
+          <p class="muted" style="margin-top:8px">Mi–Fr 9–18 Uhr · Sa 9–13 Uhr</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Atelier Türkis · Alle Rechte vorbehalten.</span>
+        <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

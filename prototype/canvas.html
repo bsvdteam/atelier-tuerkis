@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Community Canvas — Atelier Türkis</title>
+<meta name="description" content="Male mit auf der digitalen Leinwand des Atelier Türkis und werde Teil der Community-Galerie." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav solid" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Atelier <span>Türkis</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html" data-de="Home" data-en="Home">Home</a>
+      <a class="nav__link" href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+      <a class="nav__link" href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+      <a class="nav__link" href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+      <a class="nav__link active" href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active" aria-pressed="true">DE</button><span class="sep">|</span><button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top"><button class="mobile-menu__close" id="menuClose" aria-label="Menü schliessen"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <nav class="mobile-menu__links" aria-label="Mobile Navigation">
+    <a href="index.html" data-de="Home" data-en="Home">Home</a>
+    <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+    <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+    <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+    <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+  </nav>
+  <div class="mobile-menu__lang"><button data-lang="de" class="active">DE</button><span>|</span><button data-lang="en">EN</button></div>
+</div>
+
+<main>
+<section class="page-header">
+  <div class="page-header__bg" aria-hidden="true"><span class="blob blob--1"></span><span class="blob blob--3"></span></div>
+  <div class="container page-header__inner">
+    <p class="eyebrow page-header__eyebrow" data-de="Community Canvas" data-en="Community Canvas">Community Canvas</p>
+    <h1 class="display page-header__title" data-de="Male mit" data-en="Draw with us">Male mit</h1>
+    <p class="page-header__lead" data-de="Zeichne ein kleines Werk direkt hier im Browser. Nach einer kurzen Prüfung erscheint es in unserer Community-Galerie." data-en="Draw a small piece right here in your browser. After a short review it appears in our community gallery.">Zeichne ein kleines Werk direkt hier im Browser. Nach einer kurzen Prüfung erscheint es in unserer Community-Galerie.</p>
+  </div>
+</section>
+
+<!-- DRAWING TOOL -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="canvas-studio reveal">
+      <div class="canvas-stage">
+        <canvas class="canvas-surface" id="drawCanvas" width="400" height="400" aria-label="Zeichenfläche"></canvas>
+        <p class="canvas-hint" data-de="Mit Maus oder Finger zeichnen" data-en="Draw with mouse or finger">Mit Maus oder Finger zeichnen</p>
+      </div>
+
+      <div class="canvas-controls">
+        <div class="control-row">
+          <span class="control-row__label" data-de="Farbe" data-en="Colour">Farbe</span>
+          <div class="swatches" id="swatches" role="group" aria-label="Farbe wählen"></div>
+        </div>
+
+        <div class="control-row">
+          <span class="control-row__label" data-de="Pinselgrösse" data-en="Brush size">Pinselgrösse</span>
+          <div class="brush-sizes" id="brushSizes" role="group" aria-label="Pinselgrösse wählen">
+            <button class="brush-btn" data-size="4" aria-label="Klein"><span class="dot" style="width:6px;height:6px;"></span></button>
+            <button class="brush-btn active" data-size="10" aria-label="Mittel"><span class="dot" style="width:12px;height:12px;"></span></button>
+            <button class="brush-btn" data-size="20" aria-label="Gross"><span class="dot" style="width:20px;height:20px;"></span></button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <div class="tool-actions">
+            <button class="tool-btn" id="undoBtn" data-de="Rückgängig" data-en="Undo">Rückgängig</button>
+            <button class="tool-btn" id="clearBtn" data-de="Alles löschen" data-en="Clear all">Alles löschen</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <span class="control-row__label" data-de="Dein Name (optional)" data-en="Your name (optional)">Dein Name (optional)</span>
+          <input type="text" class="name-input" id="nameInput" maxlength="50" placeholder="…" />
+        </div>
+
+        <a href="#" class="btn btn-primary btn-block" id="submitBtn"><span data-de="Einreichen" data-en="Submit">Einreichen</span><span class="arrow">→</span></a>
+        <p class="canvas-hint" id="submitMsg" style="display:none; color:var(--vivid-teal);"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY GALLERY -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow" style="margin-bottom:12px;" data-de="Community-Galerie" data-en="Community gallery">Community-Galerie</p>
+        <h2 class="h2" data-de="Von Besucherinnen und Besuchern" data-en="From our visitors">Von Besucherinnen und Besuchern</h2>
+      </div>
+    </div>
+    <div class="gallery-mosaic reveal d1" aria-hidden="true">
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="#E8C87A"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><path d="M6 32 L20 8 L34 32 Z" fill="#C4623A"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><path d="M6 24 Q20 4 34 24" stroke="#2E9EA4" stroke-width="4" fill="none"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><rect x="9" y="9" width="22" height="22" fill="#C48A7E"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="none" stroke="#1A6B6F" stroke-width="4"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><path d="M8 32 C 14 8, 26 8, 32 32 Z" fill="#7A9E7E"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><path d="M20 6 L26 18 L38 20 L26 22 L20 34 L14 22 L2 20 L14 18 Z" fill="#1A6B6F"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><circle cx="14" cy="16" r="7" fill="#C4623A"/><circle cx="26" cy="24" r="7" fill="#2E9EA4"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><path d="M6 20 H34 M20 6 V34" stroke="#6B6B68" stroke-width="4"/></svg></div>
+      <div class="gallery-mosaic__item"><svg viewBox="0 0 40 40"><rect x="8" y="14" width="24" height="12" rx="6" fill="#E8C87A"/></svg></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Atelier <span>Türkis</span></div>
+        <p class="footer__tagline" data-de="Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen." data-en="Art & creative studio. Minimal in structure, creative at heart.">Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+        <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+        <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+        <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+        <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+        <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Atelier Türkis. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></span>
+      <div class="footer__lang"><button data-lang="de" class="active">DE</button><span class="sep">|</span><button data-lang="en">EN</button></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+/* Community Canvas — minimal drawing tool (11-colour atelier palette) */
+(function () {
+  'use strict';
+  var PALETTE = [
+    ['#F5F0E8','Crème'], ['#EEEAE2','Leinen'], ['#1A6B6F','Teal'], ['#2E9EA4','Hellblau'],
+    ['#1A1A18','Schwarz'], ['#C4623A','Terracotta'], ['#C48A7E','Rosa'], ['#7A9E7E','Grün'],
+    ['#6B6B68','Grau'], ['#FFFFFF','Weiss'], ['#E8C87A','Gelb']
+  ];
+  var canvas = document.getElementById('drawCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var color = '#1A6B6F', size = 10, drawing = false;
+  var history = [];
+
+  // white background
+  function resetCanvas() { ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+  resetCanvas();
+
+  // swatches
+  var swatchWrap = document.getElementById('swatches');
+  PALETTE.forEach(function (c, i) {
+    var b = document.createElement('button');
+    b.className = 'swatch' + (c[0] === color ? ' active' : '');
+    b.style.background = c[0];
+    b.setAttribute('aria-label', c[1]);
+    b.addEventListener('click', function () {
+      color = c[0];
+      swatchWrap.querySelectorAll('.swatch').forEach(function (s) { s.classList.remove('active'); });
+      b.classList.add('active');
+    });
+    swatchWrap.appendChild(b);
+  });
+
+  // brush sizes
+  document.getElementById('brushSizes').querySelectorAll('.brush-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      size = parseInt(btn.getAttribute('data-size'), 10);
+      document.querySelectorAll('.brush-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  function pos(e) {
+    var r = canvas.getBoundingClientRect();
+    var cx = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+    var cy = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
+    return { x: cx * (canvas.width / r.width), y: cy * (canvas.height / r.height) };
+  }
+  function start(e) {
+    e.preventDefault();
+    history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    if (history.length > 30) history.shift();
+    drawing = true;
+    var p = pos(e);
+    ctx.beginPath(); ctx.moveTo(p.x, p.y);
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  }
+  function move(e) {
+    if (!drawing) return;
+    e.preventDefault();
+    var p = pos(e);
+    ctx.strokeStyle = color; ctx.lineWidth = size;
+    ctx.lineTo(p.x, p.y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(p.x, p.y);
+  }
+  function end() { drawing = false; ctx.beginPath(); }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, { passive: false });
+  canvas.addEventListener('touchmove', move, { passive: false });
+  canvas.addEventListener('touchend', end);
+
+  document.getElementById('undoBtn').addEventListener('click', function () {
+    if (history.length) ctx.putImageData(history.pop(), 0, 0);
+  });
+  document.getElementById('clearBtn').addEventListener('click', function () {
+    var msg = document.documentElement.getAttribute('lang') === 'en' ? 'Clear everything?' : 'Alles löschen?';
+    if (window.confirm(msg)) { history.push(ctx.getImageData(0, 0, canvas.width, canvas.height)); resetCanvas(); }
+  });
+  document.getElementById('submitBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    var m = document.getElementById('submitMsg');
+    m.style.display = 'block';
+    m.setAttribute('data-de', 'Danke! Dein Werk wird geprüft und erscheint bald in der Galerie.');
+    m.setAttribute('data-en', 'Thank you! Your artwork is being reviewed and will appear soon.');
+    m.textContent = document.documentElement.getAttribute('lang') === 'en'
+      ? 'Thank you! Your artwork is being reviewed and will appear soon.'
+      : 'Danke! Dein Werk wird geprüft und erscheint bald in der Galerie.';
+  });
+})();
+</script>
+</body>
+</html>

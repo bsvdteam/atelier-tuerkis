@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atelier — Atelier Türkis</title>
+<meta name="description" content="Über das Atelier Türkis — wer wir sind, woran wir glauben und wo du uns findest." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav solid" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">Atelier <span>Türkis</span></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a class="nav__link" href="index.html" data-de="Home" data-en="Home">Home</a>
+      <a class="nav__link" href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+      <a class="nav__link" href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+      <a class="nav__link active" href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+      <a class="nav__link" href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="active" aria-pressed="true">DE</button><span class="sep">|</span><button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top"><button class="mobile-menu__close" id="menuClose" aria-label="Menü schliessen"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+  <nav class="mobile-menu__links" aria-label="Mobile Navigation">
+    <a href="index.html" data-de="Home" data-en="Home">Home</a>
+    <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+    <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+    <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+    <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+  </nav>
+  <div class="mobile-menu__lang"><button data-lang="de" class="active">DE</button><span>|</span><button data-lang="en">EN</button></div>
+</div>
+
+<main>
+<!-- HERO STATEMENT -->
+<section class="page-header">
+  <div class="page-header__bg" aria-hidden="true"><span class="blob blob--1"></span><span class="blob blob--3"></span></div>
+  <div class="container page-header__inner">
+    <p class="eyebrow page-header__eyebrow" data-de="Das Atelier" data-en="The atelier">Das Atelier</p>
+    <h1 class="display page-header__title" data-de="Ein Raum zum Atmen und Gestalten" data-en="A room to breathe and create">Ein Raum zum Atmen und Gestalten</h1>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="section statement">
+  <div class="container">
+    <p class="statement__text reveal" data-de-html="Wir haben einen Ort geschaffen, an dem <em>Zeit</em> keine Rolle spielt — nur der Prozess, die Farbe und du."
+       data-en-html="We've created a place where <em>time</em> doesn't matter — only the process, the colour and you.">Wir haben einen Ort geschaffen, an dem <em>Zeit</em> keine Rolle spielt — nur der Prozess, die Farbe und du.</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="story-grid">
+      <div class="reveal">
+        <p class="eyebrow" data-de="Unsere Geschichte" data-en="Our story">Unsere Geschichte</p>
+        <h2 class="h2" style="margin-top:16px;" data-de="Wie alles begann" data-en="How it all began">Wie alles begann</h2>
+      </div>
+      <div class="prose reveal d1" style="font-size:1.0625rem; line-height:1.8; color:rgba(26,26,24,0.75);">
+        <p data-de="Das Atelier Türkis entstand aus einer einfachen Idee: einen Raum zu schaffen, in dem Menschen malen, formen und ausprobieren können — ohne Leistungsdruck, aber mit echter Anleitung." data-en="Atelier Türkis grew out of a simple idea: to create a space where people can paint, shape and experiment — without pressure, but with real guidance.">Das Atelier Türkis entstand aus einer einfachen Idee: einen Raum zu schaffen, in dem Menschen malen, formen und ausprobieren können — ohne Leistungsdruck, aber mit echter Anleitung.</p>
+        <p data-de="Wir glauben, dass Kreativität kein Talent ist, das man besitzt oder nicht, sondern eine Fähigkeit, die jeder Mensch entwickeln kann. Diese Überzeugung trägt alles, was wir tun — von den Kursen bis zur Art, wie wir den Raum gestalten." data-en="We believe creativity is not a talent you either have or don't, but a skill everyone can develop. That conviction carries everything we do — from the courses to the way we design the space.">Wir glauben, dass Kreativität kein Talent ist, das man besitzt oder nicht, sondern eine Fähigkeit, die jeder Mensch entwickeln kann. Diese Überzeugung trägt alles, was wir tun — von den Kursen bis zur Art, wie wir den Raum gestalten.</p>
+        <p data-de="Heute ist das Atelier ein Ort für Anfängerinnen und Fortgeschrittene, für Kinder und Erwachsene — ein Zuhause für alle, die gerne mit den Händen denken." data-en="Today the atelier is a place for beginners and advanced alike, for children and adults — a home for everyone who likes to think with their hands.">Heute ist das Atelier ein Ort für Anfängerinnen und Fortgeschrittene, für Kinder und Erwachsene — ein Zuhause für alle, die gerne mit den Händen denken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SPACE -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <p class="eyebrow reveal" style="margin-bottom:32px;" data-de="Der Raum" data-en="The space">Der Raum</p>
+    <div class="space-grid reveal d1">
+      <div class="space-grid__item ph ph--teal wide"></div>
+      <div class="space-grid__item ph ph--rose"></div>
+      <div class="space-grid__item ph ph--yellow"></div>
+      <div class="space-grid__item ph ph--sage"></div>
+      <div class="space-grid__item ph ph--graph"></div>
+      <div class="space-grid__item ph ph--mix wide"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow" style="margin-bottom:12px;" data-de="Das Team" data-en="The team">Das Team</p>
+        <h2 class="h2" data-de="Wer dich begleitet" data-en="Who guides you">Wer dich begleitet</h2>
+      </div>
+    </div>
+    <div class="team-grid">
+      <article class="team-card reveal">
+        <div class="team-card__photo ph ph--rose"></div>
+        <h3 class="h3 team-card__name">Lena Marmet</h3>
+        <p class="team-card__role" data-de="Aquarell · Zeichnen" data-en="Watercolour · Drawing">Aquarell · Zeichnen</p>
+        <p class="team-card__bio" data-de="Lena leitet das Atelier und unterrichtet seit über zehn Jahren Aquarell. Ihre Bilder leben von Zurückhaltung und Licht." data-en="Lena runs the atelier and has taught watercolour for over ten years. Her paintings thrive on restraint and light.">Lena leitet das Atelier und unterrichtet seit über zehn Jahren Aquarell. Ihre Bilder leben von Zurückhaltung und Licht.</p>
+      </article>
+      <article class="team-card reveal d1">
+        <div class="team-card__photo ph ph--terra"></div>
+        <h3 class="h3 team-card__name">Jonas Frei</h3>
+        <p class="team-card__role" data-de="Acryl · Abstraktion" data-en="Acrylic · Abstraction">Acryl · Abstraktion</p>
+        <p class="team-card__bio" data-de="Jonas arbeitet grossformatig und liebt den Moment, in dem ein Bild anfängt, sich selbst zu führen. Im Kurs ermutigt er zum Mut." data-en="Jonas works on large formats and loves the moment a painting starts to lead itself. In class, he encourages boldness.">Jonas arbeitet grossformatig und liebt den Moment, in dem ein Bild anfängt, sich selbst zu führen. Im Kurs ermutigt er zum Mut.</p>
+      </article>
+      <article class="team-card reveal d2">
+        <div class="team-card__photo ph ph--sage"></div>
+        <h3 class="h3 team-card__name">Mara Bühler</h3>
+        <p class="team-card__role" data-de="Keramik" data-en="Ceramics">Keramik</p>
+        <p class="team-card__bio" data-de="Mara führt durch alles rund um Ton und Drehscheibe. Ihre Gefässe sind schlicht, funktional und unverkennbar handgemacht." data-en="Mara guides everything around clay and the wheel. Her vessels are simple, functional and unmistakably handmade.">Mara führt durch alles rund um Ton und Drehscheibe. Ihre Gefässe sind schlicht, funktional und unverkennbar handgemacht.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" style="padding-top:0;">
+  <div class="container">
+    <div class="contact__grid">
+      <div class="reveal">
+        <p class="eyebrow" data-de="Kontakt & Anfahrt" data-en="Contact & location">Kontakt & Anfahrt</p>
+        <h2 class="h1 contact__title" data-de="Komm vorbei" data-en="Come visit">Komm vorbei</h2>
+        <p class="contact__lead" data-de="Wir freuen uns über deinen Besuch. Am besten meldest du dich kurz vorher — dann nehmen wir uns Zeit für dich." data-en="We'd love to see you. It's best to let us know beforehand — then we'll make time for you.">Wir freuen uns über deinen Besuch. Am besten meldest du dich kurz vorher — dann nehmen wir uns Zeit für dich.</p>
+      </div>
+      <div class="contact__items reveal d1">
+        <div class="contact__item"><span class="label" data-de="Adresse" data-en="Address">Adresse</span><p>Werkstrasse 12<br />8004 Zürich</p></div>
+        <div class="contact__item"><span class="label" data-de="Öffnungszeiten" data-en="Opening hours">Öffnungszeiten</span><p style="font-size:1.25rem;" data-de="Mo–Fr 14:00–20:00 · Sa 10:00–16:00" data-en="Mon–Fri 2–8pm · Sat 10am–4pm">Mo–Fr 14:00–20:00 · Sa 10:00–16:00</p></div>
+        <div class="contact__item"><span class="label" data-de="WhatsApp" data-en="WhatsApp">WhatsApp</span><a href="#">+41 79 123 45 67</a></div>
+        <div class="contact__item"><span class="label" data-de="E-Mail" data-en="Email">E-Mail</span><a href="#">hallo@atelier-tuerkis.ch</a></div>
+        <div class="contact__whatsapp">
+          <a href="#" class="btn btn-primary"><span data-de="Auf WhatsApp schreiben" data-en="Message on WhatsApp">Auf WhatsApp schreiben</span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Atelier <span>Türkis</span></div>
+        <p class="footer__tagline" data-de="Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen." data-en="Art & creative studio. Minimal in structure, creative at heart.">Kunst- und Kreativ-Atelier. Minimal in der Struktur, kreativ im Herzen.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="kurse.html" data-de="Kurse" data-en="Courses">Kurse</a>
+        <a href="galerie.html" data-de="Galerie" data-en="Gallery">Galerie</a>
+        <a href="atelier.html" data-de="Atelier" data-en="Atelier">Atelier</a>
+        <a href="canvas.html" data-de="Canvas" data-en="Canvas">Canvas</a>
+        <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+        <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Atelier Türkis. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></span>
+      <div class="footer__lang"><button data-lang="de" class="active">DE</button><span class="sep">|</span><button data-lang="en">EN</button></div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
