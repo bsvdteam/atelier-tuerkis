@@ -901,3 +901,17 @@ html.intro-seen .intro { display: none !important; }
   top: auto;
   height: 0.16em;
 }
+
+/* =====================================================================
+   Übersehene Inline-Styles aus kurs-detail(-kinder).html
+   ===================================================================== */
+.kurs-layout { display: grid; gap: 32px; grid-template-columns: 1fr; }
+@media (min-width: 940px) { .kurs-layout { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+.kurs-aside { position: sticky; top: 100px; }
+.kurs-hero-img { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16/10; box-shadow: var(--shadow); }
+
+/* Kinder-Eckdaten mit Emoji */
+.kidspecs { display: grid; gap: 12px; }
+.kidspec { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 18px; background: rgba(255,255,255,0.6); font-weight: 700; color: var(--ink-soft); }
+.kidspec b { color: var(--ink); font-weight: 700; margin-left: auto; font-family: var(--font-kids); }
+.kidspec span.emoji { font-size: 1.5rem; line-height: 1; }
