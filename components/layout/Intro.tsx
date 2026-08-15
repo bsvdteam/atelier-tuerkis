@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "@/i18n/navigation";
 
 export function Intro() {
   const [gone, setGone] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const doneRef = useRef(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     // Wiederkehrender Besuch / reduced-motion: intro-seen ist bereits gesetzt (Inline-Script)
@@ -38,7 +40,7 @@ export function Intro() {
     };
   }, []);
 
-  if (gone) return null;
+  if (gone || pathname.startsWith("/admin")) return null;
 
   return (
     <div ref={ref} className="intro" id="intro" role="presentation">

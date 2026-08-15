@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 
 const KEY = "at_cookie_consent";
 
 export function CookieBanner() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     let decided: string | null = null;
@@ -29,7 +30,7 @@ export function CookieBanner() {
     setOpen(false);
   };
 
-  if (!open) return null;
+  if (!open || pathname.startsWith("/admin")) return null;
 
   return (
     <div className="cookie" role="dialog" aria-label="Cookie-Hinweis" aria-live="polite">

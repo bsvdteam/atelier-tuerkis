@@ -1,5 +1,7 @@
+"use client";
+
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { SITE } from "@/lib/site";
 import { CookieSettingsButton } from "@/components/layout/CookieSettingsButton";
 import type { Locale } from "@/types";
@@ -7,6 +9,8 @@ import type { Locale } from "@/types";
 export function Footer() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
+  const pathname = usePathname();
+  if (pathname.startsWith("/admin")) return null;
 
   const discover = [
     { href: "/atelier", label: t("nav.ueberUns") },

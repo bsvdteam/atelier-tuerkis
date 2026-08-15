@@ -78,6 +78,8 @@ export function Header() {
     if (next !== locale) router.replace(pathname, { locale: next });
   };
 
+  if (pathname.startsWith("/admin")) return null;
+
   return (
     <>
       <header className="nav">
