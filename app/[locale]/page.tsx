@@ -4,7 +4,6 @@ import { CourseCard } from "@/components/ui/CourseCard";
 import { Testimonials } from "@/components/home/Testimonials";
 import { TESTIMONIALS } from "@/content";
 import { getCourses } from "@/lib/db";
-import { WatercolorCanvas } from "@/components/experience/WatercolorCanvas";
 import type { Course, Locale } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -17,12 +16,10 @@ const FLOAT = {
 };
 
 const TECHS = [
-  { c: "coral", e: "🎨", t: "Aquarell", s: "Farbe, die fliesst" },
-  { c: "violet", e: "✒️", t: "Handlettering", s: "Schöne Buchstaben" },
-  { c: "sky", e: "🧵", t: "Nähen", s: "Vom Stoff zum Stück" },
-  { c: "teal", e: "🌿", t: "Cyanotypie", s: "Blaudruck mit Sonne" },
   { c: "green", e: "✏️", t: "Zeichnen", s: "Sehen und festhalten" },
-  { c: "orange", e: "📓", t: "Buchbinden", s: "Eigene Notizbücher" },
+  { c: "orange", e: "📦", t: "Kartonage", s: "Schachteln & Boxen" },
+  { c: "coral", e: "🖐️", t: "Stempeldruck", s: "Selber schnitzen & drucken" },
+  { c: "sky", e: "📓", t: "Buchbinden", s: "Eigene Notizbücher" },
 ];
 
 export default async function HomePage({
@@ -42,8 +39,6 @@ export default async function HomePage({
 
   return (
     <>
-      <WatercolorCanvas />
-
       {/* HERO */}
       <section className="hero">
         <span className="float-wrap" data-parallax="0.22" style={{ top: "8%", left: "6%" }}>
@@ -157,8 +152,8 @@ export default async function HomePage({
             <Link href="/angebot/erwachsene" className="btn btn--coral">Alle Kurse für Erwachsene <span className="arr">→</span></Link>
           </div>
           <div className="agerow reveal" style={{ marginTop: "36px" }}>
-            <Link href="/angebot/kinder" className="agerow__link"><strong>Auch für Kinder</strong><span>Kreativwerkstatt, Ferien &amp; Geburtstage</span></Link>
-            <Link href="/angebot/gruppen" className="agerow__link"><strong>Gruppen &amp; Feiern</strong><span>Firmen, Vereine, Geburtstage</span></Link>
+            <Link href="/angebot/kinder" className="agerow__link"><strong>Kinderkurse</strong><span>Kreativwerkstatt, Ferien &amp; Geburtstage</span></Link>
+            <Link href="/angebot/gruppen" className="agerow__link"><strong>Gruppenkurse</strong><span>Firmen, Vereine, Geburtstage</span></Link>
           </div>
         </div>
       </section>
@@ -177,20 +172,6 @@ export default async function HomePage({
             {featured.map((c, i) => (
               <CourseCard key={c.slug} course={c} locale={locale} reveal={i === 1 ? "reveal d1" : i === 2 ? "reveal d2" : "reveal"} />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AKTUELLES */}
-      <section className="section section--tight">
-        <div className="container">
-          <div className="frost reveal" style={{ padding: "26px 28px", display: "flex", flexWrap: "wrap", gap: "18px", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
-              <span className="tag tag--green">Aktuell</span>
-              <span className="pill-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg> Ferienkurse Herbst: noch Plätze frei</span>
-              <span className="pill-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2L12 16.4 5.7 21l2.3-7.2-6-4.4h7.6z" /></svg> Neu: Cyanotypie-Workshop im November</span>
-            </div>
-            <Link href="/angebot" className="btn btn--ghost btn--sm">Termine ansehen <span className="arr">→</span></Link>
           </div>
         </div>
       </section>

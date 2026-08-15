@@ -15,6 +15,7 @@ import { PaintCursor } from "@/components/experience/PaintCursor";
 import { GrainOverlay } from "@/components/experience/GrainOverlay";
 import { SmoothScroll } from "@/components/experience/SmoothScroll";
 import { ScrollFX } from "@/components/experience/ScrollFX";
+import { WatercolorCanvas } from "@/components/experience/WatercolorCanvas";
 
 export const metadata: Metadata = {
   title: {
@@ -52,6 +53,7 @@ export default async function LocaleLayout({
       <body>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <NextIntlClientProvider>
+          <WatercolorCanvas />
           <Intro />
           <Header />
           <main>{children}</main>

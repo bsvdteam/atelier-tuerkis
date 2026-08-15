@@ -10,6 +10,11 @@ const KID_EMOJI: Record<string, string> = {
 };
 const MASONRY = ["pink", "sky", "yellow", "teal"];
 const KID_MASONRY = ["coral", "sky", "green", "violet"];
+const MONTHS = ["Jan.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."];
+const fmtDate = (iso: string) => {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d}. ${MONTHS[m - 1]} ${y}`;
+};
 
 export async function CourseDetail({ course, locale }: { course: Course; locale: Locale }) {
   const isKids = course.audience === "kinder";
@@ -121,6 +126,17 @@ export async function CourseDetail({ course, locale }: { course: Course; locale:
                       <div className="spec" key={i}><dt>{getLocalised(m.label, locale)}</dt><dd>{getLocalised(m.value, locale)}</dd></div>
                     ))}
                   </dl>
+                )}
+
+                {course.dates && course.dates.length > 0 && (
+                  <div className="course-dates">
+                    <span className="course-dates__count">{course.dates.length}× Termin</span>
+                    <ul>
+                      {course.dates.map((d) => (
+                        <li key={d}>{fmtDate(d)}</li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
 
                 <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", margin: "20px 4px 16px" }}>

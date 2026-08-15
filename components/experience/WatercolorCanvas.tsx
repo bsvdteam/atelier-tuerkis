@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "@/i18n/navigation";
 
 /**
  * Echtzeit-Aquarell-Hintergrund (roher WebGL-Fragment-Shader).
@@ -78,8 +79,11 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
 
 export function WatercolorCanvas() {
   const ref = useRef<HTMLCanvasElement>(null);
+  const pathname = usePathname();
+  const isAdmin = pathname.startsWith("/admin");
 
   useEffect(() => {
+    if (isAdmin) return;
     const canvas = ref.current;
     if (!canvas) return;
     const gl = canvas.getContext("webgl", { antialias: true, alpha: false });
@@ -156,7 +160,8 @@ export function WatercolorCanvas() {
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, []);
+  }, [isAdmin]);
 
+  if (isAdmin) return null;
   return <canvas ref={ref} className="wc-canvas" aria-hidden="true" />;
 }

@@ -23,7 +23,11 @@ export function SmoothScroll() {
     const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true });
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
-    lenis.on("scroll", ScrollTrigger.update);
+    const nav = document.querySelector(".nav");
+    lenis.on("scroll", ({ scroll }: { scroll: number }) => {
+      ScrollTrigger.update();
+      nav?.classList.toggle("scrolled", scroll > 16);
+    });
     const onTick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(onTick);
     gsap.ticker.lagSmoothing(0);
