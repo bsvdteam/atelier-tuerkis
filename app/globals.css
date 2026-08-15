@@ -1036,3 +1036,22 @@ html.intro-seen .intro { display: none !important; }
 .datepick__chip { display: inline-flex; align-items: center; gap: 6px; background: #eef4f3; border: 1px solid var(--line);
   border-radius: 999px; padding: 4px 6px 4px 12px; font-size: 0.82rem; font-weight: 700; }
 .datepick__chip button { border: none; background: #d9e6e4; border-radius: 999px; width: 18px; height: 18px; cursor: pointer; line-height: 1; }
+
+/* Fix: Untermenüs dürfen bei geschlossenem Menü nicht durchscheinen
+   (Mobile setzt .sub auf visibility:visible, was das hidden des mmenu überschreibt) */
+.mmenu:not(.open) .sub { visibility: hidden !important; }
+
+/* Admin mobil: Kopfzeile umbrechen, Tabelle horizontal scrollen */
+.admin-tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.admin-tablewrap .admin-table { min-width: 620px; }
+@media (max-width: 760px) {
+  .admin__top { flex-wrap: wrap; padding: 12px 14px; gap: 10px 12px; }
+  .admin__spacer, .admin__user { display: none; }
+  .admin__brand { margin-right: auto; order: 1; }
+  .admin__top form { order: 2; }
+  .admin__nav { order: 3; width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+  .admin__nav a { white-space: nowrap; }
+  .admin__wrap { padding: 20px 14px 70px; }
+  .admin__title { font-size: 1.45rem; }
+  .admin-form { max-width: 100%; }
+}

@@ -41,6 +41,7 @@ export default async function ResourceListPage({
       {!rows || rows.length === 0 ? (
         <div className="admin-card">Noch keine Einträge. Leg mit „+ Neu" den ersten an.</div>
       ) : (
+        <div className="admin-tablewrap">
         <table className="admin-table">
           <thead>
             <tr>
@@ -80,6 +81,7 @@ export default async function ResourceListPage({
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </>
   );
