@@ -2,8 +2,11 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CourseCard } from "@/components/ui/CourseCard";
 import { Testimonials } from "@/components/home/Testimonials";
-import { courseBySlug, TESTIMONIALS } from "@/content";
+import { TESTIMONIALS } from "@/content";
+import { getCourses } from "@/lib/db";
 import type { Course, Locale } from "@/types";
+
+export const dynamic = "force-dynamic";
 
 const FLOAT = {
   arc: (c: string) => <path d="M8 26 Q20 6 32 26" stroke={c} strokeWidth="4" fill="none" strokeLinecap="round" />,
@@ -30,9 +33,11 @@ export default async function HomePage({
   setRequestLocale(raw);
   const locale = raw as Locale;
 
-  const featured = ["aquarell-fuer-einsteiger", "handlettering-kalligrafie", "naehen-fuer-einsteiger"]
-    .map((s) => courseBySlug("erwachsene", s))
-    .filter(Boolean) as Course[];
+  const adults = await getCourses("erwachsene");
+  const featuredSlugs = ["aquarell-fuer-einsteiger", "handlettering-kalligrafie", "naehen-fuer-einsteiger"];
+  const featured = (featuredSlugs
+    .map((s) => adults.find((c) => c.slug === s))
+    .filter(Boolean) as Course[]).concat(adults).slice(0, 3);
 
   return (
     <>

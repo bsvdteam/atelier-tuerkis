@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import { COURSES, teamBySlug } from "@/content";
+import { getCourses, getTeamMember } from "@/lib/db";
 import { getLocalised } from "@/lib/localise";
 import { buildWhatsAppUrl, buildMailtoUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
@@ -11,12 +11,12 @@ const KID_EMOJI: Record<string, string> = {
 const MASONRY = ["pink", "sky", "yellow", "teal"];
 const KID_MASONRY = ["coral", "sky", "green", "violet"];
 
-export function CourseDetail({ course, locale }: { course: Course; locale: Locale }) {
+export async function CourseDetail({ course, locale }: { course: Course; locale: Locale }) {
   const isKids = course.audience === "kinder";
   const title = getLocalised(course.title, locale);
   const category = getLocalised(course.category, locale);
-  const instructor = teamBySlug(course.instructor);
-  const related = COURSES.filter((c) => c.audience === course.audience && c.slug !== course.slug).slice(0, 3);
+  const instructor = await getTeamMember(course.instructor);
+  const related = (await getCourses(course.audience)).filter((c) => c.slug !== course.slug).slice(0, 3);
 
   const waText = isKids
     ? "Hallo Atelier Türkis, mein Kind möchte gern zu einem Kinderkurs. Könnt ihr mir mehr Infos geben?"

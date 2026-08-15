@@ -1,16 +1,16 @@
 import { Link } from "@/i18n/navigation";
 import { ArtworkGallery } from "@/components/detail/ArtworkGallery";
-import { relatedArtworks, teamBySlug } from "@/content";
+import { getProducts, getTeamMember } from "@/lib/db";
 import { getLocalised } from "@/lib/localise";
 import { buildWhatsAppUrl, buildMailtoUrl } from "@/lib/whatsapp";
 import type { Artwork, Locale, PlaceholderColor } from "@/types";
 
 const PALETTE: PlaceholderColor[] = ["sky", "teal", "green", "violet"];
 
-export function ArtworkDetail({ artwork, locale }: { artwork: Artwork; locale: Locale }) {
+export async function ArtworkDetail({ artwork, locale }: { artwork: Artwork; locale: Locale }) {
   const title = getLocalised(artwork.title, locale);
-  const artist = teamBySlug(artwork.instructor);
-  const related = relatedArtworks(artwork.slug, 3);
+  const artist = await getTeamMember(artwork.instructor);
+  const related = (await getProducts()).filter((a) => a.slug !== artwork.slug).slice(0, 3);
   const galleryColors = [artwork.color, ...PALETTE.filter((c) => c !== artwork.color)].slice(0, 4);
 
   return (

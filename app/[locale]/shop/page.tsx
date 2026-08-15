@@ -3,9 +3,10 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { ShopFilterList } from "@/components/shop/ShopFilterList";
-import { ARTWORKS } from "@/content";
+import { getProducts } from "@/lib/db";
 import type { Locale } from "@/types";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Shop" };
 
 export default async function ShopPage({
@@ -16,6 +17,7 @@ export default async function ShopPage({
   const { locale: raw } = await params;
   setRequestLocale(raw);
   const locale = raw as Locale;
+  const artworks = await getProducts();
 
   return (
     <>
@@ -28,7 +30,7 @@ export default async function ShopPage({
 
       <section className="section section--tight">
         <div className="container">
-          <ShopFilterList artworks={ARTWORKS} locale={locale} />
+          <ShopFilterList artworks={artworks} locale={locale} />
 
           <div className="frost reveal mt-l" style={{ padding: "24px 28px", display: "flex", flexWrap: "wrap", gap: "14px", alignItems: "center", justifyContent: "space-between" }}>
             <span className="pill-info">

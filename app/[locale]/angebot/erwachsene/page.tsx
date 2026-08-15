@@ -3,7 +3,10 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { ErwachseneView } from "@/components/angebot/ErwachseneView";
+import { getCourses } from "@/lib/db";
+import type { Locale } from "@/types";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Kurse für Erwachsene" };
 
 export default async function ErwachsenePage({
@@ -11,8 +14,10 @@ export default async function ErwachsenePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  setRequestLocale(locale);
+  const { locale: raw } = await params;
+  setRequestLocale(raw);
+  const locale = raw as Locale;
+  const courses = await getCourses("erwachsene");
 
   return (
     <>
@@ -25,7 +30,7 @@ export default async function ErwachsenePage({
 
       <section className="section section--tight">
         <div className="container">
-          <ErwachseneView />
+          <ErwachseneView courses={courses} locale={locale} />
 
           <div className="frost reveal mt-l" style={{ padding: "24px 28px", display: "flex", flexWrap: "wrap", gap: "14px", alignItems: "center", justifyContent: "space-between" }}>
             <span className="pill-info">

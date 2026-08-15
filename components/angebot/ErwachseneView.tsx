@@ -2,47 +2,27 @@
 
 import { useMemo, useState } from "react";
 import { Link } from "@/i18n/navigation";
+import { getLocalised } from "@/lib/localise";
 import { cn } from "@/lib/utils";
-
-type Card = {
-  cat: string;
-  slug: string;
-  ph: string;
-  label: string;
-  tag: string;
-  tagMod: string;
-  spots?: string;
-  spotsFew?: boolean;
-  title: string;
-  desc: string;
-  price: string;
-};
-
-const CARDS: Card[] = [
-  { cat: "malen aktuell", slug: "aquarell-fuer-einsteiger", ph: "coral", label: "Aquarell", tag: "Malen", tagMod: "coral", spots: "Start 14. Sep", title: "Aquarell für Einsteiger", desc: "Farbverläufe, Nass-in-Nass und der Mut zur leeren Fläche.", price: "CHF 280" },
-  { cat: "malen", slug: "zeichnen-grundlagen", ph: "teal", label: "Zeichnen", tag: "Zeichnen", tagMod: "sky", title: "Zeichnen Grundlagen", desc: "Linie, Licht und Schatten, beobachten und festhalten lernen.", price: "CHF 260" },
-  { cat: "papier", slug: "handlettering-kalligrafie", ph: "violet", label: "Lettering", tag: "Papier", tagMod: "violet", title: "Handlettering & Kalligrafie", desc: "Schöne Buchstaben von Hand, für Karten und Geschenke.", price: "CHF 240" },
-  { cat: "papier", slug: "buchbinden-schachteln", ph: "orange", label: "Buchbinden", tag: "Papier", tagMod: "orange", title: "Buchbinden & Schachteln", desc: "Eigene Notizbücher und schöne Boxen selbst gefertigt.", price: "CHF 290" },
-  { cat: "textil aktuell", slug: "naehen-fuer-einsteiger", ph: "pink", label: "Nähen", tag: "Textil", tagMod: "coral", spots: "wenige Plätze", spotsFew: true, title: "Nähen für Einsteiger", desc: "Von der Nähmaschine bis zum ersten fertigen Stück.", price: "CHF 300" },
-  { cat: "foto aktuell", slug: "cyanotypie-workshop", ph: "sky", label: "Cyanotypie", tag: "Experimentell", tagMod: "sky", spots: "Neu · 8. Nov", title: "Cyanotypie-Workshop", desc: "Blaudruck mit Sonne & Wasser, magische Naturbilder.", price: "CHF 160" },
-];
-
-const FILTERS = [
-  { key: "all", label: "Alle" },
-  { key: "aktuell", label: "Aktuell" },
-  { key: "malen", label: "Malen & Zeichnen" },
-  { key: "papier", label: "Papier & Schrift" },
-  { key: "textil", label: "Textil" },
-  { key: "foto", label: "Experimentell" },
-];
+import type { Course, Locale } from "@/types";
 
 const d = (i: number) => (i % 3 === 1 ? " d1" : i % 3 === 2 ? " d2" : "");
 
-export function ErwachseneView() {
+export function ErwachseneView({ courses, locale }: { courses: Course[]; locale: Locale }) {
   const [view, setView] = useState<"cards" | "calendar">("cards");
   const [filter, setFilter] = useState("all");
 
-  const shown = filter === "all" ? CARDS : CARDS.filter((c) => c.cat.split(" ").includes(filter));
+  const categories = useMemo(() => {
+    const seen = new Map<string, string>();
+    for (const c of courses) {
+      const key = c.category.de.toLowerCase();
+      if (!seen.has(key)) seen.set(key, getLocalised(c.category, locale));
+    }
+    return Array.from(seen, ([key, label]) => ({ key, label }));
+  }, [courses, locale]);
+
+  const shown =
+    filter === "all" ? courses : courses.filter((c) => c.category.de.toLowerCase() === filter);
 
   return (
     <>
@@ -61,50 +41,65 @@ export function ErwachseneView() {
       {view === "cards" && (
         <div>
           <div className="filters reveal in">
-            {FILTERS.map((f) => (
-              <button key={f.key} className={filter === f.key ? "active" : ""} onClick={() => setFilter(f.key)}>
-                {f.label}
+            <button className={filter === "all" ? "active" : ""} onClick={() => setFilter("all")}>Alle</button>
+            {categories.map((c) => (
+              <button key={c.key} className={filter === c.key ? "active" : ""} onClick={() => setFilter(c.key)}>
+                {c.label}
               </button>
             ))}
           </div>
           <div className="grid grid-3">
-            {shown.map((c, i) => (
-              <Link key={c.slug} className={`card reveal in${d(i)}`} href={`/angebot/erwachsene/${c.slug}`}>
-                <div className="card__media"><div className={`ph ph--${c.ph}`} /><div className="ph-label">{c.label}</div></div>
-                <div className="card__body">
-                  <div className="card__spots">
-                    <span className={`tag tag--${c.tagMod}`}>{c.tag}</span>
-                    {c.spots && <span className={cn("spots", c.spotsFew && "spots--few")}><span className="spots__dot" />{c.spots}</span>}
+            {shown.map((c, i) => {
+              const few = /wenige|noch [1-3] /i.test(c.availability?.de ?? "");
+              return (
+                <Link key={c.slug} className={`card reveal in${d(i)}`} href={`/angebot/erwachsene/${c.slug}`}>
+                  <div className="card__media"><div className={`ph ph--${c.color}`} /><div className="ph-label">{getLocalised(c.category, locale)}</div></div>
+                  <div className="card__body">
+                    <div className="card__spots">
+                      <span className={`tag tag--${c.color}`}>{getLocalised(c.category, locale)}</span>
+                      {c.availability && (
+                        <span className={cn("spots", few && "spots--few")}><span className="spots__dot" />{getLocalised(c.availability, locale)}</span>
+                      )}
+                    </div>
+                    <h3 className="card__title">{getLocalised(c.title, locale)}</h3>
+                    <p className="card__desc">{getLocalised(c.teaser, locale)}</p>
+                    <div className="card__foot"><span className="card__price">{c.price}</span><span className="card__arrow">→</span></div>
                   </div>
-                  <h3 className="card__title">{c.title}</h3>
-                  <p className="card__desc">{c.desc}</p>
-                  <div className="card__foot"><span className="card__price">{c.price}</span><span className="card__arrow">→</span></div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}
 
-      {view === "calendar" && <Calendar />}
+      {view === "calendar" && <Calendar courses={courses} locale={locale} />}
     </>
   );
 }
 
-const CAL_COURSES = [
-  { dow: 1, time: "18–20 Uhr", title: "Zeichnen Grundlagen", mod: "sky", slug: "zeichnen-grundlagen" },
-  { dow: 2, time: "18–20 Uhr", title: "Aquarell Einsteiger", mod: "coral", slug: "aquarell-fuer-einsteiger" },
-  { dow: 3, time: "18–20:30", title: "Nähen Einsteiger", mod: "coral", slug: "naehen-fuer-einsteiger" },
-  { dow: 4, time: "19–21 Uhr", title: "Handlettering", mod: "violet", slug: "handlettering-kalligrafie" },
-  { dow: 6, time: "10–13 Uhr", title: "Buchbinden", mod: "orange", slug: "buchbinden-schachteln" },
-  { dow: 6, time: "13–17 Uhr", title: "Cyanotypie", mod: "sky", slug: "cyanotypie-workshop" },
-];
 const MONTHS = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 const WD = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+const DOW: Record<string, number> = { mo: 1, di: 2, mi: 3, do: 4, fr: 5, sa: 6, so: 0 };
 
-function Calendar() {
+/** Leitet aus dem Termin-Text (z.B. „Di 18–20 Uhr") Wochentag + Zeit ab. */
+function parseSchedule(course: Course): { dow: number; time: string } | null {
+  const s = course.schedule?.de ?? "";
+  const m = s.match(/^(Mo|Di|Mi|Do|Fr|Sa|So)\s+(.*)$/i);
+  if (!m) return null;
+  return { dow: DOW[m[1].toLowerCase()], time: m[2].replace(/\s*Uhr\s*$/i, "") };
+}
+
+function Calendar({ courses, locale }: { courses: Course[]; locale: Locale }) {
   const today = useMemo(() => new Date(), []);
   const [cur, setCur] = useState(() => new Date(today.getFullYear(), today.getMonth(), 1));
+
+  const events = useMemo(
+    () =>
+      courses
+        .map((c) => ({ c, s: parseSchedule(c) }))
+        .filter((e): e is { c: Course; s: { dow: number; time: string } } => e.s !== null),
+    [courses],
+  );
 
   const y = cur.getFullYear();
   const m = cur.getMonth();
@@ -134,9 +129,9 @@ function Calendar() {
             return (
               <div className={cn("cal__cell", isToday && "cal__cell--today")} key={day}>
                 <span className="cal__daynum">{day}</span>
-                {CAL_COURSES.filter((c) => c.dow === dow).map((c, j) => (
-                  <Link key={j} className={`cal__event cal__event--${c.mod}`} href={`/angebot/erwachsene/${c.slug}`}>
-                    <span className="t">{c.time}</span><span className="n">{c.title}</span>
+                {events.filter((e) => e.s.dow === dow).map((e, j) => (
+                  <Link key={j} className={`cal__event cal__event--${e.c.color}`} href={`/angebot/erwachsene/${e.c.slug}`}>
+                    <span className="t">{e.s.time}</span><span className="n">{getLocalised(e.c.title, locale)}</span>
                   </Link>
                 ))}
               </div>

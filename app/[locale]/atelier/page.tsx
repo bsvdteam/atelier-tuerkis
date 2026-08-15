@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { TEAM } from "@/content";
+import { getTeam } from "@/lib/db";
 import { getLocalised } from "@/lib/localise";
 import type { Locale } from "@/types";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Atelier" };
 
 const VALUES = [
@@ -32,6 +33,7 @@ export default async function AtelierPage({
   const { locale: raw } = await params;
   setRequestLocale(raw);
   const locale = raw as Locale;
+  const team = await getTeam();
 
   return (
     <>
@@ -113,7 +115,7 @@ export default async function AtelierPage({
             <p className="lead mt-s">Menschen, die ihr Handwerk lieben, und es mit Geduld und Freude weitergeben.</p>
           </div>
           <div className="grid grid-3 mt-l">
-            {TEAM.map((m, i) => (
+            {team.map((m, i) => (
               <article key={m.slug} className={`card team-card reveal${d(i)}`}>
                 <div className="card__media"><div className={`ph ph--${m.color}`} /></div>
                 <div className="card__body">
