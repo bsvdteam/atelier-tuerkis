@@ -17,13 +17,20 @@ export function Header() {
   const burgerRef = useRef<HTMLButtonElement>(null);
   const mmenuRef = useRef<HTMLDivElement>(null);
 
-  // Blur-Streifen beim Scrollen
+  // Blur-Streifen beim Scrollen — robust, egal ob window oder body scrollt
   useEffect(() => {
     const nav = document.querySelector(".nav");
-    const onScroll = () => nav?.classList.toggle("scrolled", window.scrollY > 16);
+    const onScroll = () => {
+      const y =
+        window.scrollY ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0;
+      nav?.classList.toggle("scrolled", y > 16);
+    };
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true });
+    return () => window.removeEventListener("scroll", onScroll, { capture: true });
   }, []);
 
   // Body-Scroll sperren + Escape schliesst

@@ -75,7 +75,7 @@ body {
   color: var(--ink);
   font-size: 17px;
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
   min-height: 100vh;
 
   /* ---- AQUARELL-HINTERGRUND (wie im Screen, viewport-fix) ----
