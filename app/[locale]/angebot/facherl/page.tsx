@@ -20,13 +20,13 @@ const SHELF: { color: PlaceholderColor; label: string; free?: boolean }[] = [
 
 const PLANS = [
   { t: "Halbes Jahr", price: "CHF 30", note: "6 Monate dein Facherl", tag: "" },
-  { t: "Ganzes Jahr", price: "CHF 50", note: "12 Monate — am beliebtesten", tag: "Beliebt" },
+  { t: "Ganzes Jahr", price: "CHF 50", note: "12 Monate, am beliebtesten", tag: "Beliebt" },
 ];
 
 const STEPS = [
-  { n: "1", text: "Sag uns Bescheid — wir zeigen dir, welche Fächer gerade frei sind." },
+  { n: "1", text: "Sag uns Bescheid, wir zeigen dir, welche Fächer gerade frei sind." },
   { n: "2", text: "Du gestaltest dein Facherl: ausstellen, dekorieren oder zum Verkauf anbieten." },
-  { n: "3", text: "Wir geben ihm einen Platz im Atelier — deine kleine Bühne mitten im Geschehen." },
+  { n: "3", text: "Wir geben ihm einen Platz im Atelier, deine kleine Bühne mitten im Geschehen." },
 ];
 
 export default async function FacherlPage({
@@ -47,7 +47,7 @@ export default async function FacherlPage({
         ]}
         eyebrow="Facherl"
         title={<>Dein eigenes <span className="squiggle-word">Facherl</span></>}
-        lead="In unserem Atelier steht ein Regal voller kleiner Fächer — dein eigenes Schaufenster mitten im Atelier. Stell aus, verkaufe oder zeig einfach, was du gestaltest. Wir kümmern uns um den Ort, du um die Ideen."
+        lead="In unserem Atelier steht ein Regal voller kleiner Fächer, dein eigenes Schaufenster mitten im Atelier. Stell aus, verkaufe oder zeig einfach, was du gestaltest. Wir kümmern uns um den Ort, du um die Ideen."
       />
 
       {/* Das Regal */}
@@ -61,7 +61,7 @@ export default async function FacherlPage({
             ))}
           </div>
           <p className="muted center" style={{ marginTop: "16px", fontSize: "0.9rem" }}>
-            Jedes Fach ist ein kleiner Ausstellungsplatz — einige sind gerade frei.
+            Jedes Fach ist ein kleiner Ausstellungsplatz, einige sind gerade frei.
           </p>
         </div>
       </section>
@@ -110,7 +110,7 @@ export default async function FacherlPage({
           <div className="cta-banner reveal">
             <span className="tag tag--sky">Frei ab sofort</span>
             <h2 className="h2 mt-s">Ein Facherl reservieren</h2>
-            <p className="lead mt-s center maxw">Schreib uns kurz — wir sagen dir, welche Fächer frei sind, und richten dir deins ein.</p>
+            <p className="lead mt-s center maxw">Schreib uns kurz, wir sagen dir, welche Fächer frei sind, und richten dir deins ein.</p>
             <div className="btn-row" style={{ justifyContent: "center" }}>
               <ContactCta
                 whatsappText="Hallo Atelier Türkis, ich möchte gern ein Facherl mieten. Ist gerade eines frei?"

@@ -9,8 +9,8 @@ export const ARTWORKS: Artwork[] = [
     group: "werke",
     price: "CHF 480",
     teaser: {
-      de: "Ruhe in Blau und Grün — ein Morgen am See, in Aquarell festgehalten.",
-      en: "Calm in blue and green — a morning by the lake in watercolour.",
+      de: "Ruhe in Blau und Grün, ein Morgen am See, in Aquarell festgehalten.",
+      en: "Calm in blue and green, a morning by the lake in watercolour.",
     },
     description: {
       de: "Ein stilles Werk in gedeckten Blau- und Grüntönen. Die weichen Verläufe des Aquarells fangen die Ruhe eines frühen Morgens am Wasser ein.",
@@ -56,8 +56,8 @@ export const ARTWORKS: Artwork[] = [
     group: "werke",
     price: "CHF 390",
     teaser: {
-      de: "Zarte Tropfen und weiches Licht — ein kleines, feines Aquarell.",
-      en: "Delicate drops and soft light — a small, fine watercolour.",
+      de: "Zarte Tropfen und weiches Licht, ein kleines, feines Aquarell.",
+      en: "Delicate drops and soft light, a small, fine watercolour.",
     },
     specs: [
       { label: { de: "Technik" }, value: { de: "Aquarell auf Büttenpapier" } },
@@ -96,8 +96,8 @@ export const ARTWORKS: Artwork[] = [
     group: "produkte",
     price: "CHF 38",
     teaser: {
-      de: "Fadengeheftet, mit Büttenpapier-Umschlag — zum Schreiben und Skizzieren.",
-      en: "Thread-sewn, with a handmade paper cover — to write and sketch.",
+      de: "Fadengeheftet, mit Büttenpapier-Umschlag, zum Schreiben und Skizzieren.",
+      en: "Thread-sewn, with a handmade paper cover, to write and sketch.",
     },
     specs: [
       { label: { de: "Bindung" }, value: { de: "fadengeheftet" } },
@@ -114,8 +114,8 @@ export const ARTWORKS: Artwork[] = [
     group: "produkte",
     price: "CHF 24",
     teaser: {
-      de: "5 Cyanotypie-Karten mit Couverts — zum Verschenken oder Behalten.",
-      en: "5 cyanotype cards with envelopes — to gift or keep.",
+      de: "5 Cyanotypie-Karten mit Couverts, zum Verschenken oder Behalten.",
+      en: "5 cyanotype cards with envelopes, to gift or keep.",
     },
     specs: [
       { label: { de: "Inhalt" }, value: { de: "5 Karten + Couverts" } },
@@ -132,8 +132,8 @@ export const ARTWORKS: Artwork[] = [
     group: "material",
     price: "CHF 55",
     teaser: {
-      de: "Farben, Pinsel & Papier — alles, um zu Hause weiterzumachen.",
-      en: "Paints, brushes & paper — everything to continue at home.",
+      de: "Farben, Pinsel & Papier, alles, um zu Hause weiterzumachen.",
+      en: "Paints, brushes & paper, everything to continue at home.",
     },
     specs: [
       { label: { de: "Inhalt" }, value: { de: "Farben, Pinsel & Papier" } },

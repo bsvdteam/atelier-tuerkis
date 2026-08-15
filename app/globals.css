@@ -1104,3 +1104,11 @@ html.intro-seen .intro { display: none !important; }
 .course-dates ul { list-style: none; display: grid; gap: 4px; }
 .course-dates li { color: var(--ink-soft); font-weight: 700; font-size: 0.92rem; }
 .course-dates li::before { content: "📅 "; }
+
+/* Stärkerer Blur/Frost oben beim Scrollen */
+.nav::before {
+  height: 118px !important;
+  backdrop-filter: blur(20px) saturate(1.05) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.05) !important;
+  background: linear-gradient(to bottom, rgba(246, 252, 250, 0.72), rgba(246, 252, 250, 0)) !important;
+}

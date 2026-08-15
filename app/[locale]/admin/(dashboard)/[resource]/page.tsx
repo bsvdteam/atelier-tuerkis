@@ -26,7 +26,7 @@ export default async function ResourceListPage({
         </span>
       );
     }
-    return String(v ?? "—");
+    return String(v ?? "");
   };
 
   return (

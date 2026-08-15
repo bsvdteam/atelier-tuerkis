@@ -9,14 +9,14 @@ export const COURSES: Course[] = [
     title: { de: "Aquarell für Einsteiger", en: "Watercolour for Beginners" },
     category: { de: "Malen", en: "Painting" },
     teaser: {
-      de: "Lerne die Grundlagen der Aquarellmalerei — Farben, Wasser und Loslassen.",
-      en: "Learn the basics of watercolour — colour, water and letting go.",
+      de: "Lerne die Grundlagen der Aquarellmalerei, Farben, Wasser und Loslassen.",
+      en: "Learn the basics of watercolour, colour, water and letting go.",
     },
     description: {
-      de: "In diesem Kurs tauchst du Schritt für Schritt in die Aquarellmalerei ein. Wir beginnen bei den Grundlagen — wie sich Farbe und Wasser verhalten, wie du Verläufe legst und mit dem Zufall spielst. Ganz ohne Druck, in einer kleinen Gruppe und mit viel individueller Begleitung.",
+      de: "In diesem Kurs tauchst du Schritt für Schritt in die Aquarellmalerei ein. Wir beginnen bei den Grundlagen, wie sich Farbe und Wasser verhalten, wie du Verläufe legst und mit dem Zufall spielst. Ganz ohne Druck, in einer kleinen Gruppe und mit viel individueller Begleitung.",
     },
     takeaway: {
-      de: "Zwei bis drei fertige Aquarelle, ein Gefühl für Farbe und Wasser — und die Gewissheit, dass du das kannst.",
+      de: "Zwei bis drei fertige Aquarelle, ein Gefühl für Farbe und Wasser und die Gewissheit, dass du das kannst.",
     },
     price: "CHF 280",
     meta: [
@@ -35,7 +35,7 @@ export const COURSES: Course[] = [
     faq: [
       {
         q: { de: "Brauche ich Vorkenntnisse?" },
-        a: { de: "Nein. Der Kurs ist für absolute Einsteiger gedacht — wir beginnen ganz vorne." },
+        a: { de: "Nein. Der Kurs ist für absolute Einsteiger gedacht, wir beginnen ganz vorne." },
       },
       {
         q: { de: "Muss ich Material mitbringen?" },
@@ -43,7 +43,7 @@ export const COURSES: Course[] = [
       },
       {
         q: { de: "Was, wenn ich einen Termin verpasse?" },
-        a: { de: "Kein Problem — melde dich kurz, wir finden eine Lösung." },
+        a: { de: "Kein Problem, melde dich kurz, wir finden eine Lösung." },
       },
     ],
     color: "teal",
@@ -54,8 +54,8 @@ export const COURSES: Course[] = [
     title: { de: "Zeichnen Grundlagen", en: "Drawing Fundamentals" },
     category: { de: "Zeichnen", en: "Drawing" },
     teaser: {
-      de: "Linie, Licht und Schatten — die Basis, auf der alles andere aufbaut.",
-      en: "Line, light and shadow — the base everything else builds on.",
+      de: "Linie, Licht und Schatten, die Basis, auf der alles andere aufbaut.",
+      en: "Line, light and shadow, the base everything else builds on.",
     },
     description: {
       de: "Zeichnen kann jede und jeder lernen. In diesem Kurs übst du das Sehen und Umsetzen: Proportionen, Linienführung, Licht und Schatten. Mit Bleistift und einfachen Übungen entwickelst du Sicherheit und deinen eigenen Strich.",
@@ -80,8 +80,8 @@ export const COURSES: Course[] = [
     title: { de: "Handlettering & Kalligrafie", en: "Hand-lettering & Calligraphy" },
     category: { de: "Papier", en: "Paper" },
     teaser: {
-      de: "Schöne Buchstaben von Hand — verspielt, ruhig und meditativ.",
-      en: "Beautiful letters by hand — playful, calm and meditative.",
+      de: "Schöne Buchstaben von Hand, verspielt, ruhig und meditativ.",
+      en: "Beautiful letters by hand, playful, calm and meditative.",
     },
     description: {
       de: "Zwischen Kunst und Handwerk: Du lernst die Grundformen moderner Kalligrafie, den Umgang mit Brush-Pen und Feder und wie aus einzelnen Buchstaben stimmige Kompositionen werden. Ein Kurs, der Ordnung und Verspieltheit zusammenbringt.",
@@ -135,8 +135,8 @@ export const COURSES: Course[] = [
     title: { de: "Nähen für Einsteiger", en: "Sewing for Beginners" },
     category: { de: "Textil", en: "Textile" },
     teaser: {
-      de: "Von der Nähmaschine bis zum ersten fertigen Stück — ohne Berührungsängste.",
-      en: "From the sewing machine to your first finished piece — no fear.",
+      de: "Von der Nähmaschine bis zum ersten fertigen Stück, ohne Berührungsängste.",
+      en: "From the sewing machine to your first finished piece, no fear.",
     },
     description: {
       de: "Du wolltest schon immer nähen lernen? Hier startest du bei null: Nähmaschine einfädeln, gerade Nähte, einfache Schnitte. Am Ende nimmst du ein erstes selbst genähtes Stück mit nach Hause.",
@@ -164,8 +164,8 @@ export const COURSES: Course[] = [
     title: { de: "Cyanotypie-Workshop", en: "Cyanotype Workshop" },
     category: { de: "Experimentell", en: "Experimental" },
     teaser: {
-      de: "Blaudruck mit Sonnenlicht — ein altes Verfahren, magisch einfach.",
-      en: "Blueprint with sunlight — an old process, wonderfully simple.",
+      de: "Blaudruck mit Sonnenlicht, ein altes Verfahren, magisch einfach.",
+      en: "Blueprint with sunlight, an old process, wonderfully simple.",
     },
     description: {
       de: "An einem Nachmittag lernst du das faszinierende Cyanotypie-Verfahren: Pflanzen, Formen und Fundstücke werden mit Sonnenlicht in tiefes Preussischblau gebannt. Du experimentierst frei und nimmst mehrere eigene Blaudrucke mit.",
@@ -195,8 +195,8 @@ export const COURSES: Course[] = [
     title: { de: "Kreativwerkstatt Mittwoch", en: "Wednesday Creative Workshop" },
     category: { de: "4–7 Jahre", en: "Ages 4–7" },
     teaser: {
-      de: "Malen, basteln, matschen — die kleine Kreativrunde am Mittwoch.",
-      en: "Painting, crafting, making a mess — the little Wednesday round.",
+      de: "Malen, basteln, matschen, die kleine Kreativrunde am Mittwoch.",
+      en: "Painting, crafting, making a mess, the little Wednesday round.",
     },
     description: {
       de: "Eine geschützte kleine Runde für unsere Jüngsten. Hier darf ausprobiert, gematscht und gestaunt werden. Jede Woche ein neues Thema, immer mit viel Zeit fürs eigene Tempo.",
@@ -220,11 +220,11 @@ export const COURSES: Course[] = [
     title: { de: "Kreativwerkstatt Mittwoch", en: "Wednesday Creative Workshop" },
     category: { de: "8–12 Jahre", en: "Ages 8–12" },
     teaser: {
-      de: "Ausprobieren, was Spass macht — jede Woche ein neues Abenteuer.",
-      en: "Try whatever's fun — a new adventure every week.",
+      de: "Ausprobieren, was Spass macht, jede Woche ein neues Abenteuer.",
+      en: "Try whatever's fun, a new adventure every week.",
     },
     description: {
-      de: "In der grossen Kreativwerkstatt geht es um Ausdruck und Ausprobieren. Malen, drucken, bauen, gestalten — die Kinder wählen mit, wohin die Reise geht. Ohne Leistungsdruck, dafür mit viel Fantasie.",
+      de: "In der grossen Kreativwerkstatt geht es um Ausdruck und Ausprobieren. Malen, drucken, bauen, gestalten, die Kinder wählen mit, wohin die Reise geht. Ohne Leistungsdruck, dafür mit viel Fantasie.",
     },
     takeaway: { de: "Selbstgemachte Werke und jede Menge Ideen für zu Hause." },
     price: "CHF 22",
@@ -242,7 +242,7 @@ export const COURSES: Course[] = [
     faq: [
       {
         q: { de: "Muss mein Kind etwas können?" },
-        a: { de: "Nein. Neugier reicht völlig — alles andere zeigen wir." },
+        a: { de: "Nein. Neugier reicht völlig, alles andere zeigen wir." },
       },
       {
         q: { de: "Was zieht mein Kind an?" },
@@ -250,7 +250,7 @@ export const COURSES: Course[] = [
       },
       {
         q: { de: "Kann man einzeln kommen oder ist es ein Abo?" },
-        a: { de: "Beides möglich — man kann einzelne Male buchen oder regelmässig dabei sein." },
+        a: { de: "Beides möglich, man kann einzelne Male buchen oder regelmässig dabei sein." },
       },
     ],
     color: "coral",
@@ -261,8 +261,8 @@ export const COURSES: Course[] = [
     title: { de: "Samstagskurse", en: "Saturday Courses" },
     category: { de: "5–12 Jahre", en: "Ages 5–12" },
     teaser: {
-      de: "Ein ganzer Vormittag zum Gestalten — ideal für ein kreatives Wochenende.",
-      en: "A whole morning of making — a creative weekend treat.",
+      de: "Ein ganzer Vormittag zum Gestalten, ideal für ein kreatives Wochenende.",
+      en: "A whole morning of making, a creative weekend treat.",
     },
     description: {
       de: "An ausgewählten Samstagen widmen wir uns einem grösseren Projekt: Von der Idee bis zum fertigen Werk. Genug Zeit, um richtig einzutauchen und stolz nach Hause zu gehen.",
@@ -308,11 +308,11 @@ export const COURSES: Course[] = [
     title: { de: "Kindergeburtstage", en: "Kids' Birthdays" },
     category: { de: "Feiern", en: "Celebrate" },
     teaser: {
-      de: "Feiert kreativ bei uns — Malen, Basteln und ein unvergesslicher Nachmittag.",
-      en: "Celebrate creatively with us — an unforgettable afternoon.",
+      de: "Feiert kreativ bei uns, Malen, Basteln und ein unvergesslicher Nachmittag.",
+      en: "Celebrate creatively with us, an unforgettable afternoon.",
     },
     description: {
-      de: "Ein Geburtstag im Atelier: Wir gestalten gemeinsam ein Thema, jedes Kind nimmt sein Werk mit nach Hause. Um Material, Aufbau und Aufräumen kümmern wir uns — ihr geniesst einfach.",
+      de: "Ein Geburtstag im Atelier: Wir gestalten gemeinsam ein Thema, jedes Kind nimmt sein Werk mit nach Hause. Um Material, Aufbau und Aufräumen kümmern wir uns, ihr geniesst einfach.",
     },
     price: "auf Anfrage",
     meta: [
@@ -330,8 +330,8 @@ export const COURSES: Course[] = [
     title: { de: "Stempel selber machen", en: "Make Your Own Stamps" },
     category: { de: "Special", en: "Special" },
     teaser: {
-      de: "Schnitzen, drucken, staunen — eigene Stempel für zu Hause.",
-      en: "Carve, print, marvel — your own stamps to take home.",
+      de: "Schnitzen, drucken, staunen, eigene Stempel für zu Hause.",
+      en: "Carve, print, marvel, your own stamps to take home.",
     },
     description: {
       de: "In diesem kleinen Special schnitzen die Kinder eigene Stempel und drucken damit Karten, Papier und Stoffbeutel. Ein bisschen Technik, viel Fantasie und ein tolles Mitnehm-Set.",

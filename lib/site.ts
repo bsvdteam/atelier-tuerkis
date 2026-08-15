@@ -1,6 +1,6 @@
 /**
  * Zentrale Stammdaten des Ateliers.
- * Kontaktinfos NIE verstreut hartkodieren — hier zentral.
+ * Kontaktinfos NIE verstreut hartkodieren, hier zentral.
  */
 export const SITE = {
   name: "Atelier Türkis",

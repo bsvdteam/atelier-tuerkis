@@ -13,7 +13,7 @@ export default function AdminLoginPage() {
           Atelier <span>Türkis</span>
         </div>
         <p style={{ color: "var(--ink-mute)", marginBottom: "20px", fontSize: "0.9rem" }}>
-          Admin-Bereich — bitte einloggen.
+          Bitte einloggen.
         </p>
 
         <form action={action} className="admin-form" style={{ gap: "14px" }}>

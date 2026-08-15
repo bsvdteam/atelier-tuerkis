@@ -15,7 +15,7 @@ export const FAQ: FaqItem[] = [
   },
   {
     q: { de: "Kann ich einen Kurs verschenken?" },
-    a: { de: "Ja, sehr gerne. Wir bieten Gutscheine für einzelne Kurse oder frei wählbare Beträge an — digital oder gedruckt." },
+    a: { de: "Ja, sehr gerne. Wir bieten Gutscheine für einzelne Kurse oder frei wählbare Beträge an, digital oder gedruckt." },
   },
   {
     q: { de: "Gibt es Parkplätze?" },

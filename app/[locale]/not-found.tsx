@@ -7,7 +7,7 @@ export default function NotFound() {
         <p className="font-display text-7xl text-teal-deep">404</p>
         <h1 className="h2">Diese Seite gibt es nicht</h1>
         <p className="lead max-w-md">
-          Vielleicht wurde sie verschoben — oder ist gerade beim Trocknen. Zurück zum Anfang?
+          Vielleicht wurde sie verschoben oder ist gerade beim Trocknen. Zurück zum Anfang?
         </p>
         <Link href="/" className="btn btn--primary btn--lg">
           Zur Startseite
