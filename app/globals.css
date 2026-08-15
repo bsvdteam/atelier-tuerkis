@@ -1055,3 +1055,28 @@ html.intro-seen .intro { display: none !important; }
   .admin__title { font-size: 1.45rem; }
   .admin-form { max-width: 100%; }
 }
+
+/* =====================================================================
+   Experience-Layer: Aquarell-WebGL, Paint-Cursor, Papier-Korn
+   ===================================================================== */
+.wc-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
+
+/* Papier-Korn über allem */
+.grain { position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.5; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E"); }
+
+/* Custom Paint-Cursor */
+.has-pcursor, .has-pcursor a, .has-pcursor button, .has-pcursor .btn, .has-pcursor summary { cursor: none; }
+.pcursor__dot, .pcursor__ring { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;
+  border-radius: 999px; will-change: transform; }
+.pcursor__dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--coral);
+  transition: width .2s ease, height .2s ease, background-color .2s ease; }
+.pcursor__ring { width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 2px solid var(--teal-deep);
+  opacity: 0.6; transition: width .25s cubic-bezier(.2,.8,.2,1), height .25s cubic-bezier(.2,.8,.2,1), background-color .25s ease, border-color .25s ease, opacity .25s ease; }
+.pcursor-hover .pcursor__ring { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgba(255,111,145,0.14); border-color: var(--coral); }
+.pcursor-hover .pcursor__dot { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; }
+.pcursor-down .pcursor__ring { width: 30px; height: 30px; margin: -15px 0 0 -15px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pcursor__ring { transition: none; }
+}

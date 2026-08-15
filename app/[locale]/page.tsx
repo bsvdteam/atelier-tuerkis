@@ -4,6 +4,7 @@ import { CourseCard } from "@/components/ui/CourseCard";
 import { Testimonials } from "@/components/home/Testimonials";
 import { TESTIMONIALS } from "@/content";
 import { getCourses } from "@/lib/db";
+import { WatercolorCanvas } from "@/components/experience/WatercolorCanvas";
 import type { Course, Locale } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -41,6 +42,8 @@ export default async function HomePage({
 
   return (
     <>
+      <WatercolorCanvas />
+
       {/* HERO */}
       <section className="hero">
         <svg className="float" style={{ top: "8%", left: "6%", ["--r" as string]: "-8deg" }} width="70" height="70" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.arc("#FF6F91")}</svg>

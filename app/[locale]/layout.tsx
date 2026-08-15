@@ -11,6 +11,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Intro } from "@/components/layout/Intro";
 import { RevealObserver } from "@/components/layout/RevealObserver";
 import { CookieBanner } from "@/components/layout/CookieBanner";
+import { PaintCursor } from "@/components/experience/PaintCursor";
+import { GrainOverlay } from "@/components/experience/GrainOverlay";
 
 export const metadata: Metadata = {
   title: {
@@ -53,6 +55,8 @@ export default async function LocaleLayout({
           <main>{children}</main>
           <Footer />
           <RevealObserver />
+          <GrainOverlay />
+          <PaintCursor />
           <CookieBanner />
           <Toaster position="top-center" richColors />
         </NextIntlClientProvider>
