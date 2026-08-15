@@ -915,3 +915,26 @@ html.intro-seen .intro { display: none !important; }
 .kidspec { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 18px; background: rgba(255,255,255,0.6); font-weight: 700; color: var(--ink-soft); }
 .kidspec b { color: var(--ink); font-weight: 700; margin-left: auto; font-family: var(--font-kids); }
 .kidspec span.emoji { font-size: 1.5rem; line-height: 1; }
+
+/* =====================================================================
+   Rechtsseiten (Impressum / Datenschutz / AGB) — sauber & lesbar
+   ===================================================================== */
+.legal { max-width: 760px; margin: 0 auto; }
+.legal__updated { font-size: 0.85rem; font-weight: 700; color: var(--ink-mute);
+  background: rgba(255,255,255,0.6); border: 1px solid var(--line); border-radius: 999px;
+  padding: 6px 14px; display: inline-flex; align-items: center; gap: 8px; }
+.legal__section { padding: 30px 0; border-top: 1px solid var(--line); }
+.legal__section:first-of-type { border-top: none; padding-top: 8px; }
+.legal__head { display: flex; align-items: center; gap: 14px; }
+.legal__num { flex: none; width: 34px; height: 34px; border-radius: 12px; display: grid;
+  place-items: center; background: var(--teal-deep); color: #fff; font-family: var(--font-display);
+  font-weight: 600; font-size: 1rem; }
+.legal__section h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem;
+  color: var(--ink); letter-spacing: -0.01em; }
+.legal__section p { color: var(--ink-soft); margin-top: 14px; line-height: 1.75; }
+.legal__section ul { margin: 14px 0 0; padding-left: 22px; display: grid; gap: 8px; }
+.legal__section li { color: var(--ink-soft); line-height: 1.6; }
+.legal__section a { color: var(--teal-deep); font-weight: 700; }
+.legal__section dl { margin-top: 14px; display: grid; gap: 4px; }
+.legal__section dt { font-weight: 800; color: var(--ink); }
+.legal__section dd { color: var(--ink-soft); margin: 0 0 8px; }
