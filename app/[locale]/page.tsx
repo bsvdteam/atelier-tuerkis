@@ -46,10 +46,18 @@ export default async function HomePage({
 
       {/* HERO */}
       <section className="hero">
-        <svg className="float" style={{ top: "8%", left: "6%", ["--r" as string]: "-8deg" }} width="70" height="70" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.arc("#FF6F91")}</svg>
-        <svg className="float float--2" style={{ top: "14%", right: "8%", ["--r" as string]: "10deg" }} width="58" height="58" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.circle("#FFC94D")}</svg>
-        <svg className="float float--3" style={{ bottom: "6%", left: "12%", ["--r" as string]: "6deg" }} width="48" height="48" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.star("#9B8CFF")}</svg>
-        <svg className="float" style={{ bottom: "14%", right: "10%", ["--r" as string]: "-12deg" }} width="54" height="54" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.square("#57C9EC")}</svg>
+        <span className="float-wrap" data-parallax="0.22" style={{ top: "8%", left: "6%" }}>
+          <svg className="float" style={{ ["--r" as string]: "-8deg" }} width="70" height="70" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.arc("#FF6F91")}</svg>
+        </span>
+        <span className="float-wrap" data-parallax="0.12" style={{ top: "14%", right: "8%" }}>
+          <svg className="float float--2" style={{ ["--r" as string]: "10deg" }} width="58" height="58" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.circle("#FFC94D")}</svg>
+        </span>
+        <span className="float-wrap" data-parallax="0.3" style={{ bottom: "6%", left: "12%" }}>
+          <svg className="float float--3" style={{ ["--r" as string]: "6deg" }} width="48" height="48" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.star("#9B8CFF")}</svg>
+        </span>
+        <span className="float-wrap" data-parallax="0.16" style={{ bottom: "14%", right: "10%" }}>
+          <svg className="float" style={{ ["--r" as string]: "-12deg" }} width="54" height="54" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.square("#57C9EC")}</svg>
+        </span>
 
         <div className="container hero__inner">
           <span className="eyebrow reveal">Kunst- &amp; Kreativatelier · Degersheim</span>

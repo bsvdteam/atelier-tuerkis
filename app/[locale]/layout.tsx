@@ -13,6 +13,8 @@ import { RevealObserver } from "@/components/layout/RevealObserver";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { PaintCursor } from "@/components/experience/PaintCursor";
 import { GrainOverlay } from "@/components/experience/GrainOverlay";
+import { SmoothScroll } from "@/components/experience/SmoothScroll";
+import { ScrollFX } from "@/components/experience/ScrollFX";
 
 export const metadata: Metadata = {
   title: {
@@ -54,6 +56,8 @@ export default async function LocaleLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <SmoothScroll />
+          <ScrollFX />
           <RevealObserver />
           <GrainOverlay />
           <PaintCursor />

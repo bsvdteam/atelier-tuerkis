@@ -1080,3 +1080,7 @@ html.intro-seen .intro { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .pcursor__ring { transition: none; }
 }
+
+/* Parallax-Wrapper für Hero-Deko (Bewegung ohne Konflikt mit der Schwebe-Animation) */
+.float-wrap { position: absolute; will-change: transform; pointer-events: none; z-index: 0; }
+.float-wrap .float { position: static; top: auto; left: auto; right: auto; bottom: auto; }

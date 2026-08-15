@@ -36,6 +36,7 @@ export function Header() {
   // Body-Scroll sperren + Escape schliesst
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    window.dispatchEvent(new Event(open ? "lenis-stop" : "lenis-start"));
     if (!open) setActiveGroup(null);
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
