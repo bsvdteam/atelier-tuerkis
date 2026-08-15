@@ -42,10 +42,7 @@ export function CookieBanner() {
           <span className="cookie__emoji">🎨</span>
           <h3>Ein Klecks Cookies?</h3>
         </div>
-        <p>
-          Fürs Grundhandwerk brauchen wir nur ein paar notwendige Cookies. Für Statistik und die
-          Karte fragen wir dich zuerst — versprochen, keine versteckten Pinselstriche.
-        </p>
+        <p>Notwendige Cookies brauchen wir immer. Für Statistik &amp; Karte fragen wir zuerst.</p>
 
         <div className="cookie__row">
           <button className="btn btn--coral" onClick={() => choose("all")}>
