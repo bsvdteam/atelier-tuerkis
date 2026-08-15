@@ -164,7 +164,7 @@ export default async function HomePage({
           <div className="stack-head reveal">
             <div>
               <span className="eyebrow">Aktuelle Kurse</span>
-              <h2 className="h2 mt-s">Komm vorbei und gestalte mit</h2>
+              <h2 className="h2 mt-s">Diese Kurse starten bald</h2>
             </div>
             <Link href="/angebot" className="btn btn--outline">Alle Kurse <span className="arr">→</span></Link>
           </div>
