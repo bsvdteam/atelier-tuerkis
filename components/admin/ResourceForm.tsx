@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { saveRecord } from "@/app/[locale]/admin/actions";
 import { ImageUpload } from "./ImageUpload";
+import { DatePicker } from "./DatePicker";
 import type { Field, ResourceConfig, ResourceKey } from "@/lib/admin/resources";
 
 type Values = Record<string, unknown>;
@@ -11,7 +12,7 @@ type Values = Record<string, unknown>;
 function initialFor(type: Field["type"]): unknown {
   if (type === "boolean") return false;
   if (type === "number") return 0;
-  if (type === "keyvalue" || type === "qalist") return [];
+  if (type === "keyvalue" || type === "qalist" || type === "dates") return [];
   return "";
 }
 
@@ -95,6 +96,13 @@ export function ResourceForm({
               {f.type === "image" && (
                 <ImageUpload value={String(values[f.name] ?? "")} folder={resource}
                   onChange={(url) => set(f.name, url)} />
+              )}
+
+              {f.type === "dates" && (
+                <DatePicker
+                  value={(values[f.name] as string[]) ?? []}
+                  onChange={(dates) => set(f.name, dates)}
+                />
               )}
 
               {(f.type === "keyvalue" || f.type === "qalist") && (

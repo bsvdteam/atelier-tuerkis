@@ -6,7 +6,8 @@ export type FieldType =
   | "select"
   | "image"
   | "keyvalue"
-  | "qalist";
+  | "qalist"
+  | "dates";
 
 export type Field = {
   name: string;
@@ -58,7 +59,8 @@ export const RESOURCES = {
       { name: "takeaway", label: "Das nimmst du mit nach Hause", type: "textarea" },
       { name: "price", label: "Preis (z.B. CHF 280)", type: "text" },
       { name: "price_note", label: "Preis-Zusatz (z.B. pro Mal)", type: "text" },
-      { name: "schedule", label: "Termine (z.B. Di 18–20 Uhr)", type: "text" },
+      { name: "schedule", label: "Zeit (z.B. Di 18–20 Uhr)", type: "text" },
+      { name: "dates", label: "Kurstermine (im Kalender anklicken)", type: "dates", help: "Diese Termine erscheinen im Kalender auf der Erwachsenen-Seite." },
       { name: "start_label", label: "Start (z.B. Start 14. September)", type: "text" },
       { name: "availability", label: "Verfügbarkeit (z.B. noch 3 Plätze)", type: "text" },
       { name: "instructor_slug", label: "Kursleitung (Team-Slug)", type: "text" },

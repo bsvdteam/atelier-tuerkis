@@ -35,6 +35,7 @@ export type Course = {
     value: Localised;
   }[];
   schedule?: Localised; // z.B. "Di 18–20 Uhr"
+  dates?: string[]; // konkrete Termine als ISO-Daten ["2026-09-14", ...]
   start?: Localised; // z.B. "14. September"
   availability?: Localised; // z.B. "noch 3 Plätze"
   isNew?: boolean;

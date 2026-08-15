@@ -20,6 +20,7 @@ function toCourse(r: Row): Course {
     priceNote: Lo(r.price_note),
     meta: (r.meta ?? []).map((m: Row) => ({ label: L(m.label), value: L(m.value) })),
     schedule: Lo(r.schedule),
+    dates: Array.isArray(r.dates) ? r.dates : [],
     start: Lo(r.start_label),
     availability: Lo(r.availability),
     isNew: r.is_new ?? false,

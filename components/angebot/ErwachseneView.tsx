@@ -89,15 +89,18 @@ function parseSchedule(course: Course): { dow: number; time: string } | null {
   return { dow: DOW[m[1].toLowerCase()], time: m[2].replace(/\s*Uhr\s*$/i, "") };
 }
 
+const iso = (y: number, m: number, d: number) =>
+  `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+const timeOf = (c: Course) => parseSchedule(c)?.time ?? "";
+
 function Calendar({ courses, locale }: { courses: Course[]; locale: Locale }) {
   const today = useMemo(() => new Date(), []);
   const [cur, setCur] = useState(() => new Date(today.getFullYear(), today.getMonth(), 1));
 
-  const events = useMemo(
-    () =>
-      courses
-        .map((c) => ({ c, s: parseSchedule(c) }))
-        .filter((e): e is { c: Course; s: { dow: number; time: string } } => e.s !== null),
+  // Kurse mit konkreten Terminen (aus dem Admin) vs. wiederkehrend nach Wochentag
+  const withDates = useMemo(() => courses.filter((c) => (c.dates?.length ?? 0) > 0), [courses]);
+  const recurring = useMemo(
+    () => courses.filter((c) => !(c.dates?.length) && parseSchedule(c)),
     [courses],
   );
 
@@ -125,13 +128,18 @@ function Calendar({ courses, locale }: { courses: Course[]; locale: Locale }) {
           {Array.from({ length: daysInMonth }).map((_, i) => {
             const day = i + 1;
             const dow = new Date(y, m, day).getDay();
+            const dayIso = iso(y, m, day);
             const isToday = y === today.getFullYear() && m === today.getMonth() && day === today.getDate();
+            const dayCourses = [
+              ...withDates.filter((c) => c.dates!.includes(dayIso)),
+              ...recurring.filter((c) => parseSchedule(c)?.dow === dow),
+            ];
             return (
               <div className={cn("cal__cell", isToday && "cal__cell--today")} key={day}>
                 <span className="cal__daynum">{day}</span>
-                {events.filter((e) => e.s.dow === dow).map((e, j) => (
-                  <Link key={j} className={`cal__event cal__event--${e.c.color}`} href={`/angebot/erwachsene/${e.c.slug}`}>
-                    <span className="t">{e.s.time}</span><span className="n">{getLocalised(e.c.title, locale)}</span>
+                {dayCourses.map((c, j) => (
+                  <Link key={j} className={`cal__event cal__event--${c.color}`} href={`/angebot/erwachsene/${c.slug}`}>
+                    <span className="t">{timeOf(c)}</span><span className="n">{getLocalised(c.title, locale)}</span>
                   </Link>
                 ))}
               </div>
