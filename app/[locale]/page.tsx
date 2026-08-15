@@ -44,7 +44,7 @@ export default async function HomePage({
         <svg className="float" style={{ bottom: "14%", right: "10%", ["--r" as string]: "-12deg" }} width="54" height="54" viewBox="0 0 40 40" aria-hidden="true">{FLOAT.square("#57C9EC")}</svg>
 
         <div className="container hero__inner">
-          <span className="eyebrow reveal">Kunst- &amp; Kreativatelier · Zürich</span>
+          <span className="eyebrow reveal">Kunst- &amp; Kreativatelier · Degersheim</span>
           <h1 className="display reveal d1">
             Kreativität <span className="squiggle-word">erleben</span>,<br />entdecken &amp; gestalten.
           </h1>

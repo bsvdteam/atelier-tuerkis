@@ -64,7 +64,7 @@ export default async function KontaktPage({
                 <span className="eyebrow">Besuch uns</span>
                 <h2 className="h2 mt-s">Atelier Türkis</h2>
                 <div className="contact-grid mt-m">
-                  <div className="contact-card"><span className="label">Adresse</span><p>Werkstrasse 12<br />8004 Zürich</p></div>
+                  <div className="contact-card"><span className="label">Adresse</span><p>Wolfensbergstrasse 9<br />9113 Degersheim</p></div>
                   <div className="contact-card"><span className="label">Öffnungszeiten</span><p>Mi–Fr 9–18 Uhr<br />Sa 9–13 Uhr</p></div>
                   <div className="contact-card"><span className="label">Anreise</span><p>Parkplätze &amp; ÖV<br />in der Nähe</p></div>
                   <div className="contact-card"><span className="label">Social</span><p>Instagram<br />&amp; Facebook</p></div>

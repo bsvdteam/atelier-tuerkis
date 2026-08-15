@@ -9,8 +9,8 @@ export const SITE = {
     en: "A bright, calm place for art and creativity, for children and adults.",
   },
   address: {
-    street: "Werkstrasse 12",
-    city: "8004 Zürich",
+    street: "Wolfensbergstrasse 9",
+    city: "9113 Degersheim",
   },
   phone: "+41 79 123 45 67",
   whatsapp: "41791234567", // nur Ziffern, für wa.me

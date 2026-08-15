@@ -142,7 +142,7 @@ export default async function AtelierPage({
                 </div>
               </div>
               <div className="contact-grid">
-                <div className="contact-card"><span className="label">Adresse</span><p>Werkstrasse 12<br />8004 Zürich</p></div>
+                <div className="contact-card"><span className="label">Adresse</span><p>Wolfensbergstrasse 9<br />9113 Degersheim</p></div>
                 <div className="contact-card"><span className="label">Öffnungszeiten</span><p>Mi–Fr 9–18 Uhr<br />Sa 9–13 Uhr</p></div>
                 <div className="contact-card"><span className="label">Telefon</span><a href="tel:+41791234567">+41 79 123 45 67</a></div>
                 <div className="contact-card"><span className="label">E-Mail</span><a href="mailto:hallo@atelier-tuerkis.ch">hallo@atelier-tuerkis.ch</a></div>

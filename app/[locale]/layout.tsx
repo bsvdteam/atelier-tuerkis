@@ -13,11 +13,11 @@ import { RevealObserver } from "@/components/layout/RevealObserver";
 
 export const metadata: Metadata = {
   title: {
-    default: "Atelier Türkis · Kreativkurse & Workshops in Zürich",
+    default: "Atelier Türkis · Kreativkurse & Workshops in Degersheim",
     template: "%s · Atelier Türkis",
   },
   description:
-    "Kreativkurse und Workshops für Kinder und Erwachsene in Zürich: Aquarell, Lettering, Nähen, Cyanotypie und mehr. Kleine Gruppen, persönliche Begleitung.",
+    "Kreativkurse und Workshops für Kinder und Erwachsene in Degersheim: Aquarell, Lettering, Nähen, Cyanotypie und mehr. Kleine Gruppen, persönliche Begleitung.",
 };
 
 // Setzt vor dem Paint die 'js'- und ggf. 'intro-seen'-Klasse (wie im Prototyp)
