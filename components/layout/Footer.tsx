@@ -1,6 +1,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SITE } from "@/lib/site";
+import { CookieSettingsButton } from "@/components/layout/CookieSettingsButton";
 import type { Locale } from "@/types";
 
 export function Footer() {
@@ -71,7 +72,7 @@ export function Footer() {
             <span>
               <Link href="/impressum">{t("footer.impressum")}</Link> ·{" "}
               <Link href="/datenschutz">{t("footer.datenschutz")}</Link> ·{" "}
-              <Link href="/agb">{t("footer.agb")}</Link>
+              <Link href="/agb">{t("footer.agb")}</Link> · <CookieSettingsButton />
             </span>
           </div>
         </div>

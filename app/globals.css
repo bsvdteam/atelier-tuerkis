@@ -938,3 +938,26 @@ html.intro-seen .intro { display: none !important; }
 .legal__section dl { margin-top: 14px; display: grid; gap: 4px; }
 .legal__section dt { font-weight: 800; color: var(--ink); }
 .legal__section dd { color: var(--ink-soft); margin: 0 0 8px; }
+
+/* =====================================================================
+   Cookie-Banner — verspielt, on-brand, mit Farbklecksen
+   ===================================================================== */
+.cookie { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 260; max-width: 440px; margin-inline: auto; }
+@media (min-width: 680px) { .cookie { left: 24px; right: auto; bottom: 24px; margin: 0; } }
+.cookie__card { position: relative; overflow: hidden; background: var(--panel-solid);
+  backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.75); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 22px 22px 20px; }
+.js .cookie__card { animation: cookiePop .5s cubic-bezier(.2,.8,.25,1) both; }
+@keyframes cookiePop { from { opacity: 0; transform: translateY(24px) scale(.96); } to { opacity: 1; transform: none; } }
+.cookie__blob { position: absolute; border-radius: 999px; filter: blur(2px); opacity: .5; pointer-events: none; }
+.cookie__emoji { font-size: 1.7rem; line-height: 1; }
+.cookie__head { display: flex; align-items: center; gap: 10px; }
+.cookie h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--ink); }
+.cookie p { color: var(--ink-soft); margin-top: 8px; line-height: 1.6; font-size: 0.95rem; position: relative; }
+.cookie__row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; position: relative; }
+.cookie__row .btn { flex: 1 1 auto; justify-content: center; }
+.cookie__link { display: inline-block; margin-top: 12px; font-size: 0.82rem; font-weight: 700; color: var(--teal-deep); position: relative; }
+.cookie-fab { position: fixed; left: 16px; bottom: 16px; z-index: 240; width: 42px; height: 42px; border-radius: 14px;
+  border: 1px solid var(--line); background: var(--panel-solid); backdrop-filter: blur(10px); cursor: pointer;
+  display: grid; place-items: center; font-size: 1.1rem; box-shadow: var(--shadow-sm); transition: transform .2s ease; }
+.cookie-fab:hover { transform: rotate(-8deg) scale(1.06); }

@@ -10,6 +10,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Intro } from "@/components/layout/Intro";
 import { RevealObserver } from "@/components/layout/RevealObserver";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 
 export const metadata: Metadata = {
   title: {
@@ -52,6 +53,7 @@ export default async function LocaleLayout({
           <main>{children}</main>
           <Footer />
           <RevealObserver />
+          <CookieBanner />
           <Toaster position="top-center" richColors />
         </NextIntlClientProvider>
       </body>

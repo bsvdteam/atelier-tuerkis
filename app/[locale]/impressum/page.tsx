@@ -17,18 +17,25 @@ export default async function ImpressumPage({
     {
       title: "Betreiberin",
       body: (
-        <dl>
-          <dt>{SITE.name}</dt>
-          <dd>
-            {SITE.address.street}
-            <br />
-            {SITE.address.city}
-            <br />
-            Schweiz
-          </dd>
-          <dt>Verantwortlich für den Inhalt</dt>
-          <dd>[Vor- und Nachname der Inhaberin]</dd>
-        </dl>
+        <>
+          <p>Diese Website wird betrieben von:</p>
+          <dl>
+            <dt>{SITE.name}</dt>
+            <dd>
+              Einzelunternehmen von [Vor- und Nachname der Inhaberin]
+              <br />
+              {SITE.address.street}
+              <br />
+              {SITE.address.city}, Schweiz
+            </dd>
+            <dt>Verantwortlich für den Inhalt</dt>
+            <dd>[Vor- und Nachname der Inhaberin]</dd>
+          </dl>
+          <p>
+            Das Atelier ist ein Kleinunternehmen (Einzelfirma) und nicht im Handelsregister
+            eingetragen; es wird keine Mehrwertsteuer ausgewiesen.
+          </p>
+        </>
       ),
     },
     {
@@ -44,21 +51,6 @@ export default async function ImpressumPage({
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           </dd>
         </dl>
-      ),
-    },
-    {
-      title: "Handelsregister & Mehrwertsteuer",
-      body: (
-        <>
-          <p>
-            Sofern eintragungspflichtig, findest du die Angaben zum Handelsregister und zur
-            Unternehmens-Identifikationsnummer (UID) hier:
-          </p>
-          <dl>
-            <dt>UID / MWST-Nr.</dt>
-            <dd>[CHE-000.000.000]</dd>
-          </dl>
-        </>
       ),
     },
     {
