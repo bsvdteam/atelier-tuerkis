@@ -22,18 +22,18 @@ export default async function ImpressumPage({
           <dl>
             <dt>{SITE.name}</dt>
             <dd>
-              Einzelunternehmen von [Vor- und Nachname der Inhaberin]
+              geführt von Elena Borlini und Marianne Holenstein
               <br />
               {SITE.address.street}
               <br />
               {SITE.address.city}, Schweiz
             </dd>
             <dt>Verantwortlich für den Inhalt</dt>
-            <dd>[Vor- und Nachname der Inhaberin]</dd>
+            <dd>Elena Borlini und Marianne Holenstein</dd>
           </dl>
           <p>
-            Das Atelier ist ein Kleinunternehmen (Einzelfirma) und nicht im Handelsregister
-            eingetragen; es wird keine Mehrwertsteuer ausgewiesen.
+            Das Atelier wird als einfache Gesellschaft (Art.&nbsp;530&nbsp;ff. OR) geführt und ist
+            nicht im Handelsregister eingetragen; es wird keine Mehrwertsteuer ausgewiesen.
           </p>
         </>
       ),
