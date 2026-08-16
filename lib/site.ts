@@ -12,8 +12,8 @@ export const SITE = {
     street: "Wolfensbergstrasse 9",
     city: "9113 Degersheim",
   },
-  phone: "+41 79 123 45 67",
-  whatsapp: "41791234567", // nur Ziffern, für wa.me
+  phone: "+41 79 656 11 26",
+  whatsapp: "41796561126", // nur Ziffern, für wa.me
   email: "hallo@atelier-tuerkis.ch",
   hours: {
     de: "Mi–Fr 9–18 Uhr · Sa 9–13 Uhr",

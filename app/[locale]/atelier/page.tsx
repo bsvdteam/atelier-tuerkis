@@ -139,14 +139,14 @@ export default async function AtelierPage({
                 <h2 className="h2 mt-s">Besuch uns im Atelier</h2>
                 <p className="lead mt-s" style={{ maxWidth: "34ch" }}>Komm vorbei oder schreib uns, am liebsten per WhatsApp.</p>
                 <div className="btn-row mt-m">
-                  <a href="https://wa.me/41791234567?text=Hallo%20Atelier%20T%C3%BCrkis%2C%20ich%20h%C3%A4tte%20eine%20Frage." target="_blank" rel="noopener noreferrer" className="btn btn--primary">Auf WhatsApp schreiben <span className="arr">→</span></a>
+                  <a href="https://wa.me/41796561126?text=Hallo%20Atelier%20T%C3%BCrkis%2C%20ich%20h%C3%A4tte%20eine%20Frage." target="_blank" rel="noopener noreferrer" className="btn btn--primary">Auf WhatsApp schreiben <span className="arr">→</span></a>
                   <Link href="/kontakt" className="btn btn--ghost">Kontaktseite</Link>
                 </div>
               </div>
               <div className="contact-grid">
                 <div className="contact-card"><span className="label">Adresse</span><p>Wolfensbergstrasse 9<br />9113 Degersheim</p></div>
                 <div className="contact-card"><span className="label">Öffnungszeiten</span><p>Mi–Fr 9–18 Uhr<br />Sa 9–13 Uhr</p></div>
-                <div className="contact-card"><span className="label">Telefon</span><a href="tel:+41791234567">+41 79 123 45 67</a></div>
+                <div className="contact-card"><span className="label">Telefon</span><a href="tel:+41796561126">+41 79 656 11 26</a></div>
                 <div className="contact-card"><span className="label">E-Mail</span><a href="mailto:hallo@atelier-tuerkis.ch">hallo@atelier-tuerkis.ch</a></div>
               </div>
             </div>

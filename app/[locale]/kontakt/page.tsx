@@ -34,7 +34,7 @@ export default async function KontaktPage({
               </div>
               <h3>WhatsApp</h3>
               <p>Am schnellsten &amp; unkompliziert.</p>
-              <span className="pillar__go">+41 79 123 45 67 <span className="arr">→</span></span>
+              <span className="pillar__go">+41 79 656 11 26 <span className="arr">→</span></span>
             </a>
             <a className="pillar reveal d1" href="mailto:hallo@atelier-tuerkis.ch">
               <div className="pillar__icon" style={{ background: "var(--coral)" }}>
@@ -44,13 +44,13 @@ export default async function KontaktPage({
               <p>Für ausführlichere Anliegen.</p>
               <span className="pillar__go">hallo@atelier-tuerkis.ch <span className="arr">→</span></span>
             </a>
-            <a className="pillar reveal d2" href="tel:+41791234567">
+            <a className="pillar reveal d2" href="tel:+41796561126">
               <div className="pillar__icon" style={{ background: "var(--violet)" }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z" /></svg>
               </div>
               <h3>Telefon</h3>
               <p>Lieber persönlich? Ruf uns an.</p>
-              <span className="pillar__go">+41 79 123 45 67 <span className="arr">→</span></span>
+              <span className="pillar__go">+41 79 656 11 26 <span className="arr">→</span></span>
             </a>
           </div>
         </div>

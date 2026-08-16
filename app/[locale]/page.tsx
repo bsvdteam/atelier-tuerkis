@@ -225,7 +225,7 @@ export default async function HomePage({
               <h2 className="h2 mt-s">Fragen? Schreib uns.</h2>
               <p className="lead mt-s">Am schnellsten per WhatsApp oder E-Mail. Wir freuen uns auf dich.</p>
               <div className="btn-row mt-m">
-                <a href="https://wa.me/41791234567?text=Hallo%20Atelier%20T%C3%BCrkis%2C%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Kurs.%20K%C3%B6nnt%20ihr%20mir%20mehr%20Infos%20geben%3F" target="_blank" rel="noopener noreferrer" className="btn btn--primary">Auf WhatsApp schreiben <span className="arr">→</span></a>
+                <a href="https://wa.me/41796561126?text=Hallo%20Atelier%20T%C3%BCrkis%2C%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Kurs.%20K%C3%B6nnt%20ihr%20mir%20mehr%20Infos%20geben%3F" target="_blank" rel="noopener noreferrer" className="btn btn--primary">Auf WhatsApp schreiben <span className="arr">→</span></a>
                 <Link href="/kontakt" className="btn btn--ghost">Alle Kontakt-Wege</Link>
               </div>
             </div>

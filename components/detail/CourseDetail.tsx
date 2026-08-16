@@ -24,8 +24,8 @@ export async function CourseDetail({ course, locale }: { course: Course; locale:
   const related = (await getCourses(course.audience)).filter((c) => c.slug !== course.slug).slice(0, 3);
 
   const waText = isKids
-    ? "Hallo Atelier Türkis, mein Kind möchte gern zu einem Kinderkurs. Könnt ihr mir mehr Infos geben?"
-    : `Hallo Atelier Türkis, ich interessiere mich für den Kurs «${title}». Können Sie mir mehr zum nächsten Termin sagen?`;
+    ? `Hallo Atelier Türkis, ich möchte mein Kind gern für den Kurs «${title}» anmelden.`
+    : `Hallo Atelier Türkis, ich möchte mich gern für den Kurs «${title}» anmelden.`;
 
   const Inner = (
     <>
@@ -145,7 +145,7 @@ export async function CourseDetail({ course, locale }: { course: Course; locale:
                 </div>
 
                 <a href={buildWhatsAppUrl(waText)} target="_blank" rel="noopener noreferrer" className="btn btn--coral" style={{ width: "100%", justifyContent: "center" }}>
-                  {isKids ? "Jetzt anmelden 🎉" : "Jetzt per WhatsApp anfragen"}
+                  {isKids ? "Jetzt anmelden 🎉" : "Jetzt per WhatsApp anmelden"}
                 </a>
                 <a href={buildMailtoUrl(`Kurs ${title}`)} className="btn btn--ghost" style={{ width: "100%", justifyContent: "center", marginTop: "10px" }}>
                   {isKids ? "Eltern fragen per E-Mail" : "Per E-Mail anfragen"}
