@@ -25,10 +25,19 @@ function toCourse(r: Row): Course {
     availability: Lo(r.availability),
     isNew: r.is_new ?? false,
     instructor: r.instructor_slug ?? undefined,
+    instructors: instructorList(r),
+    images: Array.isArray(r.images) ? r.images.filter(Boolean) : [],
     faq: (r.faq ?? []).map((f: Row) => ({ q: L(f.q), a: L(f.a) })),
     color: r.color,
     ctaTo: r.cta_to ?? "detail",
   };
+}
+
+/** Liest die Kursleitungs-Slugs, mit Fallback auf das alte Einzelfeld. */
+function instructorList(r: Row): string[] {
+  const many = Array.isArray(r.instructor_slugs) ? r.instructor_slugs.filter(Boolean) : [];
+  if (many.length) return many;
+  return r.instructor_slug ? [r.instructor_slug] : [];
 }
 
 function toArtwork(r: Row): Artwork {
@@ -44,6 +53,7 @@ function toArtwork(r: Row): Artwork {
     specs: (r.specs ?? []).map((s: Row) => ({ label: L(s.label), value: L(s.value) })),
     availability: Lo(r.availability),
     instructor: r.instructor_slug ?? undefined,
+    images: Array.isArray(r.images) ? r.images.filter(Boolean) : [],
     color: r.color,
   };
 }
@@ -92,4 +102,35 @@ export async function getTeamMember(slug?: string): Promise<TeamMember | undefin
   const supabase = await createClient();
   const { data } = await supabase.from("team_members").select("*").eq("slug", slug).maybeSingle();
   return data ? toTeam(data) : undefined;
+}
+
+/** Mehrere Team-Mitglieder in der übergebenen Reihenfolge. */
+export async function getTeamMembers(slugs?: string[]): Promise<TeamMember[]> {
+  const list = (slugs ?? []).filter(Boolean);
+  if (!list.length) return [];
+  const supabase = await createClient();
+  const { data } = await supabase.from("team_members").select("*").in("slug", list);
+  const bySlug = new Map((data ?? []).map((r) => [r.slug as string, toTeam(r)]));
+  return list.map((s) => bySlug.get(s)).filter(Boolean) as TeamMember[];
+}
+
+/** Alle im Admin verwendbaren Optionen (Team + bestehende Kategorien). */
+export async function getAdminLookups(): Promise<{
+  team: { value: string; label: string; color: string }[];
+  courseCategories: string[];
+  productCategories: string[];
+}> {
+  const supabase = await createClient();
+  const [team, courses, products] = await Promise.all([
+    supabase.from("team_members").select("slug, name, color").order("sort_order"),
+    supabase.from("courses").select("category"),
+    supabase.from("products").select("category"),
+  ]);
+  const uniq = (rows: { category: string | null }[] | null) =>
+    Array.from(new Set((rows ?? []).map((r) => r.category).filter((c): c is string => Boolean(c)))).sort();
+  return {
+    team: (team.data ?? []).map((t) => ({ value: t.slug, label: t.name, color: t.color })),
+    courseCategories: uniq(courses.data),
+    productCategories: uniq(products.data),
+  };
 }

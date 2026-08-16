@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import { getCourses, getTeamMember } from "@/lib/db";
+import { getCourses, getTeamMembers } from "@/lib/db";
 import { getLocalised } from "@/lib/localise";
 import { buildWhatsAppUrl, buildMailtoUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
@@ -20,7 +20,7 @@ export async function CourseDetail({ course, locale }: { course: Course; locale:
   const isKids = course.audience === "kinder";
   const title = getLocalised(course.title, locale);
   const category = getLocalised(course.category, locale);
-  const instructor = await getTeamMember(course.instructor);
+  const instructors = await getTeamMembers(course.instructors?.length ? course.instructors : course.instructor ? [course.instructor] : []);
   const related = (await getCourses(course.audience)).filter((c) => c.slug !== course.slug).slice(0, 3);
 
   const waText = isKids
@@ -84,9 +84,14 @@ export async function CourseDetail({ course, locale }: { course: Course; locale:
               <div className="reveal" style={{ marginTop: "34px" }}>
                 <h2 className="h3 mb-m">{isKids ? "So sieht's bei uns aus 📸" : "Eindrücke aus dem Kurs"}</h2>
                 <div className="masonry" style={{ columns: 2 }}>
-                  {(isKids ? KID_MASONRY : MASONRY).map((c, i) => (
-                    <div className="masonry__item" key={i}><div className={`ph ph--${c} t${(i % 3) + 1}`} /></div>
-                  ))}
+                  {course.images && course.images.length > 0
+                    ? course.images.map((src, i) => (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <div className="masonry__item" key={i}><img src={src} alt="" loading="lazy" /></div>
+                      ))
+                    : (isKids ? KID_MASONRY : MASONRY).map((c, i) => (
+                        <div className="masonry__item" key={i}><div className={`ph ph--${c} t${(i % 3) + 1}`} /></div>
+                      ))}
                 </div>
               </div>
 
@@ -153,16 +158,16 @@ export async function CourseDetail({ course, locale }: { course: Course; locale:
                 <p className="muted" style={{ fontSize: "0.82rem", textAlign: "center", marginTop: "14px" }}>Anmeldung ganz einfach per Nachricht, wir melden uns rasch zurück.</p>
               </div>
 
-              {instructor && (
-                <div className="frost reveal d1" style={{ padding: "22px 24px", marginTop: "18px", display: "flex", gap: "14px", alignItems: "center", border: isKids ? "3px solid #fff" : undefined }}>
-                  <div className={`ph ph--${instructor.color}`} style={{ width: "56px", height: "56px", borderRadius: "16px", flex: "none" }} />
+              {instructors.map((ins) => (
+                <div key={ins.slug} className="frost reveal d1" style={{ padding: "22px 24px", marginTop: "18px", display: "flex", gap: "14px", alignItems: "center", border: isKids ? "3px solid #fff" : undefined }}>
+                  <div className={`ph ph--${ins.color}`} style={{ width: "56px", height: "56px", borderRadius: "16px", flex: "none" }} />
                   <div>
                     <span className="role" style={{ color: "var(--coral)", fontWeight: 800, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: ".06em" }}>Kursleitung</span>
-                    <h3 style={{ fontSize: "1.15rem" }}>{instructor.name}</h3>
-                    <p className="muted" style={{ fontSize: "0.85rem" }}>{getLocalised(instructor.role, locale)}</p>
+                    <h3 style={{ fontSize: "1.15rem" }}>{ins.name}</h3>
+                    <p className="muted" style={{ fontSize: "0.85rem" }}>{getLocalised(ins.role, locale)}</p>
                   </div>
                 </div>
-              )}
+              ))}
             </aside>
           </div>
         </div>

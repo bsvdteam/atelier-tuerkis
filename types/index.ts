@@ -39,7 +39,9 @@ export type Course = {
   start?: Localised; // z.B. "14. September"
   availability?: Localised; // z.B. "noch 3 Plätze"
   isNew?: boolean;
-  instructor?: string; // Team-Slug
+  instructor?: string; // Team-Slug (erste Kursleitung, Abwärtskompatibilität)
+  instructors?: string[]; // mehrere Kursleitungen (Team-Slugs)
+  images?: string[]; // eigene Eindrücke-Bilder (URLs)
   faq?: { q: Localised; a: Localised }[];
   color: PlaceholderColor;
   /** Ziel bei „Anmelden": eigene Detailseite oder direkt Kontakt. */
@@ -60,6 +62,7 @@ export type Artwork = {
   specs?: { label: Localised; value: Localised }[];
   availability?: Localised;
   instructor?: string;
+  images?: string[]; // eigene Produktbilder (URLs)
   color: PlaceholderColor;
 };
 

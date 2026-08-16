@@ -22,7 +22,7 @@ export async function ArtworkDetail({ artwork, locale }: { artwork: Artwork; loc
           </p>
 
           <div className="kunst-layout">
-            <ArtworkGallery colors={galleryColors} />
+            <ArtworkGallery colors={galleryColors} images={artwork.images} />
 
             <aside className="artinfo reveal d1">
               <span className={`tag tag--${artwork.color}`}>{getLocalised(artwork.category, locale)}</span>
@@ -67,17 +67,15 @@ export async function ArtworkDetail({ artwork, locale }: { artwork: Artwork; loc
                 {artwork.description && (
                   <div>
                     <span className="eyebrow">Über das Werk</span>
-                    <h2 className="h3 mt-s">Ruhe in Blau und Grün</h2>
+                    <h2 className="h3 mt-s">{title}</h2>
                     <p className="mt-s muted">{getLocalised(artwork.description, locale)}</p>
-                    <p className="mt-s muted">Jedes Original ist ein Unikat und leicht anders als auf dem Foto, das gehört zum Charme.</p>
                   </div>
                 )}
                 {artwork.story && (
                   <div>
                     <span className="eyebrow">Die Geschichte dahinter</span>
-                    <h2 className="h3 mt-s">Ein Morgen am See</h2>
+                    <h2 className="h3 mt-s">{getLocalised(artwork.category, locale)}</h2>
                     <p className="mt-s muted">{getLocalised(artwork.story, locale)}</p>
-                    <p className="mt-s muted">Ein Werk für alle, die sich ein Stück Ruhe an die Wand holen möchten.</p>
                   </div>
                 )}
               </div>

@@ -1,18 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 export function ImageUpload({
   value,
   onChange,
   folder,
+  adder = false,
 }: {
   value: string;
   onChange: (url: string) => void;
   folder: string;
+  /** Kompakter „Bild hinzufügen"-Modus (für Galerien) – zeigt keine Vorschau. */
+  adder?: boolean;
 }) {
   const [busy, setBusy] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
   const supabase = createClient();
 
   const onFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,21 +34,45 @@ export function ImageUpload({
     const { data } = supabase.storage.from("atelier").getPublicUrl(path);
     onChange(data.publicUrl);
     setBusy(false);
+    if (inputRef.current) inputRef.current.value = "";
   };
 
+  const pick = () => inputRef.current?.click();
+
+  const hidden = (
+    <input ref={inputRef} type="file" accept="image/*" hidden onChange={onFile} disabled={busy} />
+  );
+
+  if (adder) {
+    return (
+      <button type="button" className="img-add" onClick={pick} disabled={busy}>
+        {hidden}
+        <span className="img-add__plus">＋</span>
+        <span>{busy ? "lädt …" : "Bild hinzufügen"}</span>
+      </button>
+    );
+  }
+
+  if (!value) {
+    return (
+      <button type="button" className="img-drop" onClick={pick} disabled={busy}>
+        {hidden}
+        <span className="img-drop__icon">🖼️</span>
+        <span>{busy ? "lädt …" : "Bild hochladen"}</span>
+      </button>
+    );
+  }
+
   return (
-    <div className="admin-img">
+    <div className="img-tile">
+      {hidden}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      {value ? <img className="admin-img__preview" src={value} alt="" /> : <span className="admin-img__preview" />}
-      <div>
-        <input type="file" accept="image/*" onChange={onFile} disabled={busy} />
-        {busy && <span style={{ marginLeft: 8 }}>lädt …</span>}
-        {value && (
-          <button type="button" className="kv__del" style={{ marginLeft: 8 }} onClick={() => onChange("")}>
-            entfernen
-          </button>
-        )}
+      <img src={value} alt="" />
+      <div className="img-tile__actions">
+        <button type="button" className="img-tile__btn" onClick={pick} title="Bild ersetzen">✏️</button>
+        <button type="button" className="img-tile__btn img-tile__btn--del" onClick={() => onChange("")} title="entfernen">×</button>
       </div>
+      {busy && <span className="img-tile__busy">lädt …</span>}
     </div>
   );
 }
