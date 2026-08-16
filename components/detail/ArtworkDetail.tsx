@@ -37,7 +37,7 @@ export async function ArtworkDetail({ artwork, locale }: { artwork: Artwork; loc
                   <span className="muted" style={{ fontWeight: 700 }}>Preis</span>
                   <span className="artprice">{artwork.price}</span>
                 </div>
-                <a href={buildWhatsAppUrl(`Hallo Atelier Türkis, ich interessiere mich für das Werk «${title}». Ist es noch verfügbar?`)} target="_blank" rel="noopener noreferrer" className="btn btn--coral" style={{ width: "100%", justifyContent: "center" }}>
+                <a href={buildWhatsAppUrl(`Hallo Elena, ich interessiere mich für das Werk «${title}». Ist es noch verfügbar?`)} target="_blank" rel="noopener noreferrer" className="btn btn--coral" style={{ width: "100%", justifyContent: "center" }}>
                   Interesse? Auf WhatsApp schreiben
                 </a>
                 <a href={buildMailtoUrl(`Anfrage Werk ${title}`)} className="btn btn--ghost" style={{ width: "100%", justifyContent: "center", marginTop: "10px" }}>

@@ -24,8 +24,8 @@ export async function CourseDetail({ course, locale }: { course: Course; locale:
   const related = (await getCourses(course.audience)).filter((c) => c.slug !== course.slug).slice(0, 3);
 
   const waText = isKids
-    ? `Hallo Atelier Türkis, ich möchte mein Kind gern für den Kurs «${title}» anmelden.`
-    : `Hallo Atelier Türkis, ich möchte mich gern für den Kurs «${title}» anmelden.`;
+    ? `Hallo Elena, ich möchte mein Kind gern für den Kurs «${title}» anmelden.`
+    : `Hallo Elena, ich möchte mich gern für den Kurs «${title}» anmelden.`;
 
   const Inner = (
     <>

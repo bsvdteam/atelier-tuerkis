@@ -14,7 +14,7 @@ export default async function KontaktPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const wa = buildWhatsAppUrl("Hallo Atelier Türkis, ich hätte eine Frage.");
+  const wa = buildWhatsAppUrl("Hallo Elena, ich hätte eine Frage.");
 
   return (
     <>

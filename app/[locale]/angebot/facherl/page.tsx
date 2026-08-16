@@ -113,7 +113,7 @@ export default async function FacherlPage({
             <p className="lead mt-s center maxw">Schreib uns kurz, wir sagen dir, welche Fächer frei sind, und richten dir deins ein.</p>
             <div className="btn-row" style={{ justifyContent: "center" }}>
               <ContactCta
-                whatsappText="Hallo Atelier Türkis, ich möchte gern ein Facherl mieten. Ist gerade eines frei?"
+                whatsappText="Hallo Elena, ich möchte gern ein Facherl mieten. Ist gerade eines frei?"
                 emailSubject="Facherl mieten"
               />
             </div>
