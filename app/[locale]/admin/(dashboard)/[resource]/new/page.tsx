@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { RESOURCES, type ResourceKey } from "@/lib/admin/resources";
 import { ResourceForm } from "@/components/admin/ResourceForm";
+import { InlineCourseEditor } from "@/components/admin/inline/InlineCourseEditor";
+import { InlineProductEditor } from "@/components/admin/inline/InlineProductEditor";
 import { getAdminLookups } from "@/lib/db";
 
 export default async function NewRecordPage({
@@ -19,7 +21,13 @@ export default async function NewRecordPage({
       <div className="admin__head">
         <h1 className="admin__title">Neu: {config.singular}</h1>
       </div>
-      <ResourceForm resource={key} config={config} record={null} lookups={lookups} />
+      {key === "courses" ? (
+        <InlineCourseEditor record={null} lookups={lookups} />
+      ) : key === "products" ? (
+        <InlineProductEditor record={null} lookups={lookups} />
+      ) : (
+        <ResourceForm resource={key} config={config} record={null} lookups={lookups} />
+      )}
     </>
   );
 }

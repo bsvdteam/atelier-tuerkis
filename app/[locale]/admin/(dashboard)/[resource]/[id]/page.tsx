@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { RESOURCES, type ResourceKey } from "@/lib/admin/resources";
 import { ResourceForm } from "@/components/admin/ResourceForm";
+import { InlineCourseEditor } from "@/components/admin/inline/InlineCourseEditor";
+import { InlineProductEditor } from "@/components/admin/inline/InlineProductEditor";
 import { getAdminLookups } from "@/lib/db";
 
 export default async function EditRecordPage({
@@ -26,7 +28,13 @@ export default async function EditRecordPage({
       <div className="admin__head">
         <h1 className="admin__title">{config.singular} bearbeiten: {String(record[config.titleField] ?? "")}</h1>
       </div>
-      <ResourceForm resource={key} config={config} record={record} lookups={lookups} />
+      {key === "courses" ? (
+        <InlineCourseEditor record={record} lookups={lookups} />
+      ) : key === "products" ? (
+        <InlineProductEditor record={record} lookups={lookups} />
+      ) : (
+        <ResourceForm resource={key} config={config} record={record} lookups={lookups} />
+      )}
     </>
   );
 }
