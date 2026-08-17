@@ -1292,3 +1292,47 @@ html.intro-seen .intro { display: none !important; }
   border-radius: 16px 16px 0 0; box-shadow: 0 -6px 20px rgba(0,0,0,.06);
   backdrop-filter: blur(8px);
 }
+
+/* ============================================================
+   Mobile-Navigation: sofort offen, scrollbar, gut tippbar
+   ============================================================ */
+@media (max-width: 899px) {
+  /* Menü öffnet zügig statt mit langer Verzögerung */
+  .mmenu.open .mmenu__paint { transition: transform .5s cubic-bezier(.62,0,.24,1) !important; }
+  .mmenu.open > a { animation-duration: .3s; }
+  .mmenu.open > a:nth-of-type(1) { animation-delay: .10s; }
+  .mmenu.open > a:nth-of-type(2) { animation-delay: .17s; }
+  .mmenu.open > a:nth-of-type(3) { animation-delay: .24s; }
+
+  /* Inhalt scrollbar — nichts wird mehr abgeschnitten */
+  .mmenu {
+    overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding: 92px 26px calc(48px + env(safe-area-inset-bottom, 0px));
+    gap: 2px;
+  }
+
+  /* Primärlinks als klare Blöcke */
+  .mmenu > a { font-size: 1.95rem; padding: 14px 0 6px; }
+
+  /* Untermenüs immer sichtbar, eingerückt mit feiner Linie, grosse Tap-Flächen */
+  .mmenu .sub {
+    padding-left: 16px; margin: 2px 0 12px; gap: 0;
+    border-left: 2px solid rgba(19, 59, 84, 0.14);
+    opacity: 1 !important; visibility: visible !important; pointer-events: auto !important;
+    position: static !important; transform: none !important;
+  }
+  .mmenu:not(.open) .sub { visibility: hidden !important; }
+  .mmenu .sub a {
+    font-family: var(--font-body); font-weight: 700; font-size: 1.08rem;
+    padding: 11px 0; min-height: 44px; display: flex; align-items: center;
+  }
+
+  /* Kopf (Logo + Schliessen) bleibt beim Scrollen oben */
+  .mmenu__top { position: fixed; }
+}
+
+@media (max-width: 899px) and (prefers-reduced-motion: reduce) {
+  .mmenu.open > a { animation: none; }
+  .mmenu.open .mmenu__paint { transition: none !important; }
+}
