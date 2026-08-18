@@ -32,5 +32,6 @@ export default async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  // Metadaten-Routen ohne Dateiendung (icon, apple-icon) von der i18n-Middleware ausnehmen
+  matcher: ["/((?!api|_next|_vercel|icon|apple-icon|.*\\..*).*)"],
 };

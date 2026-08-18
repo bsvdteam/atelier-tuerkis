@@ -2,11 +2,27 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ } from "@/content";
 import { getLocalised } from "@/lib/localise";
+import { alternatesFor, absoluteUrl, ogImageUrl, faqLd } from "@/lib/seo";
 import type { Locale } from "@/types";
 
-export const metadata: Metadata = { title: "FAQ" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const description =
+    "Antworten zu Anmeldung, Material, Terminen und Bezahlung für die Kurse im Atelier Türkis in Degersheim.";
+  return {
+    title: "FAQ",
+    description,
+    alternates: alternatesFor("/faq"),
+    openGraph: { title: "Häufige Fragen · Atelier Türkis", description, url: absoluteUrl("/faq", locale), images: [ogImageUrl(locale)] },
+  };
+}
 
 export default async function FaqPage({
   params,
@@ -19,6 +35,7 @@ export default async function FaqPage({
 
   return (
     <>
+      <JsonLd data={faqLd(FAQ, locale)} />
       <PageHeader
         crumbs={[{ label: "Home", href: "/" }, { label: "FAQ" }]}
         eyebrow="Gut zu wissen"

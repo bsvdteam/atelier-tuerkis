@@ -1,12 +1,26 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CourseCard } from "@/components/ui/CourseCard";
 import { Testimonials } from "@/components/home/Testimonials";
 import { TESTIMONIALS } from "@/content";
 import { getCourses } from "@/lib/db";
+import { alternatesFor, absoluteUrl } from "@/lib/seo";
 import type { Course, Locale } from "@/types";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    alternates: alternatesFor("/"),
+    openGraph: { url: absoluteUrl("/", locale) },
+  };
+}
 
 const FLOAT = {
   arc: (c: string) => <path d="M8 26 Q20 6 32 26" stroke={c} strokeWidth="4" fill="none" strokeLinecap="round" />,

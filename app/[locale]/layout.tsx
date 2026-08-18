@@ -16,14 +16,34 @@ import { GrainOverlay } from "@/components/experience/GrainOverlay";
 import { SmoothScroll } from "@/components/experience/SmoothScroll";
 import { ScrollFX } from "@/components/experience/ScrollFX";
 import { WatercolorCanvas } from "@/components/experience/WatercolorCanvas";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { BASE_URL, localBusinessLd } from "@/lib/seo";
+
+const DEFAULT_DESCRIPTION =
+  "Kreativkurse und Workshops für Kinder und Erwachsene in Degersheim: Aquarell, Lettering, Nähen, Cyanotypie und mehr. Kleine Gruppen, persönliche Begleitung.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "Atelier Türkis · Kreativkurse & Workshops in Degersheim",
     template: "%s · Atelier Türkis",
   },
-  description:
-    "Kreativkurse und Workshops für Kinder und Erwachsene in Degersheim: Aquarell, Lettering, Nähen, Cyanotypie und mehr. Kleine Gruppen, persönliche Begleitung.",
+  description: DEFAULT_DESCRIPTION,
+  applicationName: "Atelier Türkis",
+  openGraph: {
+    type: "website",
+    siteName: "Atelier Türkis",
+    locale: "de_CH",
+    alternateLocale: "en_US",
+    title: "Atelier Türkis · Kreativkurse & Workshops in Degersheim",
+    description: DEFAULT_DESCRIPTION,
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Atelier Türkis · Kreativkurse & Workshops in Degersheim",
+    description: DEFAULT_DESCRIPTION,
+  },
 };
 
 // Setzt vor dem Paint die 'js'- und ggf. 'intro-seen'-Klasse (wie im Prototyp)
@@ -52,6 +72,7 @@ export default async function LocaleLayout({
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        <JsonLd data={localBusinessLd()} />
         <NextIntlClientProvider>
           <WatercolorCanvas />
           <Intro />
