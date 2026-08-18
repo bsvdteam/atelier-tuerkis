@@ -40,7 +40,7 @@ export function Intro() {
     };
   }, []);
 
-  if (gone || pathname.startsWith("/admin")) return null;
+  if (gone || pathname.startsWith("/admin") || pathname.startsWith("/coming-soon")) return null;
 
   return (
     <div ref={ref} className="intro" id="intro" role="presentation">

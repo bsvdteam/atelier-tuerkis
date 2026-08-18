@@ -10,7 +10,7 @@ export function Footer() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const pathname = usePathname();
-  if (pathname.startsWith("/admin")) return null;
+  if (pathname.startsWith("/admin") || pathname.startsWith("/coming-soon")) return null;
 
   const discover = [
     { href: "/atelier", label: t("nav.ueberUns") },

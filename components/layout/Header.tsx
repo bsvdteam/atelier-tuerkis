@@ -86,7 +86,7 @@ export function Header() {
     if (next !== locale) router.replace(pathname, { locale: next });
   };
 
-  if (pathname.startsWith("/admin")) return null;
+  if (pathname.startsWith("/admin") || pathname.startsWith("/coming-soon")) return null;
 
   return (
     <>

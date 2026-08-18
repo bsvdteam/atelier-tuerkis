@@ -15,7 +15,6 @@ import { PaintCursor } from "@/components/experience/PaintCursor";
 import { GrainOverlay } from "@/components/experience/GrainOverlay";
 import { SmoothScroll } from "@/components/experience/SmoothScroll";
 import { ScrollFX } from "@/components/experience/ScrollFX";
-import { WatercolorCanvas } from "@/components/experience/WatercolorCanvas";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BASE_URL, localBusinessLd } from "@/lib/seo";
 
@@ -74,7 +73,6 @@ export default async function LocaleLayout({
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <JsonLd data={localBusinessLd()} />
         <NextIntlClientProvider>
-          <WatercolorCanvas />
           <Intro />
           <Header />
           <main>{children}</main>

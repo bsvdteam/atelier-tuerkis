@@ -30,7 +30,7 @@ export function CookieBanner() {
     setOpen(false);
   };
 
-  if (!open || pathname.startsWith("/admin")) return null;
+  if (!open || pathname.startsWith("/admin") || pathname.startsWith("/coming-soon")) return null;
 
   return (
     <div className="cookie" role="dialog" aria-label="Cookie-Hinweis" aria-live="polite">

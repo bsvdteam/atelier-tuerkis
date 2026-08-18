@@ -78,9 +78,20 @@ body {
   overflow-x: clip;
   min-height: 100vh;
 
-  /* ---- AQUARELL-HINTERGRUND (wie im Screen, viewport-fix) ----
-     Als background-attachment:fixed am body — robust & repaintet
-     zuverlässig beim Scrollen (kein separater Composite-Layer). */
+  /* Solider Fallback — darf NIE weiss durchblitzen. */
+  background-color: #7BEEDF;
+}
+
+/* ---- AQUARELL-HINTERGRUND als fester Layer ----
+   Eigenes fixiertes Pseudo-Element statt background-attachment:fixed.
+   Deterministisch auf allen Geräten (kein WebGL, kein Windows/HP-Flackern,
+   kein „eingefrorener" Hintergrund beim Scrollen). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-color: #7BEEDF;
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006 0.009' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E"),
@@ -95,7 +106,6 @@ body {
   background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   background-size: 900px 900px, auto, auto, auto, auto, auto, auto, auto, auto;
   background-blend-mode: soft-light, normal, normal, normal, normal, normal, normal, normal, normal;
-  background-attachment: fixed;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -103,7 +113,12 @@ img, svg { display: block; max-width: 100%; }
 ::selection { background: var(--coral); color: #fff; }
 
 /* ============================================================ LAYOUT */
-.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+.container {
+  width: 100%; max-width: var(--container); margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
+@media (min-width: 768px) { .container { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); } }
 .section { padding: 72px 0; position: relative; }
 .section--tight { padding: 48px 0; }
 @media (min-width: 768px){ .section { padding: 100px 0; } }
@@ -515,9 +530,9 @@ h1,h2,h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.08
   transform: none; opacity: 1; background: transparent;
   visibility: hidden;
   transition: visibility 0s linear .55s;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 96px clamp(28px, 9vw, 130px) 88px;
-  gap: 4px; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+  padding: 96px clamp(24px, 6vw, 80px) 88px;
+  gap: 4px; overflow-x: hidden; overflow-y: auto;
 }
 .mmenu.open { visibility: visible; transition: visibility 0s; }
 
@@ -581,8 +596,12 @@ h1,h2,h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.08
 }
 .mmenu > a:hover, .mmenu > a.is-active { color: var(--teal-deep); }
 
-/* Untermenüs — mobil eingerückt sichtbar; Desktop: erst beim Hover rechts */
-.mmenu .sub { position: relative; z-index: 1; display: flex; flex-direction: column; padding-left: 20px; margin: 8px 0 14px; border: none; }
+/* Untermenüs — zentriert, sichtbar sobald das Menü offen ist */
+.mmenu .sub {
+  position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center;
+  padding-left: 0; margin: 4px 0 18px; border: none;
+  opacity: 1; visibility: visible; pointer-events: auto;
+}
 .mmenu .sub a {
   font-family: var(--font-body); font-weight: 700; font-size: 1.02rem;
   color: var(--ink-soft); padding: 9px 0; border: none;
@@ -607,32 +626,11 @@ h1,h2,h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.08
 }
 @media (min-width: 900px) and (max-height: 620px) { .mmenu { justify-content: flex-start; } }
 
-/* Desktop: 3 Tabs immer sichtbar; Untertabs erst beim Hover mittig-rechts */
+/* Desktop: alles zentriert, Untertabs sichtbar unter dem jeweiligen Punkt */
 @media (min-width: 900px) {
-  /* Haupttitel etwas weiter rechts */
-  .mmenu { align-items: flex-start; padding-left: clamp(64px, 13vw, 220px); }
-  .mmenu > a { font-size: clamp(2.4rem, 4.4vw, 3.6rem); }
-  /* Untertabs weiter links + Trennstrich an fixer Position (gleich für alle) */
-  .mmenu .sub {
-    position: absolute; z-index: 1; top: 50%; left: 56%; right: auto;
-    transform: translateY(-50%) translateX(10px); margin: 0; padding-left: 34px; gap: 12px;
-    border-left: 2px solid rgba(19,59,84,0.2);
-    opacity: 0; visibility: hidden; pointer-events: none;
-    transition: opacity .28s ease, transform .28s ease;
-  }
-  .mmenu .sub.show { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(-50%); }
-  .mmenu .sub a { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.2rem, 2vw, 1.7rem); }
-}
-
-/* Touch-Geräte ohne Hover (z.B. Tablets/Touch-Laptops ≥900px):
-   Untertabs immer sichtbar (kein Hover-Zwang → alle Unterseiten erreichbar) */
-@media (hover: none) {
-  .mmenu .sub {
-    position: static; left: auto; right: auto; top: auto;
-    transform: none; opacity: 1; visibility: visible; pointer-events: auto;
-    border-left: none; padding-left: 20px; margin: 8px 0 14px; gap: 0;
-  }
-  .mmenu .sub a { font-family: var(--font-body); font-weight: 700; font-size: 1.02rem; }
+  .mmenu > a { font-size: clamp(2.2rem, 4vw, 3.2rem); padding: 6px 0; }
+  .mmenu .sub { gap: 4px; }
+  .mmenu .sub a { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.1rem, 1.8vw, 1.45rem); }
 }
 
 /* ============================================================ FÜR GROSS & KLEIN */
@@ -882,7 +880,11 @@ html.intro-seen .intro { display: none !important; }
 /* =====================================================================
    Bridge — Kompatibilität für bereits gebaute Unterseiten
    ===================================================================== */
-.container-page { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: 24px; }
+.container-page {
+  width: 100%; max-width: 1180px; margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
 .card--hover { transition: transform .25s ease, box-shadow .25s ease; }
 .squiggle { position: relative; white-space: nowrap; padding-bottom: .14em; }
 .squiggle::after { content:""; position:absolute; left:-.02em; right:-.02em; bottom:0; height:.13em;
@@ -1304,7 +1306,7 @@ html.intro-seen .intro { display: none !important; }
   .mmenu.open > a:nth-of-type(2) { animation-delay: .17s; }
   .mmenu.open > a:nth-of-type(3) { animation-delay: .24s; }
 
-  /* Inhalt scrollbar — nichts wird mehr abgeschnitten */
+  /* Inhalt scrollbar — nichts wird mehr abgeschnitten, oben ausgerichtet */
   .mmenu {
     overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;
     justify-content: flex-start;
@@ -1312,20 +1314,19 @@ html.intro-seen .intro { display: none !important; }
     gap: 2px;
   }
 
-  /* Primärlinks als klare Blöcke */
+  /* Primärlinks als klare, zentrierte Blöcke */
   .mmenu > a { font-size: 1.95rem; padding: 14px 0 6px; }
 
-  /* Untermenüs immer sichtbar, eingerückt mit feiner Linie, grosse Tap-Flächen */
+  /* Untermenüs zentriert, immer sichtbar, grosse Tap-Flächen */
   .mmenu .sub {
-    padding-left: 16px; margin: 2px 0 12px; gap: 0;
-    border-left: 2px solid rgba(19, 59, 84, 0.14);
+    padding-left: 0; margin: 2px 0 14px; gap: 0; align-items: center;
     opacity: 1 !important; visibility: visible !important; pointer-events: auto !important;
     position: static !important; transform: none !important;
   }
   .mmenu:not(.open) .sub { visibility: hidden !important; }
   .mmenu .sub a {
     font-family: var(--font-body); font-weight: 700; font-size: 1.08rem;
-    padding: 11px 0; min-height: 44px; display: flex; align-items: center;
+    padding: 10px 0; min-height: 44px; display: flex; align-items: center; justify-content: center;
   }
 
   /* Kopf (Logo + Schliessen) bleibt beim Scrollen oben */
@@ -1336,3 +1337,67 @@ html.intro-seen .intro { display: none !important; }
   .mmenu.open > a { animation: none; }
   .mmenu.open .mmenu__paint { transition: none !important; }
 }
+
+/* ============================================================
+   Coming-Soon-Seite
+   ============================================================ */
+.coming {
+  position: relative; min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center; overflow: hidden;
+  padding: max(28px, env(safe-area-inset-top)) clamp(22px, 6vw, 60px)
+           calc(96px + env(safe-area-inset-bottom, 0px));
+}
+.coming__inner { position: relative; z-index: 2; text-align: center; max-width: 720px; }
+.coming__eyebrow {
+  display: inline-block; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+  font-size: 0.8rem; color: var(--teal-deep); margin-bottom: 18px;
+}
+.coming__brand {
+  font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em;
+  font-size: clamp(1.7rem, 4.5vw, 2.4rem); color: var(--ink); margin-bottom: 8px;
+}
+.coming__brand span { color: var(--teal-deep); }
+.coming__title {
+  font-family: var(--font-display); font-weight: 600; line-height: 1.04;
+  font-size: clamp(2.8rem, 9vw, 5rem); color: var(--ink); margin: 6px 0 18px;
+}
+.coming__lead {
+  font-size: clamp(1.02rem, 2.4vw, 1.2rem); color: var(--ink-soft, #3f4a49);
+  max-width: 540px; margin: 0 auto 30px; line-height: 1.6;
+}
+.coming__cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* dekorative Farbkleckse */
+.coming__dot, .coming__ring { position: absolute; z-index: 1; pointer-events: none; }
+.coming__dot { border-radius: 999px; filter: blur(0.5px); }
+.coming__dot--1 { width: 74px; height: 74px; background: var(--coral); top: 16%; left: 12%; opacity: .85; }
+.coming__dot--2 { width: 46px; height: 46px; background: var(--yellow); top: 24%; right: 16%; opacity: .9; }
+.coming__dot--3 { width: 58px; height: 58px; background: var(--teal-deep); bottom: 22%; left: 18%; opacity: .55; }
+.coming__ring {
+  width: 120px; height: 120px; border-radius: 999px;
+  border: 8px solid rgba(255,255,255,0.6); bottom: 16%; right: 12%;
+}
+@media (max-width: 640px) {
+  .coming__dot--1 { width: 48px; height: 48px; top: 9%; left: 8%; }
+  .coming__dot--2 { width: 34px; height: 34px; top: 14%; right: 10%; }
+  .coming__dot--3 { width: 40px; height: 40px; bottom: 26%; left: 10%; }
+  .coming__ring { width: 78px; height: 78px; border-width: 6px; bottom: 12%; right: 8%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .coming__dot--1 { animation: comeFloat 7s ease-in-out infinite; }
+  .coming__dot--2 { animation: comeFloat 6s ease-in-out infinite .8s; }
+  .coming__dot--3 { animation: comeFloat 8s ease-in-out infinite .3s; }
+  .coming__ring  { animation: comeFloat 9s ease-in-out infinite .5s; }
+}
+@keyframes comeFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-16px) } }
+
+/* Fusszeile: Kontakt/Impressum-Basisangaben + dezenter Team-Login */
+.coming__legal {
+  position: absolute; z-index: 2; left: 0; right: 0;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; justify-content: center;
+  padding: 0 20px; font-size: 0.8rem; color: var(--ink-mute, #6b675f); text-align: center;
+}
+.coming__legal a { color: var(--teal-deep); font-weight: 700; }
+.coming__login { opacity: .75; }
+.coming__login:hover { opacity: 1; }
